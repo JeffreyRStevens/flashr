@@ -1,0 +1,56 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# flashr
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
+
+The goal of `{flashr}` is to provide a quick way to view decks of flashcards. This package includes existing flashcard decks. The aim is to include decks from [R for Data Science (second edition)](https://r4ds.hadley.nz/index.html) when it is complete.
+
+## Installation
+
+You can install the development version of `{flashr}` like so:
+
+```{r eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("JeffreyRStevens/flashr")
+```
+
+## Example
+
+To view, for example, the flashcard deck on data types:
+
+```{r example, eval = FALSE}
+library(flashr)
+flashcard(data_type)
+```
+
+This randomizes the order of terms and give terms before descriptions. If you would like to present descriptions before terms:
+
+```{r example2, eval = FALSE}
+flashcard(data_type, termsfirst = FALSE)
+```
+
+## Citation
+
+To cite `{flashr}`, use:
+
+> Stevens, Jeffrey R. (2022). flashr: Creates flashcards of terms and definitions. (version 0.0.0.9000) https://github.com/JeffreyRStevens/flashr
+
+## Contributing to this package
+
+Contributions to `{flashr}` are most welcome! Feel free to check out [open issues](https://github.com/JeffreyRStevens/flashr/issues) for ideas. And [pull requests](https://github.com/JeffreyRStevens/flashr/pulls) are encouraged, but you may want to [raise an issue](https://github.com/JeffreyRStevens/flashr/issues) or [contact the maintainer](mailto:jeffrey.r.stevens@protonmail.com) first.
