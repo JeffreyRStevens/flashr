@@ -1,15 +1,15 @@
-"term","description","name"
-"typeof()","return object type","Vectors"
-"seq()","create sequences of numbers",
-"rep()","create repetitions of numbers, characters, etc.",
-"length()","return number of elements in a vector",
-"names()","return (and can assign) column names",
-"head()","return first elements of vector",
-"tail()","return last elements of vector",
-"c()","create vector of numbers, characters, etc.",
-"sample()","randomly sample from vector",
-"is.vector()","check if object is vector",
-":","create integer sequence",
-"[]","subset elements of vector",
-"list()","create recursive vector (list)",
-"str()","return object structure",
+"term","description"
+"typeof()","return object type"
+"seq()","create sequences of numbers"
+"rep()","create repetitions of numbers, characters, etc."
+"length()","return number of elements in a vector"
+"names()","return (and can assign) column names"
+"head()","return first elements of vector"
+"tail()","return last elements of vector"
+"c()","create vector of numbers, characters, etc."
+"sample()","randomly sample from vector"
+"is.vector()","check if object is vector"
+":","create integer sequence"
+"[]","subset elements of vector"
+"list()","create recursive vector (list)"
+"str()","return object structure"

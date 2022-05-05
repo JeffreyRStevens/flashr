@@ -35,7 +35,7 @@ flashcard <- function(deck,
   if (is.null(file)) {
     # Get deck name and title from object
     deckname <- deparse(substitute(deck))
-    title <- deck$name[1]
+    title <- attr(deck, "title")
   } else {
     # Import external file
     deck <- utils::read.csv(file)
