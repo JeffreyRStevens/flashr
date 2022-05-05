@@ -4,10 +4,12 @@
 \alias{flashcard}
 \title{Create flashcards}
 \usage{
-flashcard(deck, termsfirst = TRUE)
+flashcard(deck, file = NULL, termsfirst = TRUE)
 }
 \arguments{
 \item{deck}{Name of pre-existing flashcard deck to generate}
+
+\item{file}{Path and name of CSV file containing terms and descriptions}
 
 \item{termsfirst}{Logical indicating whether to show terms first (TRUE) or
 descriptions first (FALSE)}
@@ -24,6 +26,13 @@ output to the viewer. Otherwise, they are output to a web browser.
 }
 \examples{
 \dontrun{
+# Display terms then descriptions
 flashcard(data_type)
+
+# Display descriptions then terms
+flashcard(data_type, termsfirst = FALSE)
+
+# Display custom CSV file of terms and descriptions
+flashcard(file = "data/operators.csv")
 }
 }

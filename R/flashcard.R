@@ -7,6 +7,7 @@
 #' output to the viewer. Otherwise, they are output to a web browser.
 #'
 #' @param deck Name of pre-existing flashcard deck to generate
+#' @param file Path and name of CSV file containing terms and descriptions
 #' @param termsfirst Logical indicating whether to show terms first (TRUE) or
 #' descriptions first (FALSE)
 #'
@@ -17,27 +18,39 @@
 #'
 #' @examples
 #' \dontrun{
+#' # Display terms then descriptions
 #' flashcard(data_type)
 #'
+#' # Display descriptions then terms
 #' flashcard(data_type, termsfirst = FALSE)
+#'
+#' # Display custom CSV file of terms and descriptions
+#' flashcard(file = "data/operators.csv")
 #' }
 flashcard <- function(deck,
+                      file = NULL,
                       termsfirst = TRUE) {
 
-  # # Create file name and path
-  # filename <- paste0(deck, ".csv")
-  # path <- "data/"
-  # filepath <- paste0(path, filename)
-  #
-  # Import data file
-  # data <- read.csv(here::here(filepath))
-
-  # Get deck name and title
-  deckname <- deparse(substitute(deck))
-  title <- deck$name[1]
+  # Check if using pre-existing deck or file
+  if (is.null(file)) {
+    # Get deck name and title from object
+    deckname <- deparse(substitute(deck))
+    title <- deck$name[1]
+  } else {
+    # Import external file
+    deck <- utils::read.csv(file)
+    # Get deck name from file name
+    deckname <- gsub(".csv", "", basename(file))
+    # Get title from file or use file name
+    if ("name" %in% names(deck)) {
+      title <- deck$name[1]
+    } else {
+      title <- deckname
+    }
+  }
 
   # Shuffle order of items
-  items <- deck[sample(nrow(deck)), 1:2]
+  items <- deck[sample(nrow(deck)), ]
 
   # Create YAML header for reveal.js presentation
   text <- c("---", paste0('title: "', title, '"'), "output: revealjs::revealjs_presentation", "---")
