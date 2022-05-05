@@ -18,6 +18,8 @@
 #' @examples
 #' \dontrun{
 #' flashcard(data_type)
+#'
+#' flashcard(data_type, termsfirst = FALSE)
 #' }
 flashcard <- function(deck,
                       termsfirst = TRUE) {
