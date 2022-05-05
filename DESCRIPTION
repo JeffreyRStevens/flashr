@@ -1,0 +1,22 @@
+Package: flashr
+Type: Package
+Title: Creates Flashcards of Terms and Definitions
+Version: 0.0.0.9000
+Authors@R: 
+  c(person(given = "Jeffrey R.",
+           family = "Stevens",
+           role = c("aut", "cre", "cph"),
+           email = "jeffrey.r.stevens@protonmail.com",
+           comment = c(ORCID = "0000-0003-2375-1360")))
+Maintainer: Jeffrey R. Stevens <jeffrey.r.stevens@protonmail.com>
+Description: This package creates sets of flashcards that can be viewed in the 
+              RStudio viewer or a web browser.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: 
+    rmarkdown
+Depends: 
+    R (>= 2.10)
