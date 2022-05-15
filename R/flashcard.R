@@ -63,7 +63,7 @@ flashcard <- function(deck,
   items <- deck[sample(nrow(deck)), ]
 
   # Create YAML header for reveal.js presentation
-  text <- c("---", paste0('title: "', title, '"'), "output:", "  revealjs::revealjs_presentation:", paste0("    theme: ", theme), "---")
+  text <- c("---", paste0('title: "', title, '"'), "output:", "  revealjs::revealjs_presentation:", paste0("    theme: ", theme), "    center: true", paste0('    footer: "', title, '"'), "---")
 
   # Create slides for each item
   for (i in 1:nrow(items)) {
