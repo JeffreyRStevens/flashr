@@ -9,10 +9,21 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-The goal of `{flashr}` is to provide a quick way to view decks of
-flashcards. This package includes existing flashcard decks. The aim is
-to include decks from [R for Data Science (second
-edition)](https://r4ds.hadley.nz/index.html) when it is complete.
+Learning all of the functions needed to become proficient in R is a
+substantial undertaking. Flashcards are a great way to learn the syntax
+of computer languages (Hermans 2021). The goal of `{flashr}` is to
+provide a quick way to view decks of flashcards.
+
+`{flashr}` includes existing flashcard decks, including functions and
+arguments from [R for Data Science (first
+edition)](https://r4ds.had.co.nz/). The aim is to include decks from [R
+for Data Science (second edition)](https://r4ds.hadley.nz) when it is
+complete.
+
+In addition to built in decks, you can easily create your own decks
+using CSV files. This allows users to customize existing decks or create
+completely new decks. Also, while geared toward learning R, this package
+can be used to build decks for anything—not just computer syntax!
 
 ## Installation
 
@@ -29,14 +40,38 @@ To view, for example, the flashcard deck on data types:
 
 ``` r
 library(flashr)
-flashcard(data_type)
+flashcard(data_types)
 ```
 
 This randomizes the order of terms and give terms before descriptions.
 If you would like to present descriptions before terms:
 
 ``` r
-flashcard(data_type, termsfirst = FALSE)
+flashcard(data_types, termsfirst = FALSE)
+```
+
+To build your own deck, simply save a CSV file with a `term` column and
+a `description` column. You can also include a `package` column if you
+want the package name included with the term and a `name` column if you
+want to specify the title of the deck
+
+``` r
+my_deck <- read.csv("data/operators.csv")
+head(my_deck)
+#>   term            description package      name
+#> 1    =    assignment operator    base Operators
+#> 2   <-    assignment operator    base          
+#> 3   |> pipe operator (base R)    base          
+#> 4    +               addition    base          
+#> 5    -            subtraction    base          
+#> 6    *         multiplication    base
+```
+
+Then simply run the `flashcard()` function on your file or object:
+
+``` r
+flashcard("data/operators.csv")
+flashcard(my_deck)
 ```
 
 ## Citation
@@ -56,3 +91,8 @@ requests](https://github.com/JeffreyRStevens/flashr/pulls) are
 encouraged, but you may want to [raise an
 issue](https://github.com/JeffreyRStevens/flashr/issues) or [contact the
 maintainer](mailto:jeffrey.r.stevens@protonmail.com) first.
+
+## References
+
+Hermans, F. (2021). The Programmer’s Brain. Manning.
+<https://www.manning.com/books/the-programmers-brain>
