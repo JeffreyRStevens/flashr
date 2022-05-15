@@ -6,7 +6,7 @@
 #' \describe{
 #'   \item{term}{reference term or function}
 #'   \item{description}{description or definition of term}
-#'   \item{name}{title of deck}
+#'   \item{package}{package including function/argument}
 #' }
 "data_types"
 
@@ -18,6 +18,6 @@
 #' \describe{
 #'   \item{term}{reference term or function}
 #'   \item{description}{description or definition of term}
-#'   \item{name}{title of deck}
+#'   \item{package}{package including function/argument}
 #' }
 "vectors"
