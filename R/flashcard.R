@@ -37,13 +37,25 @@ flashcard <- function(deck,
                       theme = "moon") {
 
   # Check if using pre-existing deck or file
-  if (is.null(file)) {
+  if (is.null(file)) { # if pre-existing deck
+    # Check if deck is data frame
+    if (!is.data.frame(deck)) {
+      cli::cli_abort("The deck is not a data frame. If you are using a custom deck, make sure to use the `file` argument.")
+    }
+    # Check if deck has term and description columns
+    if (!"term" %in% names(deck) | !"description" %in% names(deck)) {
+      cli::cli_abort("The deck does not have a `term` and/or `description` column.")
+    }
     # Get deck name and title from object
     deckname <- deparse(substitute(deck))
     title <- attr(deck, "title")
-  } else {
+  } else { # if file
     # Import external file
     deck <- utils::read.csv(file)
+    # Check if deck has term and description columns
+    if (!"term" %in% names(deck) | !"description" %in% names(deck)) {
+      cli::cli_abort("The deck does not have a `term` and/or `description` column.")
+    }
     # Get deck name from file name
     deckname <- gsub(".csv", "", basename(file))
     # Get title from file or use file name
@@ -51,12 +63,13 @@ flashcard <- function(deck,
       title <- deck$name[1]
     } else {
       title <- deckname
+      cli::cli_alert_info("No 'name' column, so using filename for title.")
     }
   }
 
   # Check if package column is present if package = TRUE
   if (package & !"package" %in% names(deck)) {
-    stop("This deck does not include a 'package' column. Choose another deck or set `package = FALSE`.")
+    cli::cli_abort("This deck does not include a 'package' column. Choose another deck or set `package = FALSE`.")
   }
 
   # Shuffle order of items
@@ -69,13 +82,13 @@ flashcard <- function(deck,
   for (i in 1:nrow(items)) {
     if (termsfirst) {
       if (package) {
-      item <- c("##", "", "##", paste0("`", items$term[i], "`"), "", paste0("{", items$package[i], "}"), "", "##", items$description[i], "")
+        item <- c("##", "", "##", paste0("`", items$term[i], "`"), "", paste0("{", items$package[i], "}"), "", "##", items$description[i], "")
       } else {
         item <- c("##", "", "##", paste0("`", items$term[i], "`"), "", "##", items$description[i], "")
       }
     } else {
       if(package) {
-      item <- c("##", "", "##", items$description[i], "", "##", paste0("`", items$term[i], "`"), "", paste0("{", items$package[i], "}"), "")
+        item <- c("##", "", "##", items$description[i], "", "##", paste0("`", items$term[i], "`"), "", paste0("{", items$package[i], "}"), "")
       } else {
         item <- c("##", "", "##", items$description[i], "", "##", paste0("`", items$term[i], "`"), "")
       }
@@ -91,7 +104,7 @@ flashcard <- function(deck,
 
   # Write to R Markdown file and render HTML file
   writeLines(text = text, con = rmdfile)
-  rmarkdown::render(rmdfile)
+  rmarkdown::render(rmdfile, quiet = TRUE)
 
   # Open HTML file in viewer
   viewer <- getOption("viewer")
