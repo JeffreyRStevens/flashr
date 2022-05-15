@@ -4,7 +4,7 @@
 \alias{flashcard}
 \title{Create flashcards}
 \usage{
-flashcard(deck, file = NULL, termsfirst = TRUE)
+flashcard(deck, file = NULL, termsfirst = TRUE, package = TRUE)
 }
 \arguments{
 \item{deck}{Name of pre-existing flashcard deck to generate}
@@ -13,6 +13,8 @@ flashcard(deck, file = NULL, termsfirst = TRUE)
 
 \item{termsfirst}{Logical indicating whether to show terms first (TRUE) or
 descriptions first (FALSE)}
+
+\item{package}{Logical indicating whether to include package name in term}
 }
 \value{
 An HTML file of terms and descriptions rendered in the RStudio viewer or
@@ -27,12 +29,13 @@ output to the viewer. Otherwise, they are output to a web browser.
 \examples{
 \dontrun{
 # Display terms then descriptions
-flashcard(data_type)
+flashcard(data_types)
 
 # Display descriptions then terms
-flashcard(data_type, termsfirst = FALSE)
+flashcard(data_types, termsfirst = FALSE)
 
-# Display custom CSV file of terms and descriptions
-flashcard(file = "data/operators.csv")
+# Display custom CSV file of terms and descriptions. If package information
+is not included, set `package = FALSE`.
+flashcard(file = "data/operators.csv", package = FALSE)
 }
 }

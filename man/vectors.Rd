@@ -9,7 +9,7 @@ A data frame with 3 columns.
 \describe{
 \item{term}{reference term or function}
 \item{description}{description or definition of term}
-\item{name}{title of deck}
+\item{package}{package including function/argument}
 }
 }
 \usage{

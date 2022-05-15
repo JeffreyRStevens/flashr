@@ -10,6 +10,7 @@
 #' @param file Path and name of CSV file containing terms and descriptions
 #' @param termsfirst Logical indicating whether to show terms first (TRUE) or
 #' descriptions first (FALSE)
+#' @param package Logical indicating whether to include package name in term
 #'
 #' @return
 #' An HTML file of terms and descriptions rendered in the RStudio viewer or
@@ -19,17 +20,19 @@
 #' @examples
 #' \dontrun{
 #' # Display terms then descriptions
-#' flashcard(data_type)
+#' flashcard(data_types)
 #'
 #' # Display descriptions then terms
-#' flashcard(data_type, termsfirst = FALSE)
+#' flashcard(data_types, termsfirst = FALSE)
 #'
-#' # Display custom CSV file of terms and descriptions
-#' flashcard(file = "data/operators.csv")
+#' # Display custom CSV file of terms and descriptions. If package information
+#' is not included, set `package = FALSE`.
+#' flashcard(file = "data/operators.csv", package = FALSE)
 #' }
 flashcard <- function(deck,
                       file = NULL,
-                      termsfirst = TRUE) {
+                      termsfirst = TRUE,
+                      package = TRUE) {
 
   # Check if using pre-existing deck or file
   if (is.null(file)) {
@@ -49,6 +52,11 @@ flashcard <- function(deck,
     }
   }
 
+  # Check if package column is present if package = TRUE
+  if (package & !"package" %in% names(deck)) {
+    stop("This deck does not include a 'package' column. Choose another deck or set `package = FALSE`.")
+  }
+
   # Shuffle order of items
   items <- deck[sample(nrow(deck)), ]
 
@@ -58,9 +66,17 @@ flashcard <- function(deck,
   # Create slides for each item
   for (i in 1:nrow(items)) {
     if (termsfirst) {
-      item <- c("##", "", "##", paste0("`", items$term[i], "`"), "", "##", items$description[i], "")
+      if (package) {
+      item <- c("##", "", "##", paste0("`", items$term[i], "`"), "", paste0("{", items$package[i], "}"), "", "##", items$description[i], "")
+      } else {
+        item <- c("##", "", "##", paste0("`", items$term[i], "`"), "", "##", items$description[i], "")
+      }
     } else {
-      item <- c("##", "", "##", items$description[i], "", "##", paste0("`", items$term[i], "`"), "")
+      if(package) {
+      item <- c("##", "", "##", items$description[i], "", "##", paste0("`", items$term[i], "`"), "", paste0("{", items$package[i], "}"), "")
+      } else {
+        item <- c("##", "", "##", items$description[i], "", "##", paste0("`", items$term[i], "`"), "")
+      }
     }
     text <- c(text, item)
   }
