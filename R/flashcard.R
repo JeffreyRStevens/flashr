@@ -11,6 +11,7 @@
 #' @param termsfirst Logical indicating whether to show terms first (TRUE) or
 #' descriptions first (FALSE)
 #' @param package Logical indicating whether to include package name in term
+#' @param theme Name of reveal.js theme to use for flashcards
 #'
 #' @return
 #' An HTML file of terms and descriptions rendered in the RStudio viewer or
@@ -32,7 +33,8 @@
 flashcard <- function(deck,
                       file = NULL,
                       termsfirst = TRUE,
-                      package = TRUE) {
+                      package = TRUE,
+                      theme = "moon") {
 
   # Check if using pre-existing deck or file
   if (is.null(file)) {
@@ -61,7 +63,7 @@ flashcard <- function(deck,
   items <- deck[sample(nrow(deck)), ]
 
   # Create YAML header for reveal.js presentation
-  text <- c("---", paste0('title: "', title, '"'), "output: revealjs::revealjs_presentation", "---")
+  text <- c("---", paste0('title: "', title, '"'), "output:", "  revealjs::revealjs_presentation:", paste0("    theme: ", theme), "---")
 
   # Create slides for each item
   for (i in 1:nrow(items)) {

@@ -4,7 +4,7 @@
 \alias{flashcard}
 \title{Create flashcards}
 \usage{
-flashcard(deck, file = NULL, termsfirst = TRUE, package = TRUE)
+flashcard(deck, file = NULL, termsfirst = TRUE, package = TRUE, theme = "moon")
 }
 \arguments{
 \item{deck}{Name of pre-existing flashcard deck to generate}
@@ -15,6 +15,8 @@ flashcard(deck, file = NULL, termsfirst = TRUE, package = TRUE)
 descriptions first (FALSE)}
 
 \item{package}{Logical indicating whether to include package name in term}
+
+\item{theme}{Name of reveal.js theme to use for flashcards}
 }
 \value{
 An HTML file of terms and descriptions rendered in the RStudio viewer or
