@@ -17,8 +17,12 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Imports: 
+    cli,
     rmarkdown
 Depends: 
     R (>= 2.10)
 URL: https://github.com/JeffreyRStevens/flashr
 BugReports: https://github.com/JeffreyRStevens/flashr/issues
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
