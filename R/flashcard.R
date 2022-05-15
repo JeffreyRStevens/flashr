@@ -104,7 +104,7 @@ flashcard <- function(deck,
 
   # Write to R Markdown file and render HTML file
   writeLines(text = text, con = rmdfile)
-  rmarkdown::render(rmdfile)
+  rmarkdown::render(rmdfile, quiet = TRUE)
 
   # Open HTML file in viewer
   viewer <- getOption("viewer")
