@@ -24,5 +24,6 @@ Depends:
 URL: https://github.com/JeffreyRStevens/flashr
 BugReports: https://github.com/JeffreyRStevens/flashr/issues
 Suggests: 
+    covr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
