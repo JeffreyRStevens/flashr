@@ -8,3 +8,5 @@ attr(vectors, "title") <- "Vectors"
 usethis::use_data_raw(name = "vectors")
 
 usethis::use_data(data_types, vectors, overwrite = TRUE)
+
+file.copy("data/operators.csv", "tests/testthat/operators.csv", overwrite = TRUE)
