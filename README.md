@@ -7,6 +7,8 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Codecov test
+coverage](https://codecov.io/gh/JeffreyRStevens/flashr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/JeffreyRStevens/flashr?branch=main)
 <!-- badges: end -->
 
 Learning all of the functions needed to become proficient in R is a
@@ -40,14 +42,14 @@ To view, for example, the flashcard deck on data types:
 
 ``` r
 library(flashr)
-flashcard(data_types)
+flashcard(deck = data_types)
 ```
 
 This randomizes the order of terms and give terms before descriptions.
 If you would like to present descriptions before terms:
 
 ``` r
-flashcard(data_types, termsfirst = FALSE)
+flashcard(deck = data_types, termsfirst = FALSE)
 ```
 
 To build your own deck, simply save a CSV file with a `term` column and
@@ -67,11 +69,13 @@ head(my_deck)
 #> 6    *         multiplication    base
 ```
 
-Then simply run the `flashcard()` function on your file or object:
+Then simply run the `flashcard()` function on your file or object. Note
+that you need to use the `file` argument to specify external files and
+the `deck` argument to specify existing R objects.
 
 ``` r
-flashcard("data/operators.csv")
-flashcard(my_deck)
+flashcard(file = "data/operators.csv")
+flashcard(deck = my_deck)
 ```
 
 ## Citation

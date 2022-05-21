@@ -41,13 +41,13 @@ To view, for example, the flashcard deck on data types:
 
 ```{r eval = FALSE}
 library(flashr)
-flashcard(data_types)
+flashcard(deck = data_types)
 ```
 
 This randomizes the order of terms and give terms before descriptions. If you would like to present descriptions before terms:
 
 ```{r eval = FALSE}
-flashcard(data_types, termsfirst = FALSE)
+flashcard(deck = data_types, termsfirst = FALSE)
 ```
 
 To build your own deck, simply save a CSV file with a `term` column and a `description` column. You can also include a `package` column if you want the package name included with the term and a `name` column if you want to specify the title of the deck
@@ -57,11 +57,11 @@ my_deck <- read.csv("data/operators.csv")
 head(my_deck)
 ```
 
-Then simply run the `flashcard()` function on your file or object:
+Then simply run the `flashcard()` function on your file or object. Note that you need to use the `file` argument to specify external files and the `deck` argument to specify existing R objects.
 
 ```{r eval = FALSE}
-flashcard("data/operators.csv")
-flashcard(my_deck)
+flashcard(file = "data/operators.csv")
+flashcard(deck = my_deck)
 ```
 
 
