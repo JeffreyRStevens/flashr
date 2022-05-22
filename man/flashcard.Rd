@@ -4,12 +4,11 @@
 \alias{flashcard}
 \title{Create flashcards}
 \usage{
-flashcard(deck, file = NULL, termsfirst = TRUE, package = TRUE, theme = "moon")
+flashcard(x, termsfirst = TRUE, package = TRUE, theme = "moon")
 }
 \arguments{
-\item{deck}{Name of pre-existing flashcard deck to generate}
-
-\item{file}{Path and name of CSV file containing terms and descriptions}
+\item{x}{Name of pre-existing flashcard deck or path and name of CSV file
+containing terms and descriptions}
 
 \item{termsfirst}{Logical indicating whether to show terms first (TRUE) or
 descriptions first (FALSE)}

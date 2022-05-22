@@ -1,4 +1,4 @@
-"term","description","package","name"
+"term","description","package","title"
 "=","assignment operator","base","Operators"
 "<-","assignment operator","base",
 "|>","pipe operator (base R)","base",

@@ -1,11 +1,17 @@
-test_that("checks pass", {
+test_that("validations pass", {
   testdeck <- read.csv("operators.csv")
   testdeck2 <- testdeck
   names(testdeck2) <- NULL
-  expect_error(flashcard("operators.csv"))
-  expect_error(flashcard(testdeck2))
+  expect_error(validate_deck(letters))
+  expect_error(validate_deck("test"))
+  expect_error(validate_deck(1:5))
+  expect_error(validate_deck(testdeck2))
   testdeck3 <- testdeck[, 1:2]
-  withr::local_file(write.csv(testdeck3, "testdeck3.csv"))
-  suppressMessages(expect_message(flashcard(file = "testdeck3.csv", package = FALSE)))
-  suppressMessages(expect_error(flashcard(file = "testdeck3.csv", package = TRUE)))
+  write.csv(testdeck3, "testdeck3.csv")
+  suppressMessages(expect_message(validate_deck("testdeck3.csv", package = FALSE)))
+  testdeck4 <- testdeck[, 1]
+  write.csv(testdeck4, "testdeck4.csv")
+  suppressMessages(expect_error(validate_deck("testdeck4.csv", package = FALSE)))
+  file.remove(test_path("testdeck3.csv"))
+  file.remove(test_path("testdeck4.csv"))
 })

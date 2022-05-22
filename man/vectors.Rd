@@ -5,11 +5,12 @@
 \alias{vectors}
 \title{Vectors deck}
 \format{
-A data frame with 3 columns.
+A data frame with 4 columns.
 \describe{
 \item{term}{reference term or function}
 \item{description}{description or definition of term}
 \item{package}{package including function/argument}
+\item{title}{title of deck}
 }
 }
 \usage{
