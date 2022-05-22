@@ -6,8 +6,8 @@
 #' presentation as an HTML file. If running in RStudio, the flashcards are
 #' output to the viewer. Otherwise, they are output to a web browser.
 #'
-#' @param deck Name of pre-existing flashcard deck to generate
-#' @param file Path and name of CSV file containing terms and descriptions
+#' @param x Name of pre-existing flashcard deck or path and name of CSV file
+#' containing terms and descriptions
 #' @param termsfirst Logical indicating whether to show terms first (TRUE) or
 #' descriptions first (FALSE)
 #' @param package Logical indicating whether to include package name in term
@@ -30,47 +30,24 @@
 #' is not included, set `package = FALSE`.
 #' flashcard(file = "data/operators.csv", package = FALSE)
 #' }
-flashcard <- function(deck,
-                      file = NULL,
+flashcard <- function(x,
                       termsfirst = TRUE,
                       package = TRUE,
                       theme = "moon") {
 
-  # Check if using pre-existing deck or file
-  if (is.null(file)) { # if pre-existing deck
-    # Check if deck is data frame
-    if (!is.data.frame(deck)) {
-      cli::cli_abort("The deck is not a data frame. If you are using a custom deck, make sure to use the `file` argument.")
-    }
-    # Check if deck has term and description columns
-    if (!"term" %in% names(deck) | !"description" %in% names(deck)) {
-      cli::cli_abort("The deck does not have a `term` and/or `description` column.")
-    }
-    # Get deck name and title from object
-    deckname <- deparse(substitute(deck))
-    title <- attr(deck, "title")
-  } else { # if file
-    # Import external file
-    deck <- utils::read.csv(file)
-    # Check if deck has term and description columns
-    if (!"term" %in% names(deck) | !"description" %in% names(deck)) {
-      cli::cli_abort("The deck does not have a `term` and/or `description` column.")
-    }
-    # Get deck name from file name
-    deckname <- gsub(".csv", "", basename(file))
-    # Get title from file or use file name
-    if ("title" %in% names(deck)) {
-      title <- deck$title[1]
-    } else {
-      title <- deckname
-      cli::cli_alert_info("No 'name' column, so using filename for title.")
-    }
+  # Convert all deck objects to strings
+  if (is.character(x)) {
+    x <- x
+  } else {
+    x <- deparse(substitute(x))
   }
 
-  # Check if package column is present if package = TRUE
-  if (package & !"package" %in% names(deck)) {
-    cli::cli_abort("This deck does not include a 'package' column. Choose another deck or set `package = FALSE`.")
-  }
+  # Validate deck
+  deck <- validate_deck(x, package = package)
+
+  # Assign deck title and deckname
+  title <- attr(deck, "title")
+  deckname <- attr(deck, "deckname")
 
   # Shuffle order of items
   items <- deck[sample(nrow(deck)), ]
@@ -108,10 +85,75 @@ flashcard <- function(deck,
 
   # Open HTML file in viewer
   viewer <- getOption("viewer")
-  # viewer(htmlfile)
   if (!is.null(viewer)) {
     viewer(htmlfile)
   } else {
     utils::browseURL(htmlfile)
   }
 }
+
+validate_deck <- function(x, package = package) {
+  # Convert all deck objects to strings
+  valid_decks <- get_decks()
+  if (is.character(x)) {
+    input <- x
+  } else {
+    input <- deparse(substitute(x))
+  }
+
+  # Validate input
+  if (length(input) > 1) {
+    cli::cli_abort("Input is a vector rather than built-in deck or CSV file.")
+  }
+
+  if (grepl(".csv", input)) { # if input is CSV file
+    # Get deck and deckname
+    deck <- utils::read.csv(input)
+    deckname <- gsub(".csv", "", basename(x))
+
+    # Get title from file or use file name
+    if ("title" %in% names(deck)) {
+      title <- deck$title[1]
+    } else {
+      title <- deckname
+      cli::cli_alert_info("No {.field title} column, so using filename for title.")
+    }
+
+  } else if (input %in% valid_decks$decklabels) { # if input is found in valid decks
+    # Get deck and deckname
+    deck <- eval(parse(text = input))
+    deckname <- input
+
+    # Check if data frame
+    if (!is.data.frame(deck)) {
+      cli::cli_abort("The deck is not a data frame.")
+    }
+
+    # Get title from data frame or use object name
+    if ("title" %in% names(attributes(deck))) {
+      title <- attr(deck, "title")
+    } else {
+      title <- deckname
+      cli::cli_alert_info("No {.field title} column, so using filename for title.")
+    }
+
+  } else { # if input is not CSV or valid deck
+    cli::cli_abort("This deck is not recognized as a built-in deck or a valid CSV file.")
+  }
+
+  # Check if deck has term and description columns
+  if (!"term" %in% names(deck) | !"description" %in% names(deck)) {
+    cli::cli_abort("The deck does not have a {.field term} and/or {.field description} column.")
+  }
+
+  # Check if package column is present if package = TRUE
+  if (package & !"package" %in% names(deck)) {
+    cli::cli_abort("This deck does not include a {.field package} column. Choose another deck or set {.code package = FALSE}.")
+  }
+
+  # Assign title and deckname and invisbily return output
+  attr(deck, "title") <- title
+  attr(deck, "deckname") <- deckname
+  invisible(deck)
+}
+
