@@ -59,8 +59,8 @@ flashcard <- function(deck,
     # Get deck name from file name
     deckname <- gsub(".csv", "", basename(file))
     # Get title from file or use file name
-    if ("name" %in% names(deck)) {
-      title <- deck$name[1]
+    if ("title" %in% names(deck)) {
+      title <- deck$title[1]
     } else {
       title <- deckname
       cli::cli_alert_info("No 'name' column, so using filename for title.")

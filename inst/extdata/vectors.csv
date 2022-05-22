@@ -1,15 +1,15 @@
-"term","description","package"
-":","create integer sequence","base"
-"[]","subset elements of vector","base"
-"c()","create vector of numbers, characters, etc.","base"
-"head()","return first elements of vector","base"
-"is.vector()","check if object is vector","base"
-"length()","return number of elements in a vector","base"
-"list()","create recursive vector (list)","base"
-"names()","return (and can assign) column names","base"
-"rep()","create repetitions of numbers, characters, etc.","base"
-"sample()","randomly sample from vector","base"
-"seq()","create sequences of numbers","base"
-"str()","return object structure","base"
-"tail()","return last elements of vector","base"
-"typeof()","return object type","base"
+"term","description","package","title"
+":","create integer sequence","base","Vectors"
+"[]","subset elements of vector","base",
+"c()","create vector of numbers, characters, etc.","base",
+"head()","return first elements of vector","base",
+"is.vector()","check if object is vector","base",
+"length()","return number of elements in a vector","base",
+"list()","create recursive vector (list)","base",
+"names()","return (and can assign) column names","base",
+"rep()","create repetitions of numbers, characters, etc.","base",
+"sample()","randomly sample from vector","base",
+"seq()","create sequences of numbers","base",
+"str()","return object structure","base",
+"tail()","return last elements of vector","base",
+"typeof()","return object type","base",
