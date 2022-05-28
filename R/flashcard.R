@@ -12,6 +12,8 @@
 #' descriptions first (FALSE)
 #' @param package Logical indicating whether to include package name in term
 #' @param theme Name of reveal.js theme to use for flashcards
+#' @param file Path and file name used to save flashcard deck locally (must
+#' save as HTML)
 #'
 #' @return
 #' An HTML file of terms and descriptions rendered in the RStudio viewer or
@@ -33,7 +35,8 @@
 flashcard <- function(x,
                       termsfirst = TRUE,
                       package = TRUE,
-                      theme = "moon") {
+                      theme = "moon",
+                      file = NULL) {
 
   # Convert all deck objects to strings
   if (is.character(x)) {
@@ -124,26 +127,11 @@ validate_deck <- function(x, package = package) {
     deck <- eval(parse(text = input))
     deckname <- input
 
-    # Check if data frame
-    if (!is.data.frame(deck)) {
-      cli::cli_abort("The deck is not a data frame.")
-    }
-
     # Get title from data frame or use object name
-    if ("title" %in% names(attributes(deck))) {
-      title <- attr(deck, "title")
-    } else {
-      title <- deckname
-      cli::cli_alert_info("No {.field title} column, so using filename for title.")
-    }
+    title <- attr(deck, "title")
 
   } else { # if input is not CSV or valid deck
     cli::cli_abort("This deck is not recognized as a built-in deck or a valid CSV file.")
-  }
-
-  # Check if deck has term and description columns
-  if (!"term" %in% names(deck) | !"description" %in% names(deck)) {
-    cli::cli_abort("The deck does not have a {.field term} and/or {.field description} column.")
   }
 
   # Check if package column is present if package = TRUE
