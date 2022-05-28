@@ -21,3 +21,9 @@ test_that("validations pass", {
   file.remove(test_path("testdata", "testdeck5.csv"))
 })
 
+test_that("output files are HTML", {
+  expect_error(flashcard("data_types", file = "mytest.HTML"), NA)
+  expect_error(flashcard("data_types", file = "mytest.HTM"))
+  file.remove("mytest.HTML")
+
+})

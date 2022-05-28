@@ -86,6 +86,15 @@ flashcard <- function(x,
   writeLines(text = text, con = rmdfile)
   rmarkdown::render(rmdfile, quiet = TRUE)
 
+  # Save HTML file when requested
+  if (!is.null(file)) {
+    if (identical(tolower(xfun::file_ext(file)), "html")) {
+      file.copy(from = htmlfile, to = file, overwrite = TRUE)
+    } else {
+      cli::cli_abort("Output files must be HTML or html.")
+    }
+  }
+
   # Open HTML file in viewer
   viewer <- getOption("viewer")
   if (!is.null(viewer)) {
