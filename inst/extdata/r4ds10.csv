@@ -1,0 +1,6 @@
+"term","description","package"
+"case_when()","conditionally set values across multiple conditions","dplyr"
+"cut_number()","cut data into groups of equal numbers of observations","ggplot2"
+"cut_width()","cut data into groups of a particular width","ggplot2"
+"ifelse()","conditionally set values","base"
+"reorder()","reorder factor levels based on another variable","stats"

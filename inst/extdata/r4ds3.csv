@@ -1,0 +1,4 @@
+"term","description","package"
+"<-","assignment operator","base"
+"c()","create vector of elements","base"
+"seq()","create sequence of numbers","base"

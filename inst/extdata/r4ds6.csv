@@ -1,0 +1,6 @@
+"term","description","package"
+"column_to_rownames()","turn a variable into row names","tibble"
+"count()","count unique values of variables","base"
+"distinct()","select distinct rows from a data frame","dplyr"
+"pivot_longer()","reshape data into long format","dplyr"
+"pivot_wider()","reshape data into wide format","dplyr"

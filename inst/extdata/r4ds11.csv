@@ -1,0 +1,4 @@
+"term","description","package"
+"dput()","write a text representation of an R object to a file","base"
+"reprex()","create a reproducible example","reprex"
+"tidyverse_update()","check if tidyverse packages are up-to-date","tidyverse"

@@ -1,0 +1,4 @@
+"term","description","package"
+"|>","base R pipe between commands","base"
+"%>%","{magrittr} pipe between commands","magrittr"
+"pull()","extract a column of data","dplyr"

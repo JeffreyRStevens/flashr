@@ -1,0 +1,22 @@
+"term","description","package"
+"any_of()","check if any any elements are found in vector","dplyr"
+"arrange()","change order of rows based on values of columns","dplyr"
+"contains()","match column names that contain string","dplyr"
+"count()","count unique values of variables","dplyr"
+"desc()","order in descending order","dplyr"
+"ends_with()","match column names that end with string","dplyr"
+"filter()","keep rows based on values of columns","dplyr"
+"group_by()","group data by levels of column","dplyr"
+"mutate()","add new columns calculated from existing columns","dplyr"
+"n()","return current group size","dplyr"
+"num_range()","match column names with number range","dplyr"
+"relocate()","move columns to new location","dplyr"
+"rename()","rename columns","dplyr"
+"select()","keep specified columns","dplyr"
+"slice_()","functions that select specific rows","dplyr"
+"starts_with()","match column names that begin with string","dplyr"
+"summarize()","summarize data usually by grouping variable","dplyr"
+"ungroup()","remove grouping","dplyr"
+".before/.after","argument to place new column before/after existing column",
+".groups","argument to control how groups are maintained",
+".keep","argument to keep certain columns",

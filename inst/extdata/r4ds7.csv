@@ -1,0 +1,6 @@
+"term","description","package"
+"|>","base R pipe operator","base"
+"count()","count unique values of variables","dplyr"
+"is.na()","check if value is NA","base"
+"mean()","calculate mean of vector","base"
+"n()","return current group size","dplyr"

@@ -1,0 +1,4 @@
+"term","description","package"
+"install.packages()","installs R packages","base"
+"library()","loads R packages","base"
+"session.info()","returns R session info and loaded packages","base"

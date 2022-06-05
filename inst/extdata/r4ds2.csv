@@ -1,0 +1,27 @@
+"term","description","package"
+"aes()","create aesthetic mappings between data and plot","ggplot2"
+"coord_fixed()","force aspect ratio between data units on axes","ggplot2"
+"coord_flip()","switch x and y axes","ggplot2"
+"coord_polar()","use polar coordinates","ggplot2"
+"coord_quickmap()","set aspect ratio correctly for maps","ggplot2"
+"facet_grid()","create grid of subplots from multiple variables","ggplot2"
+"facet_wrap()","create subplots from one variable","ggplot2"
+"geom_abline()","add vertical, horizonal, or diagonal reference lines","ggplot2"
+"geom_bar()","create bar chart","ggplot2"
+"geom_boxplot()","add layer of boxplots","ggplot2"
+"geom_count()","add layer of points sized by count of overlapping points","ggplot2"
+"geom_jitter()","add layer of jittered points","ggplot2"
+"geom_point()","add layer of points to plot","ggplot2"
+"geom_polygon()","add layer of polygons","ggplot2"
+"geom_smooth()","create smoothed lines","ggplot2"
+"ggplot()","create a plotting area","ggplot2"
+"labs()","modify axis, legend, and plot labels","ggplot2"
+"stat_summary()","summarize y values for each x value","ggplot2"
+"alpha","argument for opacity of plot objects",
+"color","argument for color of dots, lines, etc",
+"fill","argument for color of areas",
+"group","argument for grouping data by variable",
+"linetype","argument for type of line",
+"position","argument for altering plot positioning",
+"shape","argument for shape of points",
+"size","argument for size of dots, lines, etc.",
