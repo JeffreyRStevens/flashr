@@ -88,7 +88,7 @@ flashcard <- function(x,
 
   # Save HTML file when requested
   if (!is.null(file)) {
-    if (identical(tolower(xfun::file_ext(file)), "html")) {
+    if (identical(tolower(tools::file_ext(file)), "html")) {
       file.copy(from = htmlfile, to = file, overwrite = TRUE)
     } else {
       cli::cli_abort("Output files must be HTML or html.")
@@ -106,7 +106,7 @@ flashcard <- function(x,
 
 validate_deck <- function(x, package = package) {
   # Convert all deck objects to strings
-  valid_decks <- get_decks()
+  valid_decks <- list_decks(quiet = TRUE)
   if (is.character(x)) {
     input <- x
   } else {
@@ -115,7 +115,7 @@ validate_deck <- function(x, package = package) {
 
   # Validate input
   if (length(input) > 1) {
-    cli::cli_abort("Input is a vector rather than built-in deck or CSV file.")
+    cli::cli_abort("Input is a vector rather than available deck or CSV file.")
   }
 
   if (grepl(".csv", input)) { # if input is CSV file
@@ -133,14 +133,12 @@ validate_deck <- function(x, package = package) {
 
   } else if (input %in% valid_decks$decklabels) { # if input is found in valid decks
     # Get deck and deckname
-    deck <- eval(parse(text = input))
+    deck <- utils::read.csv(paste0("https://raw.githubusercontent.com/JeffreyRStevens/flashr_decks/main/decks/", input, ".csv"))
     deckname <- input
-
-    # Get title from data frame or use object name
-    title <- attr(deck, "title")
+    title <- deck$title[1]
 
   } else { # if input is not CSV or valid deck
-    cli::cli_abort("This deck is not recognized as a built-in deck or a valid CSV file.")
+    cli::cli_abort("This deck is not recognized as a available deck or a valid CSV file.")
   }
 
   # Check if package column is present if package = TRUE

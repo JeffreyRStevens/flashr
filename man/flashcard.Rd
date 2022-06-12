@@ -4,7 +4,7 @@
 \alias{flashcard}
 \title{Create flashcards}
 \usage{
-flashcard(x, termsfirst = TRUE, package = TRUE, theme = "moon")
+flashcard(x, termsfirst = TRUE, package = TRUE, theme = "moon", file = NULL)
 }
 \arguments{
 \item{x}{Name of pre-existing flashcard deck or path and name of CSV file
@@ -16,6 +16,9 @@ descriptions first (FALSE)}
 \item{package}{Logical indicating whether to include package name in term}
 
 \item{theme}{Name of reveal.js theme to use for flashcards}
+
+\item{file}{Path and file name used to save flashcard deck locally (must
+save as HTML)}
 }
 \value{
 An HTML file of terms and descriptions rendered in the RStudio viewer or

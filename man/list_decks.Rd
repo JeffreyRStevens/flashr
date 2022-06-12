@@ -2,19 +2,54 @@
 % Please edit documentation in R/list_decks.R
 \name{list_decks}
 \alias{list_decks}
-\title{List available built-in flashcard decks}
+\title{List available available flashcard decks}
 \usage{
-list_decks(quiet = FALSE)
+list_decks(
+  pattern = NULL,
+  repo = "JeffreyRStevens/flashr_decks",
+  quiet = FALSE
+)
 }
 \arguments{
+\item{pattern}{String pattern to search in list of decks.}
+
+\item{repo}{GitHub username and repo for deck repository in the format
+of "username/repository". Default value is "JeffreyRStevens/flashr_decks".}
+
 \item{quiet}{Logical to prevent list information from printing to console.}
 }
 \value{
 Outputs a list of available built-in flashcard decks to the console.
 }
 \description{
-List available built-in flashcard decks
+This function searches for flashcard decks stored in GitHub
+repositories. By default, the function searches the
+\href{"https://github.com/JeffreyRStevens/flashr_decks/"}{flashr_decks repo}. But
+other GitHub repos can be used.
+
+To narrow the results, include text in the \code{pattern} argument (for example,
+\code{list_decks(pattern = "r4ds")}).
+}
+\details{
+You are welcome to fork the
+\href{"https://github.com/JeffreyRStevens/flashr_decks/"}{flashr_decks repo} and
+modify or add your own decks. Or you can create your own repo from scratch.
+Just make sure to place your decks in a directory called \verb{decks/} in your
+root directory. Then set the \code{repo} argument to your username and repo (see
+Examples).
 }
 \examples{
+# View all available decks
 list_decks()
+
+# View decks with text matching pattern
+list_decks(pattern = "r4ds")
+
+# View decks from specific repository
+list_decks(repo = "JeffreyRStevens/flashr_decks")
 }
+\seealso{
+Other functions for finding decks: 
+\code{\link{choose_deck}()}
+}
+\concept{functions for finding decks}
