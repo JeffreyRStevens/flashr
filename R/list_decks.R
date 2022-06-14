@@ -39,13 +39,17 @@
 list_decks <- function(pattern = NULL,
                        repo = "JeffreyRStevens/flashr_decks",
                        quiet = FALSE) {
+  # Get contents of decks/ directory
   repo_text <- paste0("GET /repos/", repo, "/contents/decks")
-  deckfiles <- gh::gh(repo_text) |>
-    vapply("[[", "", "name")
+  deckfiles <- get_repo_mem(repo_text)
+
+  # Create labels, paths, and titles for decks
   deckpaths <- paste0("https://raw.githubusercontent.com/", repo, "/main/decks/", deckfiles)
   decklabels <- gsub(".csv", "", deckfiles)
-  titles <- vapply(deckpaths, get_title, character(1))
+  titles <- vapply(deckpaths, get_title_mem, character(1))
   decks <- paste0(titles, " (", decklabels, ")")
+
+  # Search text of decks for patterns
   if (!is.null(pattern)) {
     if (!is.character(pattern)) {
       pattern <- deparse(substitute(pattern))
@@ -58,10 +62,14 @@ list_decks <- function(pattern = NULL,
       cli::cli_abort("No decks match the pattern entered. Try another pattern string.")
     }
   }
+
+  # Return list of decks to console
   if (!quiet) {
     cli::cli_text("Available flashcard decks")
     cli::cli_ol(decks)
   }
+
+  # Invisibly return decks, labels, and titles
   invisible(list(decklabels = decklabels, decktitles = unname(titles), decks = decks))
 }
 
@@ -99,24 +107,39 @@ list_decks <- function(pattern = NULL,
 #' }
 choose_deck <- function(pattern = NULL,
                         repo = "JeffreyRStevens/flashr_decks") {
-    deck_list <- list_decks(pattern = pattern, repo = repo)
-    choice <- readline(prompt = "Please enter the number for a deck or 0 to exit: ")
-    choice <- as.numeric(gsub("\\.", "", choice))
-    # print(choice)
-    decks <- deck_list$decks
-    decklabels <- deck_list$decklabels
-    titles <- deck_list$decktitles
-    if (choice %in% 1:length(decks)) {
-      cli::cli_text("Creating {.field ", {unname(titles[choice])}, "} deck.")
-      flashcard(decklabels[choice])
-    } else if (identical(choice, 0)) {
-      invisible()
-    } else{
-      cli::cli_abort("That response was not valid. Please rerun `choose_deck()` and enter a valid number for an available deck.")
-    }
-  }
+  # List decks
+  deck_list <- list_decks(pattern = pattern, repo = repo)
 
+  # Record choice
+  choice <- readline(prompt = "Please enter the number for a deck or 0 to exit: ")
+  choice <- as.numeric(gsub("\\.", "", choice))
+
+  # Extract decks, labels, and title
+  decks <- deck_list$decks
+  decklabels <- deck_list$decklabels
+  titles <- deck_list$decktitles
+
+  # Print deck name and create flashcard deck, exit, or abort for invalid decks
+  if (choice %in% 1:length(decks)) {
+    cli::cli_text("Creating {.field ", {unname(titles[choice])}, "} deck.")
+    flashcard(decklabels[choice])
+  } else if (identical(choice, 0)) {
+    invisible()
+  } else{
+    cli::cli_abort("That response was not valid. Please rerun `choose_deck()` and enter a valid number for an available deck.")
+  }
+}
+
+# Extract title from CSV
 get_title <- function(x) {
   data <- utils::read.csv(x)
   data$title[1]
 }
+get_title_mem <- memoise::memoise(get_title)
+
+# Get file names in repository
+get_repo <-function(repo_text) {
+  deckfiles <- gh::gh(repo_text) |>
+    vapply("[[", "", "name")
+}
+get_repo_mem <- memoise::memoise(get_repo)
