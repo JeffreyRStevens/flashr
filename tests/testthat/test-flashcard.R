@@ -19,6 +19,8 @@ test_that("validations pass", {
   file.remove(test_path("testdata", "testdeck3.csv"))
   file.remove(test_path("testdata", "testdeck4.csv"))
   file.remove(test_path("testdata", "testdeck5.csv"))
+  testflash <- validate_deck(test_path("testdata", "operators.csv"), package = TRUE)
+  expect_true("title" %in% names(testflash))
 })
 
 test_that("output files are HTML", {

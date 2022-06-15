@@ -38,13 +38,6 @@ flashcard <- function(x,
                       theme = "moon",
                       file = NULL) {
 
-  # Convert all deck objects to strings
-  if (is.character(x)) {
-    x <- x
-  } else {
-    x <- deparse(substitute(x))
-  }
-
   # Validate deck
   deck <- validate_deck(x, package = package)
 
@@ -84,7 +77,8 @@ flashcard <- function(x,
 
   # Write to R Markdown file and render HTML file
   writeLines(text = text, con = rmdfile)
-  rmarkdown::render(rmdfile, quiet = TRUE)
+  revealjs::revealjs_presentation()
+  rmarkdown::render(input = rmdfile, quiet = TRUE)
 
   # Save HTML file when requested
   if (!is.null(file)) {
