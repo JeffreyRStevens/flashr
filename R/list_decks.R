@@ -25,6 +25,8 @@
 #' Outputs a list of available built-in flashcard decks to the console.
 #' @export
 #'
+#' @importFrom memoise memoise
+#'
 #' @family functions for finding decks
 #'
 #' @examples
@@ -111,7 +113,9 @@ choose_deck <- function(pattern = NULL,
   deck_list <- list_decks(pattern = pattern, repo = repo)
 
   # Record choice
-  choice <- readline(prompt = "Please enter the number for a deck or 0 to exit: ")
+  cat("Please enter the number for a deck or 0 to exit: ")
+  choice <- readLines(con = getOption("mypkg.connection"), n = 1)
+  # cat("\n")
   choice <- as.numeric(gsub("\\.", "", choice))
 
   # Extract decks, labels, and title
@@ -124,7 +128,7 @@ choose_deck <- function(pattern = NULL,
     cli::cli_text("Creating {.field ", {unname(titles[choice])}, "} deck.")
     flashcard(decklabels[choice])
   } else if (identical(choice, 0)) {
-    invisible()
+    cli::cli_text("No deck selected.")
   } else{
     cli::cli_abort("That response was not valid. Please rerun `choose_deck()` and enter a valid number for an available deck.")
   }

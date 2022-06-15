@@ -3,3 +3,4 @@
 export(choose_deck)
 export(flashcard)
 export(list_decks)
+importFrom(memoise,memoise)
