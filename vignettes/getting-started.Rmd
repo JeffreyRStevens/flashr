@@ -1,0 +1,96 @@
+---
+title: "Getting started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{getting-started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(flashr)
+```
+
+Flashcards are a great way to learn information. The repetition of exposure to technical terms and their descriptions/definitions helps with remembering those relationships (Yüksel et al., 2020)^[Yüksel, H. G., Mercanoğlu, H. G., & Yılmaz, M. B. (2020). Digital flashcards vs. Wordlists for learning technical vocabulary. Computer Assisted Language Learning, 0(0), 1–17. https://doi.org/10.1080/09588221.2020.1854312]. Hermans (2021)^[Hermans, F. (2021). The Programmer’s Brain. Manning. [https://www.manning.com/books/the-programmers-brain](https://www.manning.com/books/the-programmers-brain)] suggests using flashcards for learning programming languages, which inspired the `{flashr}` package. The aim of this package is to create a simple way to use and generate new decks of flashcards for learning R function or anything else you want to learn!
+
+## Usage
+`{flashr}` has a number of [built-in flashcard decks](https://github.com/JeffreyRStevens/flashr_decks) to help you learn R, and especially the [tidyverse](tidyverse.org/). The workhorse of the package is the `flashcard()` function, which uses [reveal.js](https://revealjs.com/)^[Via the [revealjs](https://github.com/rstudio/revealjs) R package.] to generate an HTML presentation displaying terms and descriptions. For RStudio users, the flashcard presentation will appear in the Viewer pane. Outside of RStudio, the function will open the presentation in your default browser. In either case, you can advance slides with the right arrow key or by clicking on the right arrow in the presentation.
+
+For example, to create a set of flashcards from the built-in `data_types` deck, simply run:
+```{r eval = FALSE}
+flashcard("data_types")
+```
+The presentation will start with the title of the deck, then give a blank slide, then present the first term, followed by the description, and a blank slide. The order of terms/descriptions is randomized when the `flashcard()` function is run, so just re-run it to generate a different order.
+
+### Guess the term
+By default, terms are presented before descriptions. So when you see a term, you should try to define/describe the term. But it is possible to present descriptions first so you can guess the term by including the `termfirst = FALSE` argument.
+```{r eval = FALSE}
+flashcard("data_types", termsfirst = FALSE)
+```
+
+### Including package names
+Another feature of `flashcard()` is that it can present the name of the package for each function. Often this is useful to distinguish base R function from functions that require other packages. By default, presentations include the package names. However, you can turn this off with `package = FALSE`.
+
+```{r eval = FALSE}
+flashcard("data_types", package = FALSE)
+```
+
+### Themes
+Because `{flashr}` uses reveal.js to create the presentations, it can use the available [reveal.js themes](https://revealjs.com/themes/). By default, `flashcard()` uses the `moon` theme, but if that doesn't suit you, you can change the theme by setting the `theme` argument. At the moment, available themes are `black`, `white`, `league`, `beige`, `sky`, `night`, `serif`, `simple`, `solarized`, `blood`, and `moon`.
+```{r eval = FALSE}
+flashcard("data_types", theme = "sky")
+```
+
+## Available decks
+Currently, `{flashr}` includes a few example decks (`data_types`, `vectors`) and decks of functions and arguments derived from [R for Data Science (first edition)](https://r4ds.had.co.nz/). These decks are housed at the [flashr_decks GitHub repo](https://github.com/JeffreyRStevens/flashr_decks), and more are on the way.
+
+To see what decks are available, use `list_decks()`:
+```{r}
+list_decks()
+```
+
+This function includes pattern matching, so if you want to narrow you list down, add a search string.
+```{r}
+list_decks(pattern = "r4ds")
+```
+
+
+
+If you want to list the decks and then choose one, use `choose_deck()`:
+```{r eval = FALSE}
+choose_deck("r4ds")
+```
+
+```{r echo = FALSE}
+decks <- list_decks("r4ds")
+cli::cli_text("Please enter the number for a deck or 0 to exit: ")
+```
+
+
+## Creating your own decks
+In addition to built-in decks, you can create your own decks from CSV files. Simply create a CSV file that includes a column labeled `term` and a column labeled `description`. You can also include a `package` column listing package names and a `title` column to give your presentation a title, but these are optional arguments^[Note `title` is required when submitting to [https://github.com/JeffreyRStevens/flashr_decks](flashr_decks)]. Here is an example of a CSV file with all of the columns.
+
+```{r}
+my_deck <- read.csv("../data/operators.csv")
+knitr::kable(my_deck)
+```
+
+You can, of course, store those decks on your local computer to use them. But if your decks may be useful for other people (for example, based on books or publicly available resources), consider submitting them to the [flashr_decks repo](https://github.com/JeffreyRStevens/flashr_decks/).
+
+Alternatively, you can create your own repo of decks and specify with the `repo` argument. Just make sure that your CSV files are saved in a `decks/` folder in your repo's root directory.
+```{r}
+list_decks(repo = "JeffreyRStevens/flashr_decks")
+```
+
+
+### Expanding your flashcards
+
+These flashcards were designed to learn programming functions/arguments and their definitions. But `{flashr}` can be use for any pairing of terms and descriptions, computing-based or otherwise. So feel free to make flashcard decks of whatever you want to learn: words from a language that you are learning, terms you're studying for classes, whatever you need!
+
