@@ -4,16 +4,41 @@
 \alias{choose_deck}
 \title{Choose from available flashcard decks}
 \usage{
-choose_deck(x = NULL)
+choose_deck(pattern = NULL, repo = "JeffreyRStevens/flashr_decks")
 }
 \arguments{
-\item{x}{Name of deck to directly generate flashcards (allows choose_deck()
-to act as wrapper for flashcard()).}
+\item{pattern}{String pattern to search in list of decks.}
+
+\item{repo}{GitHub username and repo for deck repository in the format
+of "username/repository". Default value is "JeffreyRStevens/flashr_decks".}
 }
 \value{
 Outputs a list of available built-in flashcard decks to the console, where
-the user can choose of the decks to generate flashcards.
+the user can choose one of the decks to generate flashcards.
 }
 \description{
-Choose from available flashcard decks
+This function prints a list of flashcard decks to the console
+and let's the user choose one of the decks. By default, the function searches the
+\href{"https://github.com/JeffreyRStevens/flashr_decks/"}{flashr_decks repo}. But
+other GitHub repos can be used.
+
+To narrow the results, include text in the \code{pattern} argument (for example,
+\code{choose_deck(pattern = "r4ds")}).
 }
+\examples{
+\dontrun{
+# Choose from all available decks in default repository
+choose_deck()
+
+# Choose from decks including text matching pattern
+choose_deck(pattern = "r4ds")
+
+# Choose from decks from specific repository
+choose_deck(repo = "JeffreyRStevens/flashr_decks")
+}
+}
+\seealso{
+Other functions for finding decks: 
+\code{\link{list_decks}()}
+}
+\concept{functions for finding decks}
