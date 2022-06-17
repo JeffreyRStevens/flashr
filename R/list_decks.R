@@ -86,6 +86,8 @@ list_decks <- function(pattern = NULL,
 #' `choose_deck(pattern = "r4ds")`).
 #'
 #' @param pattern String pattern to search in list of decks.
+#' @param choice Integer value of choice from list of decks if you already
+#' know which deck you would like to use without listing again.
 #' @param repo GitHub username and repo for deck repository in the format
 #' of "username/repository". Default value is "JeffreyRStevens/flashr_decks".
 #'
@@ -108,15 +110,26 @@ list_decks <- function(pattern = NULL,
 #' choose_deck(repo = "JeffreyRStevens/flashr_decks")
 #' }
 choose_deck <- function(pattern = NULL,
+                        choice = NULL,
                         repo = "JeffreyRStevens/flashr_decks") {
-  # List decks
-  deck_list <- list_decks(pattern = pattern, repo = repo)
 
-  # Record choice
-  cat("Please enter the number for a deck or 0 to exit: ")
-  choice <- readLines(con = getOption("mypkg.connection"), n = 1)
-  # cat("\n")
-  choice <- as.numeric(gsub("\\.", "", choice))
+  # If no choice is passed to function
+  if (is.null(choice)) {
+    # List decks
+    deck_list <- list_decks(pattern = pattern, repo = repo)
+
+    # Record choice
+    cat("Please enter the number for a deck or 0 to exit: ")
+    choice <- readLines(con = getOption("mypkg.connection"), n = 1)
+  } else {  # If choice is passed to function
+    # Check if integer entered for choice
+    if (!is.numeric(choice)) {
+      cli::cli_abort("Please enter an integer for the `choice` argument.")
+    } else if (choice %% 1 != 0) {
+      cli::cli_abort("Please enter an integer for the `choice` argument.")
+    }
+    deck_list <- list_decks(pattern = pattern, repo = repo, quiet = TRUE)
+  }
 
   # Extract decks, labels, and title
   decks <- deck_list$decks
@@ -134,16 +147,16 @@ choose_deck <- function(pattern = NULL,
   }
 }
 
-# Extract title from CSV
-get_title <- function(x) {
-  data <- utils::read.csv(x)
-  data$title[1]
-}
-get_title_mem <- memoise::memoise(get_title)
+  # Extract title from CSV
+  get_title <- function(x) {
+    data <- utils::read.csv(x)
+    data$title[1]
+  }
+  get_title_mem <- memoise::memoise(get_title)
 
-# Get file names in repository
-get_repo <-function(repo_text) {
-  deckfiles <- gh::gh(repo_text) |>
-    vapply("[[", "", "name")
-}
-get_repo_mem <- memoise::memoise(get_repo)
+  # Get file names in repository
+  get_repo <-function(repo_text) {
+    deckfiles <- gh::gh(repo_text) |>
+      vapply("[[", "", "name")
+  }
+  get_repo_mem <- memoise::memoise(get_repo)

@@ -4,10 +4,17 @@
 \alias{choose_deck}
 \title{Choose from available flashcard decks}
 \usage{
-choose_deck(pattern = NULL, repo = "JeffreyRStevens/flashr_decks")
+choose_deck(
+  pattern = NULL,
+  choice = NULL,
+  repo = "JeffreyRStevens/flashr_decks"
+)
 }
 \arguments{
 \item{pattern}{String pattern to search in list of decks.}
+
+\item{choice}{Integer value of choice from list of decks if you already
+know which deck you would like to use without listing again.}
 
 \item{repo}{GitHub username and repo for deck repository in the format
 of "username/repository". Default value is "JeffreyRStevens/flashr_decks".}
