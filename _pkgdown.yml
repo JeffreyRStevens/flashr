@@ -1,4 +1,4 @@
 url: https://jeffreyrstevens.github.io/flashr/
 template:
   bootstrap: 5
-
+  bootswatch: cerulean
