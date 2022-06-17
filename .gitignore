@@ -48,3 +48,4 @@ vignettes/*.pdf
 
 # End of https://www.toptal.com/developers/gitignore/api/r.Rproj.user
 inst/doc
+docs

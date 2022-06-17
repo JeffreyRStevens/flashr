@@ -24,7 +24,8 @@ Imports:
     rmarkdown
 Depends: 
     R (>= 2.10)
-URL: https://github.com/JeffreyRStevens/flashr
+URL: https://github.com/JeffreyRStevens/flashr,
+    https://jeffreyrstevens.github.io/flashr/
 BugReports: https://github.com/JeffreyRStevens/flashr/issues
 Suggests: 
     covr,
