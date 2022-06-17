@@ -56,7 +56,9 @@ To see what decks are available, use `list_decks()`:
 list_decks()
 ```
 
-This function includes pattern matching, so if you want to narrow you list down, add a search string.
+Note that the list of decks includes the deck names in parenthesis next to the descriptions. For instance, for _R4DS Chapter 3_, the name is `r4ds3`.
+
+This function includes pattern matching. So if you want to narrow you list down, add a search string.
 ```{r}
 list_decks(pattern = "r4ds")
 ```
@@ -73,6 +75,16 @@ decks <- list_decks("r4ds")
 cli::cli_text("Please enter the number for a deck or 0 to exit: ")
 ```
 
+Or, if you already know the deck number that you want, you can include it in the `choice` argument.
+
+```{r eval = FALSE}
+choose_deck("r4ds", choice = 2)
+```
+
+Of course, a faster way to do this is to enter the deck name directly into `flashcard()`. 
+```{r eval = FALSE}
+flashcard("r4ds3")
+```
 
 ## Creating your own decks
 In addition to built-in decks, you can create your own decks from CSV files. Simply create a CSV file that includes a column labeled `term` and a column labeled `description`. You can also include a `package` column listing package names and a `title` column to give your presentation a title, but these are optional arguments^[Note `title` is required when submitting to [https://github.com/JeffreyRStevens/flashr_decks](flashr_decks)]. Here is an example of a CSV file with all of the columns.
