@@ -28,7 +28,6 @@
 #' @importFrom memoise memoise
 #'
 #' @family functions for finding decks
-#' @concept functions
 #'
 #' @examples
 #' # View all available decks
@@ -100,7 +99,6 @@ list_decks <- function(pattern = NULL,
 #' @export
 #'
 #' @family functions for finding decks
-#' @concept functions
 #'
 #' @examples
 #' \dontrun{

@@ -7,7 +7,10 @@ template:
 reference:
 - title: Functions
   contents:
-  - has_concept("functions")
+  - choose_deck
+  - flashcard
+  - list_decks
 - title: Example decks
   contents:
-  - has_concept("decks")
+  - data_types
+  - vectors

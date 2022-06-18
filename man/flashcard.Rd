@@ -43,4 +43,3 @@ is not included, set `package = FALSE`.
 flashcard(file = "data/operators.csv", package = FALSE)
 }
 }
-\concept{functions}

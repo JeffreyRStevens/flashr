@@ -48,5 +48,4 @@ choose_deck(repo = "JeffreyRStevens/flashr_decks")
 Other functions for finding decks: 
 \code{\link{list_decks}()}
 }
-\concept{functions}
 \concept{functions for finding decks}

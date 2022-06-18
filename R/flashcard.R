@@ -20,8 +20,6 @@
 #' web browser.
 #' @export
 #'
-#' @concept functions
-#'
 #' @examples
 #' \dontrun{
 #' # Display terms then descriptions
