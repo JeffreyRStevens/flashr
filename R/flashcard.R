@@ -20,6 +20,8 @@
 #' web browser.
 #' @export
 #'
+#' @concept functions
+#'
 #' @examples
 #' \dontrun{
 #' # Display terms then descriptions
@@ -52,7 +54,7 @@ flashcard <- function(x,
   text <- c("---", paste0('title: "', title, '"'), "output:", "  revealjs::revealjs_presentation:", paste0("    theme: ", theme), "    center: true", paste0('    footer: "', title, '"'), "---")
 
   # Create slides for each item
-  for (i in 1:nrow(items)) {
+  for (i in seq_len(nrow(items))) {
     if (termsfirst) {
       if (package) {
         item <- c("##", "", "##", paste0("`", items$term[i], "`"), "", paste0("{", items$package[i], "}"), "", "##", items$description[i], "")
@@ -60,7 +62,7 @@ flashcard <- function(x,
         item <- c("##", "", "##", paste0("`", items$term[i], "`"), "", "##", items$description[i], "")
       }
     } else {
-      if(package) {
+      if (package) {
         item <- c("##", "", "##", items$description[i], "", "##", paste0("`", items$term[i], "`"), "", paste0("{", items$package[i], "}"), "")
       } else {
         item <- c("##", "", "##", items$description[i], "", "##", paste0("`", items$term[i], "`"), "")
@@ -145,4 +147,3 @@ validate_deck <- function(x, package = package) {
   attr(deck, "deckname") <- deckname
   invisible(deck)
 }
-

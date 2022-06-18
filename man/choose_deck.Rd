@@ -25,9 +25,9 @@ the user can choose one of the decks to generate flashcards.
 }
 \description{
 This function prints a list of flashcard decks to the console
-and let's the user choose one of the decks. By default, the function searches the
-\href{"https://github.com/JeffreyRStevens/flashr_decks/"}{flashr_decks repo}. But
-other GitHub repos can be used.
+and let's the user choose one of the decks. By default, the function searches
+the \href{"https://github.com/JeffreyRStevens/flashr_decks/"}{flashr_decks repo}.
+But other GitHub repos can be used.
 
 To narrow the results, include text in the \code{pattern} argument (for example,
 \code{choose_deck(pattern = "r4ds")}).
@@ -48,4 +48,5 @@ choose_deck(repo = "JeffreyRStevens/flashr_decks")
 Other functions for finding decks: 
 \code{\link{list_decks}()}
 }
+\concept{functions}
 \concept{functions for finding decks}

@@ -28,6 +28,7 @@
 #' @importFrom memoise memoise
 #'
 #' @family functions for finding decks
+#' @concept functions
 #'
 #' @examples
 #' # View all available decks
@@ -72,15 +73,17 @@ list_decks <- function(pattern = NULL,
   }
 
   # Invisibly return decks, labels, and titles
-  invisible(list(decklabels = decklabels, decktitles = unname(titles), decks = decks))
+  invisible(list(decklabels = decklabels,
+                 decktitles = unname(titles),
+                 decks = decks))
 }
 
 #' Choose from available flashcard decks
 #'
 #' @description This function prints a list of flashcard decks to the console
-#' and let's the user choose one of the decks. By default, the function searches the
-#' [flashr_decks repo]("https://github.com/JeffreyRStevens/flashr_decks/"). But
-#' other GitHub repos can be used.
+#' and let's the user choose one of the decks. By default, the function searches
+#' the [flashr_decks repo]("https://github.com/JeffreyRStevens/flashr_decks/").
+#' But other GitHub repos can be used.
 #'
 #' To narrow the results, include text in the `pattern` argument (for example,
 #' `choose_deck(pattern = "r4ds")`).
@@ -97,6 +100,7 @@ list_decks <- function(pattern = NULL,
 #' @export
 #'
 #' @family functions for finding decks
+#' @concept functions
 #'
 #' @examples
 #' \dontrun{
@@ -120,16 +124,16 @@ choose_deck <- function(pattern = NULL,
 
     # Record choice
     cat("Please enter the number for a deck or 0 to exit: ")
-    choice <- readLines(con = getOption("mypkg.connection"), n = 1)
-  } else {  # If choice is passed to function
-    # Check if integer entered for choice
-    if (!is.numeric(choice)) {
-      cli::cli_abort("Please enter an integer for the `choice` argument.")
-    } else if (choice %% 1 != 0) {
-      cli::cli_abort("Please enter an integer for the `choice` argument.")
-    }
-    deck_list <- list_decks(pattern = pattern, repo = repo, quiet = TRUE)
+    choice <- as.numeric(readLines(con = getOption("mypkg.connection"), n = 1))
   }
+
+  # Check if integer entered for choice
+  if (!is.numeric(choice)) {
+    cli::cli_abort("Please enter an integer for the `choice` argument.")
+  } else if (choice %% 1 != 0) {
+    cli::cli_abort("Please enter an integer for the `choice` argument.")
+  }
+  deck_list <- list_decks(pattern = pattern, repo = repo, quiet = TRUE)
 
   # Extract decks, labels, and title
   decks <- deck_list$decks
@@ -137,7 +141,7 @@ choose_deck <- function(pattern = NULL,
   titles <- deck_list$decktitles
 
   # Print deck name and create flashcard deck, exit, or abort for invalid decks
-  if (choice %in% 1:length(decks)) {
+  if (choice %in% seq_len(length(decks))) {
     cli::cli_text("Creating {.field ", {unname(titles[choice])}, "} deck.")
     flashcard(decklabels[choice])
   } else if (identical(choice, 0)) {
@@ -147,16 +151,16 @@ choose_deck <- function(pattern = NULL,
   }
 }
 
-  # Extract title from CSV
-  get_title <- function(x) {
-    data <- utils::read.csv(x)
-    data$title[1]
-  }
-  get_title_mem <- memoise::memoise(get_title)
+# Extract title from CSV
+get_title <- function(x) {
+  data <- utils::read.csv(x)
+  data$title[1]
+}
+get_title_mem <- memoise::memoise(get_title)
 
-  # Get file names in repository
-  get_repo <-function(repo_text) {
-    deckfiles <- gh::gh(repo_text) |>
-      vapply("[[", "", "name")
-  }
-  get_repo_mem <- memoise::memoise(get_repo)
+# Get file names in repository
+get_repo <- function(repo_text) {
+  deckfiles <- gh::gh(repo_text) |>
+    vapply("[[", "", "name")
+}
+get_repo_mem <- memoise::memoise(get_repo)
