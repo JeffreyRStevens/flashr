@@ -16,14 +16,13 @@ substantial undertaking. Flashcards are a great way to learn the syntax
 of computer languages (Hermans 2021). The goal of `{flashr}` is to
 provide a quick way to view decks of flashcards.
 
-`{flashr}` includes existing flashcard decks, including functions and
-arguments from [R for Data Science (first
-edition)](https://r4ds.had.co.nz/). The aim is to include decks from [R
-for Data Science (second edition)](https://r4ds.hadley.nz) when it is
-complete.
+`{flashr}` can use existing built-in flashcard decks, including
+functions and arguments from [R for Data Science (first
+edition)](https://r4ds.had.co.nz/).
+<!--The aim is to include decks from [R for Data Science (second edition)](https://r4ds.hadley.nz) when it is complete.-->
 
-In addition to built in decks, you can easily create your own decks
-using CSV files. This allows users to customize existing decks or create
+In addition to built-in decks, you can easily create your own decks
+using CSV files. This allows you to customize existing decks or create
 completely new decks. Also, while geared toward learning R, this package
 can be used to build decks for anything—not just computer syntax!
 
@@ -42,25 +41,25 @@ To view, for example, the flashcard deck on data types:
 
 ``` r
 library(flashr)
-flashcard(deck = data_types)
+flashcard("data_types")
 ```
 
 This randomizes the order of terms and give terms before descriptions.
 If you would like to present descriptions before terms:
 
 ``` r
-flashcard(deck = data_types, termsfirst = FALSE)
+flashcard("data_types", termsfirst = FALSE)
 ```
 
 To build your own deck, simply save a CSV file with a `term` column and
 a `description` column. You can also include a `package` column if you
 want the package name included with the term and a `name` column if you
-want to specify the title of the deck
+want to specify the title of the deck.
 
 ``` r
 my_deck <- read.csv("data/operators.csv")
 head(my_deck)
-#>   term            description package      name
+#>   term            description package     title
 #> 1    =    assignment operator    base Operators
 #> 2   <-    assignment operator    base          
 #> 3   |> pipe operator (base R)    base          
@@ -69,13 +68,10 @@ head(my_deck)
 #> 6    *         multiplication    base
 ```
 
-Then simply run the `flashcard()` function on your file or object. Note
-that you need to use the `file` argument to specify external files and
-the `deck` argument to specify existing R objects.
+Then simply run the `flashcard()` function on your file.
 
 ``` r
-flashcard(file = "data/operators.csv")
-flashcard(deck = my_deck)
+flashcard("data/operators.csv")
 ```
 
 ## Citation
