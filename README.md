@@ -7,8 +7,7 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![Codecov test
-coverage](https://codecov.io/gh/JeffreyRStevens/flashr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/JeffreyRStevens/flashr?branch=main)
+[![codecov](https://codecov.io/gh/JeffreyRStevens/flashr/branch/main/graph/badge.svg?token=XGH2OV874R)](https://codecov.io/gh/JeffreyRStevens/flashr)
 <!-- badges: end -->
 
 Learning all of the functions needed to become proficient in R is a
