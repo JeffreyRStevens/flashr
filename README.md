@@ -79,7 +79,7 @@ flashcard("data/operators.csv")
 To cite `{flashr}`, use:
 
 > Stevens, Jeffrey R. (2022). flashr: Creates flashcards of terms and
-> definitions. (version 0.0.0.9000)
+> definitions. (version 0.0.1)
 > <https://github.com/JeffreyRStevens/flashr>
 
 ## Contributing to this package

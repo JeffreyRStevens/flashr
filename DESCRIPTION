@@ -1,7 +1,7 @@
 Package: flashr
 Type: Package
 Title: Creates Flashcards of Terms and Definitions
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
   c(person(given = "Jeffrey R.",
            family = "Stevens",
