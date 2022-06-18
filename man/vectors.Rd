@@ -19,4 +19,5 @@ vectors
 \description{
 This flashcard deck includes terms associated with vectors.
 }
+\concept{decks}
 \keyword{datasets}

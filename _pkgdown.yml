@@ -1,4 +1,13 @@
 url: https://jeffreyrstevens.github.io/flashr/
 template:
   bootstrap: 5
-  bootswatch: cerulean
+  bootswatch: superhero
+  theme: nord
+
+reference:
+- title: Functions
+  contents:
+  - has_concept("functions")
+- title: Example decks
+  contents:
+  - has_concept("decks")

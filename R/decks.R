@@ -9,6 +9,7 @@
 #'   \item{package}{package including function/argument}
 #'   \item{title}{title of deck}
 #' }
+#' @concept decks
 "data_types"
 
 #' Vectors deck
@@ -22,4 +23,5 @@
 #'   \item{package}{package including function/argument}
 #'   \item{title}{title of deck}
 #' }
+#' @concept decks
 "vectors"

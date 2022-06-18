@@ -19,4 +19,5 @@ data_types
 \description{
 This flashcard deck includes terms associated with data types and structures.
 }
+\concept{decks}
 \keyword{datasets}
