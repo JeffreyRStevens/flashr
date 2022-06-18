@@ -24,11 +24,11 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark"><div class="container">
     
     <a class="navbar-brand me-2" href="index.html">flashr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,8 +70,8 @@
 </h1></div>
 <!-- badges: start -->
 <p>Learning all of the functions needed to become proficient in R is a substantial undertaking. Flashcards are a great way to learn the syntax of computer languages (Hermans 2021). The goal of <a href="https://github.com/JeffreyRStevens/flashr" class="external-link">flashr</a> is to provide a quick way to view decks of flashcards.</p>
-<p><a href="https://github.com/JeffreyRStevens/flashr" class="external-link">flashr</a> includes existing flashcard decks, including functions and arguments from <a href="https://r4ds.had.co.nz/" class="external-link">R for Data Science (first edition)</a>. The aim is to include decks from <a href="https://r4ds.hadley.nz" class="external-link">R for Data Science (second edition)</a> when it is complete.</p>
-<p>In addition to built in decks, you can easily create your own decks using CSV files. This allows users to customize existing decks or create completely new decks. Also, while geared toward learning R, this package can be used to build decks for anything—not just computer syntax!</p>
+<p><a href="https://github.com/JeffreyRStevens/flashr" class="external-link">flashr</a> can use existing built-in flashcard decks, including functions and arguments from <a href="https://r4ds.had.co.nz/" class="external-link">R for Data Science (first edition)</a>. <!--The aim is to include decks from [R for Data Science (second edition)](https://r4ds.hadley.nz) when it is complete.--></p>
+<p>In addition to built-in decks, you can easily create your own decks using CSV files. This allows you to customize existing decks or create completely new decks. Also, while geared toward learning R, this package can be used to build decks for anything—not just computer syntax!</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -86,31 +86,30 @@
 <p>To view, for example, the flashcard deck on data types:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/JeffreyRStevens/flashr" class="external-link">flashr</a></span><span class="op">)</span>
-<span class="fu"><a href="reference/flashcard.html">flashcard</a></span><span class="op">(</span>deck <span class="op">=</span> <span class="va">data_types</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="reference/flashcard.html">flashcard</a></span><span class="op">(</span><span class="st">"data_types"</span><span class="op">)</span></code></pre></div>
 <p>This randomizes the order of terms and give terms before descriptions. If you would like to present descriptions before terms:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/flashcard.html">flashcard</a></span><span class="op">(</span>deck <span class="op">=</span> <span class="va">data_types</span>, termsfirst <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<p>To build your own deck, simply save a CSV file with a <code>term</code> column and a <code>description</code> column. You can also include a <code>package</code> column if you want the package name included with the term and a <code>name</code> column if you want to specify the title of the deck</p>
+<code class="sourceCode R"><span class="fu"><a href="reference/flashcard.html">flashcard</a></span><span class="op">(</span><span class="st">"data_types"</span>, termsfirst <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<p>To build your own deck, simply save a CSV file with a <code>term</code> column and a <code>description</code> column. You can also include a <code>package</code> column if you want the package name included with the term and a <code>name</code> column if you want to specify the title of the deck.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_deck</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"data/operators.csv"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">my_deck</span><span class="op">)</span>
-<span class="co">#&gt;   term            description package      name</span>
+<span class="co">#&gt;   term            description package     title</span>
 <span class="co">#&gt; 1    =    assignment operator    base Operators</span>
 <span class="co">#&gt; 2   &lt;-    assignment operator    base          </span>
 <span class="co">#&gt; 3   |&gt; pipe operator (base R)    base          </span>
 <span class="co">#&gt; 4    +               addition    base          </span>
 <span class="co">#&gt; 5    -            subtraction    base          </span>
 <span class="co">#&gt; 6    *         multiplication    base</span></code></pre></div>
-<p>Then simply run the <code><a href="reference/flashcard.html">flashcard()</a></code> function on your file or object. Note that you need to use the <code>file</code> argument to specify external files and the <code>deck</code> argument to specify existing R objects.</p>
+<p>Then simply run the <code><a href="reference/flashcard.html">flashcard()</a></code> function on your file.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/flashcard.html">flashcard</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"data/operators.csv"</span><span class="op">)</span>
-<span class="fu"><a href="reference/flashcard.html">flashcard</a></span><span class="op">(</span>deck <span class="op">=</span> <span class="va">my_deck</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="reference/flashcard.html">flashcard</a></span><span class="op">(</span><span class="st">"data/operators.csv"</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>To cite <a href="https://github.com/JeffreyRStevens/flashr" class="external-link">flashr</a>, use:</p>
-<blockquote><p>Stevens, Jeffrey R. (2022). flashr: Creates flashcards of terms and definitions. (version 0.0.0.9000) <a href="https://github.com/JeffreyRStevens/flashr" class="external-link uri">https://github.com/JeffreyRStevens/flashr</a></p></blockquote>
+<blockquote><p>Stevens, Jeffrey R. (2022). flashr: Creates flashcards of terms and definitions. (version 0.0.1) <a href="https://github.com/JeffreyRStevens/flashr" class="external-link uri">https://github.com/JeffreyRStevens/flashr</a></p></blockquote>
 </div>
 <div class="section level2">
 <h2 id="contributing-to-this-package">Contributing to this package<a class="anchor" aria-label="anchor" href="#contributing-to-this-package"></a>
