@@ -1,10 +1,11 @@
 ^.*\.Rproj$
-^\.Rproj\.user$
 ^LICENSE\.md$
 ^README\.Rmd$
-^data-raw$
-^codecov\.yml$
+^\.Rproj\.user$
 ^\.github$
+^\.pre-commit-config\.yaml$
 ^_pkgdown\.yml$
+^codecov\.yml$
+^data-raw$
 ^docs$
 ^pkgdown$
