@@ -7,9 +7,10 @@ test_that("list_decks works", {
   expect_equal(test_decks$decklabels[1], "data_types")
   expect_equal(test_decks$decktitles[1], "Data types")
   expect_equal(test_decks$decks[1], "Data types (data_types)")
-  suppressMessages(expect_error(list_decks(123),
-                                "No decks match the pattern entered"))
-
+  suppressMessages(expect_error(
+    list_decks(123),
+    "No decks match the pattern entered"
+  ))
 })
 
 test_that("choose_decks works", {

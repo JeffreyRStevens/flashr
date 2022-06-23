@@ -72,9 +72,11 @@ list_decks <- function(pattern = NULL,
   }
 
   # Invisibly return decks, labels, and titles
-  invisible(list(decklabels = decklabels,
-                 decktitles = unname(titles),
-                 decks = decks))
+  invisible(list(
+    decklabels = decklabels,
+    decktitles = unname(titles),
+    decks = decks
+  ))
 }
 
 #' Choose from available flashcard decks
@@ -140,11 +142,17 @@ choose_deck <- function(pattern = NULL,
 
   # Print deck name and create flashcard deck, exit, or abort for invalid decks
   if (choice %in% seq_len(length(decks))) {
-    cli::cli_text("Creating {.field ", {unname(titles[choice])}, "} deck.")
+    cli::cli_text(
+      "Creating {.field ",
+      {
+        unname(titles[choice])
+      },
+      "} deck."
+    )
     flashcard(decklabels[choice])
   } else if (identical(choice, 0)) {
     cli::cli_text("No deck selected.")
-  } else{
+  } else {
     cli::cli_abort("That response was not valid. Please rerun `choose_deck()` and enter a valid number for an available deck.")
   }
 }

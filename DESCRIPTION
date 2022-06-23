@@ -1,36 +1,34 @@
-Package: flashr
 Type: Package
+Package: flashr
 Title: Creates Flashcards of Terms and Definitions
 Version: 0.0.1
 Authors@R: 
-  c(person(given = "Jeffrey R.",
-           family = "Stevens",
-           role = c("aut", "cre", "cph"),
-           email = "jeffrey.r.stevens@protonmail.com",
-           comment = c(ORCID = "0000-0003-2375-1360")))
+    person("Jeffrey R.", "Stevens", , "jeffrey.r.stevens@protonmail.com", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0003-2375-1360"))
 Maintainer: Jeffrey R. Stevens <jeffrey.r.stevens@protonmail.com>
-Description: This package creates sets of flashcards that can be viewed in the 
-              RStudio viewer or a web browser.
+Description: This package creates sets of flashcards that can be viewed in
+    the RStudio viewer or a web browser.
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+URL: https://github.com/JeffreyRStevens/flashr,
+    https://jeffreyrstevens.github.io/flashr/
+BugReports: https://github.com/JeffreyRStevens/flashr/issues
+Depends: 
+    R (>= 2.10)
 Imports: 
     cli,
     gh,
     memoise,
     revealjs,
     rmarkdown
-Depends: 
-    R (>= 2.10)
-URL: https://github.com/JeffreyRStevens/flashr,
-    https://jeffreyrstevens.github.io/flashr/
-BugReports: https://github.com/JeffreyRStevens/flashr/issues
 Suggests: 
     covr,
     knitr,
     testthat (>= 3.0.0),
     withr
+VignetteBuilder: 
+    knitr
 Config/testthat/edition: 3
-VignetteBuilder: knitr
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0
