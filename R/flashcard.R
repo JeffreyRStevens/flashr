@@ -28,8 +28,8 @@
 #' # Display descriptions then terms
 #' flashcard(data_types, termsfirst = FALSE)
 #'
-#' # Display custom CSV file of terms and descriptions. If package information
-#' is not included, set `package = FALSE`.
+#' # Display custom CSV file of terms and descriptions.
+#' # If package information is not included, set `package = FALSE`.
 #' flashcard(file = "data/operators.csv", package = FALSE)
 #' }
 flashcard <- function(x,
@@ -52,20 +52,25 @@ flashcard <- function(x,
   text <- c("---", paste0('title: "', title, '"'), "output:", "  revealjs::revealjs_presentation:", paste0("    theme: ", theme), "    center: true", paste0('    footer: "', title, '"'), "---")
 
   # Create slides for each item
-  for (i in seq_len(nrow(items))) {
-    if (termsfirst) {
-      if (package) {
-        item <- c("##", "", "##", paste0("`", items$term[i], "`"), "", paste0("{", items$package[i], "}"), "", "##", items$description[i], "")
-      } else {
-        item <- c("##", "", "##", paste0("`", items$term[i], "`"), "", "##", items$description[i], "")
-      }
+  for (i in 1:nrow(items)) {
+
+    # Create slide components
+    term <- paste0("`", items$term[i], "`")
+    description <- items$description[i]
+    if (package) {
+      pack <- paste0("{", items$package[i], "}")
     } else {
-      if (package) {
-        item <- c("##", "", "##", items$description[i], "", "##", paste0("`", items$term[i], "`"), "", paste0("{", items$package[i], "}"), "")
-      } else {
-        item <- c("##", "", "##", items$description[i], "", "##", paste0("`", items$term[i], "`"), "")
-      }
+      pack <- ""
     }
+
+    # Create slide from components
+    if (termsfirst) {
+      item <- c("##", "", "##", term, "", pack, "", "##", description, "")
+    } else {
+      item <- c("##", "", "##", description, "", "##", term, "", pack, "")
+    }
+
+    # Add slide to deck
     text <- c(text, item)
   }
 
@@ -124,13 +129,11 @@ validate_deck <- function(x, package = package) {
       title <- deckname
       cli::cli_alert_info("No {.field title} column, so using filename for title.")
     }
-
   } else if (input %in% valid_decks$decklabels) { # if input is found in valid decks
     # Get deck and deckname
     deck <- utils::read.csv(paste0("https://raw.githubusercontent.com/JeffreyRStevens/flashr_decks/main/decks/", input, ".csv"))
     deckname <- input
     title <- deck$title[1]
-
   } else { # if input is not CSV or valid deck
     cli::cli_abort("This deck is not recognized as a available deck or a valid CSV file.")
   }
