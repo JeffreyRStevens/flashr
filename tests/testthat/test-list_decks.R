@@ -16,7 +16,7 @@ test_that("list_decks works", {
 test_that("choose_decks works", {
   expect_error(choose_deck(choice = "3"), "Please enter an integer")
   expect_error(choose_deck(choice = 3.3), "Please enter an integer")
-  expect_message(choose_deck(choice = 1), "Creating")
+  expect_message(choose_deck(choice = 1), "Data types")
   expect_message(choose_deck(choice = 0), "No deck selected")
   expect_error(choose_deck(choice = 999), "That response was not valid")
   f <- file()
