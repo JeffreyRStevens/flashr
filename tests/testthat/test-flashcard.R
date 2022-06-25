@@ -36,7 +36,7 @@ test_that("validations pass", {
 })
 
 test_that("output files are HTML", {
-  expect_error(flashcard("data_types", file = "mytest.HTML"), NA)
-  expect_error(flashcard("data_types", file = "mytest.HTM"))
+  suppressMessages(expect_error(flashcard("data_types", file = "mytest.HTML"), NA))
+  suppressMessages(expect_error(flashcard("data_types", file = "mytest.HTM")))
   file.remove("mytest.HTML")
 })

@@ -56,6 +56,12 @@ flashcard <- function(x,
 
     # Create slide components
     term <- paste0("`", items$term[i], "`")
+    # Add URL if included in deck
+    if ("url" %in% names(deck)) {
+      if (items$url[i] != "") {
+        term <- paste0("[", term, "](", items$url[i], ")")
+      }
+    }
     description <- items$description[i]
     if (package) {
       pack <- paste0("{", items$package[i], "}")
