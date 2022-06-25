@@ -4,7 +4,15 @@
 \alias{flashcard}
 \title{Create flashcards}
 \usage{
-flashcard(x, termsfirst = TRUE, package = TRUE, theme = "moon", file = NULL)
+flashcard(
+  x,
+  termsfirst = TRUE,
+  package = TRUE,
+  theme = "moon",
+  file = NULL,
+  fontsize = "default",
+  use_browser = FALSE
+)
 }
 \arguments{
 \item{x}{Name of pre-existing flashcard deck or path and name of CSV file
@@ -19,6 +27,13 @@ descriptions first (FALSE)}
 
 \item{file}{Path and file name used to save flashcard deck locally (must
 save as HTML)}
+
+\item{fontsize}{Base font size for presentation. Acceptable values include
+"default" (500\%), "large" (700\%), and "small" (300\%). Custom values can be
+set as percentages (e.g., "250\%").}
+
+\item{use_browser}{Logical indicating whether to show the presentation in the
+RStudio viewer when available (FALSE) or the system's default browser (TRUE)}
 }
 \value{
 An HTML file of terms and descriptions rendered in the RStudio viewer or

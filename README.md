@@ -12,11 +12,11 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 Learning all of the functions needed to become proficient in R is a
 substantial undertaking. Flashcards are a great way to learn the syntax
-of computer languages (Hermans 2021). The goal of `{flashr}` is to
-provide a quick way to view decks of flashcards.
+of computer languages (Hermans 2021). The goal of flashr is to provide a
+quick way to view decks of flashcards.
 
-`{flashr}` can use existing built-in flashcard decks, including
-functions and arguments from [R for Data Science (first
+flashr can use existing built-in flashcard decks, including functions
+and arguments from [R for Data Science (first
 edition)](https://r4ds.had.co.nz/).
 <!--The aim is to include decks from [R for Data Science (second edition)](https://r4ds.hadley.nz) when it is complete.-->
 
@@ -27,7 +27,7 @@ can be used to build decks for anything—not just computer syntax!
 
 ## Installation
 
-You can install the development version of `{flashr}` like so:
+You can install the development version of flashr like so:
 
 ``` r
 # install.packages("devtools")
@@ -75,18 +75,17 @@ flashcard("data/operators.csv")
 
 ## Citation
 
-To cite `{flashr}`, use:
+To cite flashr, use:
 
 > Stevens, Jeffrey R. (2022). flashr: Creates flashcards of terms and
-> definitions. (version 0.0.1)
+> definitions. (version 0.0.2)
 > <https://github.com/JeffreyRStevens/flashr>
 
 ## Contributing to this package
 
-Contributions to `{flashr}` are most welcome! Feel free to check out
-[open issues](https://github.com/JeffreyRStevens/flashr/issues) for
-ideas. And [pull
-requests](https://github.com/JeffreyRStevens/flashr/pulls) are
+Contributions to flashr are most welcome! Feel free to check out [open
+issues](https://github.com/JeffreyRStevens/flashr/issues) for ideas. And
+[pull requests](https://github.com/JeffreyRStevens/flashr/pulls) are
 encouraged, but you may want to [raise an
 issue](https://github.com/JeffreyRStevens/flashr/issues) or [contact the
 maintainer](mailto:jeffrey.r.stevens@protonmail.com) first.

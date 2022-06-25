@@ -14,6 +14,11 @@
 #' @param theme Name of reveal.js theme to use for flashcards
 #' @param file Path and file name used to save flashcard deck locally (must
 #' save as HTML)
+#' @param fontsize Base font size for presentation. Acceptable values include
+#' "default" (500%), "large" (700%), and "small" (300%). Custom values can be
+#' set as percentages (e.g., "250%").
+#' @param use_browser Logical indicating whether to show the presentation in the
+#' RStudio viewer when available (FALSE) or the system's default browser (TRUE)
 #'
 #' @return
 #' An HTML file of terms and descriptions rendered in the RStudio viewer or
@@ -36,7 +41,9 @@ flashcard <- function(x,
                       termsfirst = TRUE,
                       package = TRUE,
                       theme = "moon",
-                      file = NULL) {
+                      file = NULL,
+                      fontsize = "default",
+                      use_browser = FALSE) {
 
   # Validate deck
   deck <- validate_deck(x, package = package)
@@ -48,8 +55,34 @@ flashcard <- function(x,
   # Shuffle order of items
   items <- deck[sample(nrow(deck)), ]
 
+  # Determine fontsize
+  if (!grepl("%", fontsize)) {
+    if (fontsize == "default") {
+      fontsize <- "500%"
+    } else if (fontsize == "large") {
+      fontsize <- "700%"
+    } else if (fontsize == "small") {
+      fontsize <- "300%"
+    } else {
+      cli::cli_abort("The {.code fontsize} value is invalid. Please specify a valid font size.")
+    }
+  }
+
   # Create YAML header for reveal.js presentation
-  text <- c("---", paste0('title: "', title, '"'), "output:", "  revealjs::revealjs_presentation:", paste0("    theme: ", theme), "    center: true", paste0('    footer: "', title, '"'), "---")
+  text <- c(
+    "---",
+    paste0('title: "', title, '"'),
+    "output:",
+    "  revealjs::revealjs_presentation:",
+    paste0("    theme: ", theme),
+    "    center: true",
+    "---",
+    "<style>",
+    ".reveal {",
+    paste0("font-size: ", fontsize),
+    "}",
+    "</style>"
+  )
 
   # Create slides for each item
   for (i in 1:nrow(items)) {
@@ -71,9 +104,9 @@ flashcard <- function(x,
 
     # Create slide from components
     if (termsfirst) {
-      item <- c("##", "", "##", term, "", pack, "", "##", description, "")
+      item <- c("##", term, "", pack, "", "##", description, "", "##", "")
     } else {
-      item <- c("##", "", "##", description, "", "##", term, "", pack, "")
+      item <- c("##", description, "", "##", term, "", pack, "", "##", "")
     }
 
     # Add slide to deck
@@ -102,7 +135,7 @@ flashcard <- function(x,
 
   # Open HTML file in viewer
   viewer <- getOption("viewer")
-  if (!is.null(viewer)) {
+  if (!is.null(viewer) & !use_browser) {
     viewer(htmlfile)
   } else {
     utils::browseURL(htmlfile)

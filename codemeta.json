@@ -1,0 +1,170 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "identifier": "flashr",
+  "description": "This package creates sets of flashcards that can be viewed in the RStudio viewer or a web browser.",
+  "name": "flashr: Creates Flashcards of Terms and Definitions",
+  "relatedLink": "https://jeffreyrstevens.github.io/flashr/",
+  "codeRepository": "https://github.com/JeffreyRStevens/flashr",
+  "issueTracker": "https://github.com/JeffreyRStevens/flashr/issues",
+  "license": "https://spdx.org/licenses/MIT",
+  "version": "0.0.2",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 4.2.0 (2022-04-22)",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Jeffrey R.",
+      "familyName": "Stevens",
+      "email": "jeffrey.r.stevens@protonmail.com",
+      "@id": "https://orcid.org/0000-0003-2375-1360"
+    }
+  ],
+  "copyrightHolder": [
+    {
+      "@type": "Person",
+      "givenName": "Jeffrey R.",
+      "familyName": "Stevens",
+      "email": "jeffrey.r.stevens@protonmail.com",
+      "@id": "https://orcid.org/0000-0003-2375-1360"
+    }
+  ],
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Jeffrey R.",
+      "familyName": "Stevens",
+      "email": "jeffrey.r.stevens@protonmail.com",
+      "@id": "https://orcid.org/0000-0003-2375-1360"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "covr",
+      "name": "covr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=covr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "version": ">= 3.0.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "withr",
+      "name": "withr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=withr"
+    }
+  ],
+  "softwareRequirements": {
+    "1": {
+      "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": ">= 2.10"
+    },
+    "2": {
+      "@type": "SoftwareApplication",
+      "identifier": "cli",
+      "name": "cli",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=cli"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
+      "identifier": "gh",
+      "name": "gh",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=gh"
+    },
+    "4": {
+      "@type": "SoftwareApplication",
+      "identifier": "memoise",
+      "name": "memoise",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=memoise"
+    },
+    "5": {
+      "@type": "SoftwareApplication",
+      "identifier": "revealjs",
+      "name": "revealjs",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=revealjs"
+    },
+    "6": {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "41.623KB",
+  "releaseNotes": "https://github.com/JeffreyRStevens/flashr/blob/master/NEWS.md",
+  "readme": "https://github.com/JeffreyRStevens/flashr/blob/main/README.md",
+  "contIntegration": "https://codecov.io/gh/JeffreyRStevens/flashr",
+  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#experimental"
+}

@@ -36,6 +36,9 @@ test_that("validations pass", {
 })
 
 test_that("output files are HTML", {
+  suppressMessages(expect_error(flashcard("data_types", fontsize = "large"), NA))
+  suppressMessages(expect_error(flashcard("data_types", fontsize = "100%"), NA))
+  suppressMessages(expect_error(flashcard("data_types", fontsize = "100"), "The `fontsize` value is invalid"))
   suppressMessages(expect_error(flashcard("data_types", file = "mytest.HTML"), NA))
   suppressMessages(expect_error(flashcard("data_types", file = "mytest.HTM")))
   file.remove("mytest.HTML")
