@@ -6,6 +6,7 @@
 ^\.pre-commit-config\.yaml$
 ^_pkgdown\.yml$
 ^codecov\.yml$
+^codemeta\.json$
 ^data-raw$
 ^docs$
 ^pkgdown$
