@@ -6,6 +6,7 @@
 #' \describe{
 #'   \item{term}{reference term or function}
 #'   \item{description}{description or definition of term}
+#'   \item{url}{URL for function documentation}
 #'   \item{package}{package including function/argument}
 #'   \item{title}{title of deck}
 #' }
