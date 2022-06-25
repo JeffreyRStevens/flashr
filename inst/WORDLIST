@@ -1,14 +1,19 @@
 attr
+aut
 br
+BugReports
 cli
 codecov
 codemeta
 codeRepository
 ComputerLanguage
+Config
 contIntegration
 copyrightHolder
 covr
+cph
 cran
+cre
 developmentStatus
 doi
 ethz
@@ -26,7 +31,9 @@ jeffrey
 JeffreyRStevens
 jeffreyrstevens
 js
+json
 knitr
+LazyData
 Lifecycle
 lifecycle
 md
@@ -35,6 +42,7 @@ ncol
 nrow
 orcid
 pre
+precommit
 programmingLanguage
 protonmail
 readme
@@ -43,6 +51,8 @@ relatedLink
 releaseNotes
 revealjs
 rmarkdown
+Roxygen
+RoxygenNote
 RStudio
 runtimePlatform
 sameAs
@@ -57,5 +67,6 @@ SystemRequirements
 testthat
 tibble
 typeof
+VignetteBuilder
 withr
 www
