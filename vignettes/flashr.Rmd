@@ -1,8 +1,8 @@
 ---
-title: "Getting started"
+title: "flashr"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{getting-started}
+  %\VignetteIndexEntry{flashr}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -105,4 +105,3 @@ list_decks(repo = "JeffreyRStevens/flashr_decks")
 ### Expanding your flashcards
 
 These flashcards were designed to learn programming functions/arguments and their definitions. But `{flashr}` can be use for any pairing of terms and descriptions, computing-based or otherwise. So feel free to make flashcard decks of whatever you want to learn: words from a language that you are learning, terms you're studying for classes, whatever you need!
-

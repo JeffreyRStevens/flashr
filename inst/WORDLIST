@@ -1,3 +1,4 @@
+al
 attr
 aut
 br
@@ -16,6 +17,8 @@ cran
 cre
 developmentStatus
 doi
+DS
+et
 ethz
 familyName
 fileSize
@@ -38,6 +41,7 @@ Lifecycle
 lifecycle
 md
 memoise
+Mercanoğlu
 ncol
 nrow
 orcid
@@ -49,6 +53,8 @@ readme
 README
 relatedLink
 releaseNotes
+repo
+repo's
 revealjs
 rmarkdown
 Roxygen
@@ -66,7 +72,11 @@ str
 SystemRequirements
 testthat
 tibble
+tidyverse
 typeof
 VignetteBuilder
 withr
+Wordlists
 www
+Yılmaz
+Yüksel
