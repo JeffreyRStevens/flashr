@@ -20,9 +20,9 @@ knitr::opts_chunk$set(
 [![codecov](https://codecov.io/gh/JeffreyRStevens/flashr/branch/main/graph/badge.svg?token=XGH2OV874R)](https://codecov.io/gh/JeffreyRStevens/flashr)
 <!-- badges: end -->
 
-Learning all of the functions needed to become proficient in R is a substantial undertaking. Flashcards are a great way to learn the syntax of computer languages (Hermans 2021). The goal of flashr is to provide a quick way to view decks of flashcards. 
+Learning all of the functions needed to become proficient in R is a substantial undertaking. Flashcards are a great way to learn the syntax of computer languages (Hermans 2021). The goal of flashr (pronounced "flash-r") is to provide a quick way to view decks of flashcards. 
 
-flashr can use existing built-in flashcard decks, including functions and arguments from [R for Data Science (first edition)](https://r4ds.had.co.nz/). <!--The aim is to include decks from [R for Data Science (second edition)](https://r4ds.hadley.nz) when it is complete.-->
+flashr can use existing built-in flashcard decks, including functions and arguments from [R for Data Science, first edition](https://r4ds.had.co.nz/) (still in progress). <!--The aim is to include decks from [R for Data Science (second edition)](https://r4ds.hadley.nz) when it is complete.-->
 
 In addition to built-in decks, you can easily create your own decks using CSV files. This allows you to customize existing decks or create completely new decks. Also, while geared toward learning R, this package can be used to build decks for anything---not just computer syntax!
 
@@ -50,19 +50,24 @@ This randomizes the order of terms and give terms before descriptions. If you wo
 flashcard("data_types", termsfirst = FALSE)
 ```
 
-To build your own deck, simply save a CSV file with a `term` column and a `description` column. You can also include a `package` column if you want the package name included with the term and a `name` column if you want to specify the title of the deck.
+![](man/figures/flashr.gif)
+
+## Building decks
+
+To build your own deck, save a CSV file with a `term` column and a `description` column. You can also include a `package` column if you want the package name included with the term and a `title` column if you want to specify the title of the deck.
 
 ```{r}
 my_deck <- read.csv("data/operators.csv")
 head(my_deck)
 ```
 
-Then simply run the `flashcard()` function on your file.
+Then run the `flashcard()` function on your file.
 
 ```{r eval = FALSE}
 flashcard("data/operators.csv")
 ```
 
+Check out the [Get Started vignette](https://jeffreyrstevens.github.io/flashr/articles/flashr.html#creating-your-own-decks) for more details on creating your own flashcard deck.
 
 ## Citation
 
