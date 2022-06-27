@@ -12,12 +12,12 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 Learning all of the functions needed to become proficient in R is a
 substantial undertaking. Flashcards are a great way to learn the syntax
-of computer languages (Hermans 2021). The goal of flashr is to provide a
-quick way to view decks of flashcards.
+of computer languages (Hermans 2021). The goal of flashr (pronounced
+“flash-r”) is to provide a quick way to view decks of flashcards.
 
 flashr can use existing built-in flashcard decks, including functions
-and arguments from [R for Data Science (first
-edition)](https://r4ds.had.co.nz/).
+and arguments from [R for Data Science, first
+edition](https://r4ds.had.co.nz/) (still in progress).
 <!--The aim is to include decks from [R for Data Science (second edition)](https://r4ds.hadley.nz) when it is complete.-->
 
 In addition to built-in decks, you can easily create your own decks
@@ -50,9 +50,13 @@ If you would like to present descriptions before terms:
 flashcard("data_types", termsfirst = FALSE)
 ```
 
-To build your own deck, simply save a CSV file with a `term` column and
-a `description` column. You can also include a `package` column if you
-want the package name included with the term and a `name` column if you
+![](man/figures/flashr.gif)
+
+## Building decks
+
+To build your own deck, save a CSV file with a `term` column and a
+`description` column. You can also include a `package` column if you
+want the package name included with the term and a `title` column if you
 want to specify the title of the deck.
 
 ``` r
@@ -67,11 +71,15 @@ head(my_deck)
 #> 6    *         multiplication    base
 ```
 
-Then simply run the `flashcard()` function on your file.
+Then run the `flashcard()` function on your file.
 
 ``` r
 flashcard("data/operators.csv")
 ```
+
+Check out the [Get Started
+vignette](https://jeffreyrstevens.github.io/flashr/articles/flashr.html#creating-your-own-decks)
+for more details on creating your own flashcard deck.
 
 ## Citation
 
