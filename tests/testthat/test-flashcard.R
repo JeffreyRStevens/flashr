@@ -9,7 +9,7 @@ test_that("validations pass", {
   testdeck3 <- testdeck[, 1:3]
   write.csv(testdeck3, test_path("testdata", "testdeck3.csv"))
   expect_message(validate_deck(test_path("testdata", "testdeck3.csv"),
-    package = FALSE
+                               package = FALSE
   ), "so using filename for title")
   suppressMessages(expect_message(validate_deck(
     test_path("testdata", "testdeck3.csv"),
@@ -18,7 +18,7 @@ test_that("validations pass", {
   testdeck4 <- testdeck[, 1:2]
   write.csv(testdeck4, test_path("testdata", "testdeck4.csv"))
   expect_message(validate_deck(test_path("testdata", "testdeck4.csv"),
-    package = FALSE
+                               package = FALSE
   ), "so using filename for title")
   suppressMessages(expect_error(validate_deck(
     test_path("testdata", "testdeck4.csv"),
@@ -30,15 +30,25 @@ test_that("validations pass", {
   file.remove(test_path("testdata", "testdeck4.csv"))
   file.remove(test_path("testdata", "testdeck5.csv"))
   testflash <- validate_deck(test_path("testdata", "operators.csv"),
-    package = TRUE
+                             package = TRUE
   )
   expect_true("title" %in% names(testflash))
 })
 
-test_that("output files are HTML", {
+test_that("fonts are specified properly", {
   suppressMessages(expect_error(flashcard("data_types", fontsize = "large"), NA))
   suppressMessages(expect_error(flashcard("data_types", fontsize = "100%"), NA))
   suppressMessages(expect_error(flashcard("data_types", fontsize = "100"), "The `fontsize` value is invalid"))
+
+  suppressMessages(expect_error(flashcard("data_types", fontcolor = "Aqua"), NA))
+  suppressMessages(expect_error(flashcard("data_types", fontcolor = "#000000"), NA))
+  suppressMessages(expect_error(flashcard("data_types", fontcolor = "tann"), "The `fontcolor` tann is not a valid color"))
+  suppressMessages(expect_error(flashcard("data_types", linkcolor = "Aqua"), NA))
+  suppressMessages(expect_error(flashcard("data_types", linkcolor = "#000000"), NA))
+  suppressMessages(expect_error(flashcard("data_types", linkcolor = "tann"), "The `linkcolor` tann is not a valid color"))
+})
+
+test_that("output files are HTML", {
   suppressMessages(expect_error(flashcard("data_types", file = "mytest.HTML"), NA))
   suppressMessages(expect_error(flashcard("data_types", file = "mytest.HTM")))
   file.remove("mytest.HTML")

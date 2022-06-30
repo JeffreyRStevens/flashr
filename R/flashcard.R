@@ -17,6 +17,10 @@
 #' @param fontsize Base font size for presentation. Acceptable values include
 #' "default" (500%), "large" (700%), and "small" (300%). Custom values can be
 #' set as percentages (e.g., "250%").
+#' @param fontcolor Font color for non-link text.  Can be R color name, HTML
+#' color name, or hex code.
+#' @param linkcolor Font color for link text.  Can be R color name, HTML
+#' color name, or hex code.
 #' @param use_browser Logical indicating whether to show the presentation in the
 #' RStudio viewer when available (FALSE) or the system's default browser (TRUE)
 #'
@@ -43,6 +47,8 @@ flashcard <- function(x,
                       theme = "moon",
                       file = NULL,
                       fontsize = "default",
+                      fontcolor = NULL,
+                      linkcolor = NULL,
                       use_browser = FALSE) {
 
   # Validate deck
@@ -68,6 +74,19 @@ flashcard <- function(x,
     }
   }
 
+  # Check font and colors
+  if (!is.null(fontcolor)) {
+    if (!is.color(fontcolor)) {
+      cli::cli_abort("The {.code fontcolor} {fontcolor} is not a valid color.")
+    }
+  }
+
+  if (!is.null(linkcolor)) {
+    if (!is.color(linkcolor)) {
+      cli::cli_abort("The {.code linkcolor} {linkcolor} is not a valid color.")
+    }
+  }
+
   # Create YAML header for reveal.js presentation
   text <- c(
     "---",
@@ -77,12 +96,30 @@ flashcard <- function(x,
     paste0("    theme: ", theme),
     "    center: true",
     "---",
-    "<style>",
-    ".reveal {",
-    paste0("font-size: ", fontsize),
-    "}",
-    "</style>"
-  )
+    "<style>")
+  if (is.null(fontcolor)) {
+    font_style <- c(".reveal {",
+                    paste0("font-size: ", fontsize, ";"),
+                    "}"
+    )
+  } else {
+    font_style <- c(".reveal {",
+                    paste0("font-size: ", fontsize, ";"),
+                    paste0("color: ", fontcolor, ";"),
+                    "}"
+    )
+  }
+
+  if (is.null(linkcolor)) {
+    link_style <- ""
+  } else {
+    link_style <- c(".reveal a {",
+                    paste0("color: ", linkcolor, ";"),
+                    "}"
+    )
+  }
+  text <- c(text, font_style, link_style, "</style>")
+
 
   # Create slides for each item
   for (i in 1:nrow(items)) {
@@ -134,11 +171,13 @@ flashcard <- function(x,
   }
 
   # Open HTML file in viewer
-  viewer <- getOption("viewer")
-  if (!is.null(viewer) & !use_browser) {
-    viewer(htmlfile)
-  } else {
-    utils::browseURL(htmlfile)
+  if (!testthat::is_testing()) {
+    viewer <- getOption("viewer")
+    if (!is.null(viewer) & !use_browser) {
+      viewer(htmlfile)
+    } else {
+      utils::browseURL(htmlfile)
+    }
   }
 }
 
@@ -186,4 +225,10 @@ validate_deck <- function(x, package = package) {
   attr(deck, "title") <- title
   attr(deck, "deckname") <- deckname
   invisible(deck)
+}
+
+is.color <- function(x) {
+  web_colors <- c("Pink", "LightPink", "HotPink", "DeepPink", "PaleVioletRed", "MediumVioletRed", "LightSalmon", "Salmon", "DarkSalmon", "LightCoral", "IndianRed", "Crimson", "FireBrick", "DarkRed", "Red", "OrangeRed", "Tomato", "Coral", "DarkOrange", "Orange", "Yellow", "Yellow", "LightYellow", "LemonChiffon", "LightGoldenrodYellow", "PapayaWhip", "Moccasin", "PeachPuff", "PaleGoldenrod", "Khaki", "DarkKhaki", "Gold", "Cornsilk", "BlanchedAlmond", "Bisque", "NavajoWhite", "Wheat", "BurlyWood", "Tan", "RosyBrown", "SandyBrown", "Goldenrod", "DarkGoldenrod", "Peru", "Chocolate", "SaddleBrown", "Sienna", "Brown", "Maroon", "DarkOliveGreen", "Olive", "OliveDrab", "YellowGreen", "LimeGreen", "Lime", "LawnGreen", "Chartreuse", "GreenYellow", "SpringGreen", "MediumSpringGreen", "LightGreen", "PaleGreen", "DarkSeaGreen", "MediumSeaGreen", "SeaGreen", "ForestGreen", "Green", "DarkGreen", "MediumAquamarine", "Aqua", "Cyan", "LightCyan", "PaleTurquoise", "Aquamarine", "Turquoise", "MediumTurquoise", "DarkTurquoise", "LightSeaGreen", "CadetBlue", "DarkCyan", "Teal", "LightSteelBlue", "PowderBlue", "LightBlue", "SkyBlue", "LightSkyBlue", "DeepSkyBlue", "DodgerBlue", "CornflowerBlue", "SteelBlue", "RoyalBlue", "Blue", "MediumBlue", "DarkBlue", "Navy", "MidnightBlue", "Lavender", "Thistle", "Plum", "Violet", "Orchid", "Fuchsia", "Magenta", "MediumOrchid", "MediumPurple", "BlueViolet", "DarkViolet", "DarkOrchid", "DarkMagenta", "Purple", "Indigo", "DarkSlateBlue", "RebeccaPurple", "SlateBlue", "MediumSlateBlue", "White", "Snow", "Honeydew", "MintCream", "Azure", "AliceBlue", "GhostWhite", "WhiteSmoke", "Seashell", "Beige", "OldLace", "FloralWhite", "Ivory", "AntiqueWhite", "Linen", "LavenderBlush", "MistyRose", "Gainsboro", "LightGrey", "Silver", "DarkGray", "Gray", "DimGray", "LightSlateGray", "SlateGray", "DarkSlateGray", "Black")
+  all_colors <- c(web_colors, tolower(web_colors), grDevices::colors())
+  return(x %in% all_colors | grepl("^#(\\d|[a-f]){6,8}$", x, ignore.case = TRUE))
 }
