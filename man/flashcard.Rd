@@ -11,6 +11,8 @@ flashcard(
   theme = "moon",
   file = NULL,
   fontsize = "default",
+  fontcolor = NULL,
+  linkcolor = NULL,
   use_browser = FALSE
 )
 }
@@ -31,6 +33,12 @@ save as HTML)}
 \item{fontsize}{Base font size for presentation. Acceptable values include
 "default" (500\%), "large" (700\%), and "small" (300\%). Custom values can be
 set as percentages (e.g., "250\%").}
+
+\item{fontcolor}{Font color for non-link text.  Can be R color name, HTML
+color name, or hex code.}
+
+\item{linkcolor}{Font color for link text.  Can be R color name, HTML
+color name, or hex code.}
 
 \item{use_browser}{Logical indicating whether to show the presentation in the
 RStudio viewer when available (FALSE) or the system's default browser (TRUE)}
