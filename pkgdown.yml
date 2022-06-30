@@ -3,7 +3,7 @@ pkgdown: 2.0.5
 pkgdown_sha: ~
 articles:
   flashr: flashr.html
-last_built: 2022-06-27T16:10Z
+last_built: 2022-06-30T19:46Z
 urls:
   reference: https://jeffreyrstevens.github.io/flashr/reference
   article: https://jeffreyrstevens.github.io/flashr/articles
