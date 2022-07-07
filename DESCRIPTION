@@ -19,11 +19,11 @@ Imports:
     gh,
     memoise,
     revealjs,
-    rmarkdown
+    rmarkdown,
+    testthat
 Suggests: 
     covr,
     knitr,
-    testthat (>= 3.0.0),
     withr
 VignetteBuilder: 
     knitr
