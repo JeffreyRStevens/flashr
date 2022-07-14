@@ -11,7 +11,7 @@ authors:
 affiliations:
  - name: Department of Psychology, Center for Brain, Biology & Behavior, University of Nebraska-Lincoln
    index: 1
-date: "2022-07-14"
+date: "`r Sys.Date()`"
 bibliography: paper.bib
 output:
   html_document:
