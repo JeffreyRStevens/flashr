@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/JeffreyRStevens/flashr",
   "issueTracker": "https://github.com/JeffreyRStevens/flashr/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.0 (2022-04-22)",
+  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
   "author": [
     {
       "@type": "Person",
@@ -66,19 +66,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=knitr"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "testthat",
-      "name": "testthat",
-      "version": ">= 3.0.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=testthat"
     },
     {
       "@type": "SoftwareApplication",
@@ -160,9 +147,21 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
     },
+    "7": {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
     "SystemRequirements": null
   },
-  "fileSize": "41.623KB",
+  "fileSize": "3535KB",
   "releaseNotes": "https://github.com/JeffreyRStevens/flashr/blob/master/NEWS.md",
   "readme": "https://github.com/JeffreyRStevens/flashr/blob/main/README.md",
   "contIntegration": "https://codecov.io/gh/JeffreyRStevens/flashr",
