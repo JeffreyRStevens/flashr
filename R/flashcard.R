@@ -133,12 +133,12 @@ flashcard <- function(x,
     term <- paste0("`", items$term[i], "`")
     # Add URL if included in deck
     if ("url" %in% names(deck)) {
-      if (items$url[i] != "") {
+      if (!is.na(items$url[i])) {
         term <- paste0("[", term, "](", items$url[i], ")")
       }
     }
     description <- items$description[i]
-    if (package) {
+    if (package & !is.na(items$package[i])) {
       pack <- paste0("{", items$package[i], "}")
     } else {
       pack <- ""
@@ -216,7 +216,9 @@ validate_deck <- function(x, package = package) {
     }
   } else if (input %in% valid_decks$decklabels) { # if input is in valid decks
     # Get deck and deckname
-    deck <- utils::read.csv(paste0("https://raw.githubusercontent.com/JeffreyRStevens/flashr_decks/main/decks/", input, ".csv"))
+    deck <- utils::read.csv(paste0("https://raw.githubusercontent.com/JeffreyRStevens/flashr_decks/main/decks/", input, ".csv"),
+      na.strings = ""
+    )
     deckname <- input
     title <- deck$title[1]
   } else { # if input is not CSV or valid deck
