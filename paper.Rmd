@@ -20,7 +20,7 @@ output:
 
 # Summary
 
-Flashcards can be an effective way to learn new material, including vocabulary, spoken languages, and computer programming languages. The `flashr` package creates decks of flashcards from existing sets of terms and descriptions built around learning R. This package draws from a repository of decks based on existing books and resources. New decks are easy to build, and users can create new decks either for their own use or to contribute to the repository. Moreover, the decks do not have to be about R or even programming languages. Users can develop their own decks for whatever material they would like to learn.
+Flashcards can be an effective way to learn new material, including vocabulary, spoken languages, and computer programming languages. The `flashr` package creates decks of flashcards from sets of terms and descriptions built around learning R. This package draws from a repository of decks based on existing books and resources. New decks are easy to build, and users can create new decks either for their own use or to contribute to the repository. Moreover, the decks do not have to be about R or even programming languages. Users can develop their own decks for whatever material they would like to learn.
 
 
 # Statement of need
