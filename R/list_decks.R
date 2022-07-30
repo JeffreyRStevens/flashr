@@ -41,15 +41,27 @@
 list_decks <- function(pattern = NULL,
                        repo = "JeffreyRStevens/flashr_decks",
                        quiet = FALSE) {
-  # Get contents of decks/ directory
-  repo_text <- paste0("GET /repos/", repo, "/contents/decks")
-  deckfiles <- get_repo_mem(repo_text)
+  if (repo == "JeffreyRStevens/flashr_decks") {
+    all_decks <- utils::read.csv(
+      "https://raw.githubusercontent.com/JeffreyRStevens/flashr_decks/main/decks/00_all_decks.csv"
+    )
+    decks <- all_decks$deck
+    titles <- all_decks$title
+    decklabels <- all_decks$decklabel
+  } else {
+    # Get contents of decks/ directory
+    repo_text <- paste0("GET /repos/", repo, "/contents/decks")
+    deckfiles <- get_repo_mem(repo_text)
 
-  # Create labels, paths, and titles for decks
-  deckpaths <- paste0("https://raw.githubusercontent.com/", repo, "/main/decks/", deckfiles)
-  decklabels <- gsub(".csv", "", deckfiles)
-  titles <- vapply(deckpaths, get_title_mem, character(1))
-  decks <- paste0(titles, " (", decklabels, ")")
+    # Create labels, paths, and titles for decks
+    deckpaths <- paste0(
+      "https://raw.githubusercontent.com/", repo,
+      "/main/decks/", deckfiles
+    )
+    decklabels <- gsub(".csv", "", deckfiles)
+    titles <- vapply(deckpaths, get_title_mem, character(1))
+    decks <- paste0(titles, " (", decklabels, ")")
+  }
 
   # Search text of decks for patterns
   if (!is.null(pattern)) {
@@ -61,7 +73,9 @@ list_decks <- function(pattern = NULL,
     decklabels <- decklabels[deck_nums]
     titles <- titles[deck_nums]
     if (length(decks) == 0) {
-      cli::cli_abort("No decks match the pattern entered. Try another pattern string.")
+      cli::cli_abort(
+        "No decks match the pattern entered. Try another pattern string."
+      )
     }
   }
 

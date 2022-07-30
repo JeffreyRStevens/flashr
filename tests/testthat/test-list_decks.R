@@ -31,3 +31,9 @@ test_that("choose_decks works", {
 test_that("get_title works", {
   expect_equal(get_title("inst/extdata/data_types.csv"), "Data types")
 })
+
+test_that("get_repo works", {
+  repo_text <- paste0("GET /repos/JeffreyRStevens/flashr_decks/contents/decks")
+  repo_files <- get_repo_mem(repo_text)
+  expect_equal(repo_files[1], "00_all_decks.csv")
+})
