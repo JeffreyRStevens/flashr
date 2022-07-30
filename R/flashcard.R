@@ -138,9 +138,11 @@ flashcard <- function(x,
       }
     }
     description <- items$description[i]
-    if (package & "package" %in% names(deck)) {
+    if (package && "package" %in% names(deck)) {
       if (!is.na(items$package[i])) {
         pack <- paste0("{", items$package[i], "}")
+      } else {
+        pack <- ""
       }
     } else {
       pack <- ""
