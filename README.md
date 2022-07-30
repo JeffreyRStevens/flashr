@@ -20,8 +20,8 @@ flashr can use existing built-in flashcard decks hosted at the
 repo](https://github.com/JeffreyRStevens/flashr_decks), including
 functions and arguments from [R for Data Science, first
 edition](https://r4ds.had.co.nz/) and glossaries from several [psyTeachR
-books](https://psyteachr.github.io/).
-<!--The aim is to include decks from [R for Data Science (second edition)](https://r4ds.hadley.nz) when it is complete.-->
+books](https://psyteachr.github.io/). Check out some [example
+decks](https://jeffreyrstevens.github.io/flashr_decks/decks.html).
 
 In addition to built-in decks, you can easily create your own decks
 using CSV files. This allows you to customize existing decks or create
