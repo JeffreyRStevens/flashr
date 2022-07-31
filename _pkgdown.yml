@@ -7,8 +7,9 @@ template:
 reference:
 - title: Functions
   contents:
-  - choose_deck
   - flashcard
+  - create_deck
+  - choose_deck
   - list_decks
 - title: Example decks
   contents:
