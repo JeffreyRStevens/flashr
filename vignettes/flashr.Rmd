@@ -63,8 +63,6 @@ This function includes pattern matching. So if you want to narrow you list down,
 list_decks(pattern = "r4ds")
 ```
 
-
-
 If you want to list the decks and then choose one, use [`choose_deck()`](https://jeffreyrstevens.github.io/flashr/reference/choose_deck.html):
 ```{r eval = FALSE}
 choose_deck("r4ds")
@@ -85,6 +83,8 @@ Of course, a faster way to do this is to enter the deck name directly into [`fla
 ```{r eval = FALSE}
 flashcard("r4ds3")
 ```
+
+You can also view [examples of all of the decks in HTML](https://jeffreyrstevens.github.io/flashr_decks/decks.html).
 
 ## Creating your own decks
 
