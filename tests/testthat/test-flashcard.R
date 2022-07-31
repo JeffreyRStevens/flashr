@@ -36,20 +36,68 @@ test_that("validations pass", {
 })
 
 test_that("fonts are specified properly", {
-  suppressMessages(expect_error(flashcard("data_types", fontsize = "large"), NA))
+  suppressMessages(expect_error(
+    flashcard("data_types", fontsize = "large"),
+    NA
+  ))
   suppressMessages(expect_error(flashcard("data_types", fontsize = "100%"), NA))
-  suppressMessages(expect_error(flashcard("data_types", fontsize = "100"), "The `fontsize` value is invalid"))
+  suppressMessages(expect_error(
+    flashcard("data_types", fontsize = "100"),
+    "The `fontsize` value is invalid"
+  ))
 
-  suppressMessages(expect_error(flashcard("data_types", fontcolor = "Aqua"), NA))
-  suppressMessages(expect_error(flashcard("data_types", fontcolor = "#000000"), NA))
-  suppressMessages(expect_error(flashcard("data_types", fontcolor = "tann"), "The `fontcolor` tann is not a valid color"))
-  suppressMessages(expect_error(flashcard("data_types", linkcolor = "Aqua"), NA))
-  suppressMessages(expect_error(flashcard("data_types", linkcolor = "#000000"), NA))
-  suppressMessages(expect_error(flashcard("data_types", linkcolor = "tann"), "The `linkcolor` tann is not a valid color"))
+  suppressMessages(expect_error(
+    flashcard("data_types", fontcolor = "Aqua"),
+    NA
+  ))
+  suppressMessages(expect_error(
+    flashcard("data_types", fontcolor = "#000000"),
+    NA
+  ))
+  suppressMessages(expect_error(
+    flashcard("data_types", fontcolor = "tann"),
+    "The `fontcolor` tann is not a valid color"
+  ))
+  suppressMessages(expect_error(
+    flashcard("data_types", linkcolor = "Aqua"),
+    NA
+  ))
+  suppressMessages(expect_error(
+    flashcard("data_types", linkcolor = "#000000"),
+    NA
+  ))
+  suppressMessages(expect_error(
+    flashcard("data_types", linkcolor = "tann"),
+    "The `linkcolor` tann is not a valid color"
+  ))
 })
 
 test_that("output files are HTML", {
-  suppressMessages(expect_error(flashcard("data_types", file = "mytest.HTML"), NA))
+  suppressMessages(expect_error(
+    flashcard("data_types", file = "mytest.HTML"),
+    NA
+  ))
   suppressMessages(expect_error(flashcard("data_types", file = "mytest.HTM")))
   file.remove("mytest.HTML")
+})
+
+test_that("terms select properly", {
+  suppressMessages(expect_error(select_terms(c("c()", "%>%")), NA))
+  suppressMessages(expect_error(
+    select_terms(c("c", "%>%")),
+    "The following entry does not include"
+  ))
+  suppressMessages(expect_error(
+    select_terms(c("c", "attr", "%>%")),
+    "The following entries do not include"
+  ))
+  suppressMessages(expect_warning(
+    select_terms(c("asdfglkjdf()")),
+    "The following entry was not found in the list of functions"
+  ))
+  suppressMessages(expect_invisible(select_terms(c("c()", "%>%"))))
+})
+
+test_that("decks are created properly", {
+  suppressMessages(expect_error(create_deck(c("c()", "%>%")), NA))
 })
