@@ -180,7 +180,7 @@ get_title_mem <- memoise::memoise(get_title)
 
 # Get file names in repository
 get_repo <- function(repo_text) {
-  deckfiles <- gh::gh(repo_text) |>
+  gh::gh(repo_text) |>
     vapply("[[", "", "name")
 }
 get_repo_mem <- memoise::memoise(get_repo)
