@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2022-07-26" />
+<meta name="date" content="2022-07-31" />
 
 <title>flashr: An R package that creates flashcards</title>
 
@@ -386,7 +386,7 @@ pre code {
 
 <h1 class="title toc-ignore">flashr: An R package that creates
 flashcards</h1>
-<h4 class="date">2022-07-26</h4>
+<h4 class="date">2022-07-31</h4>
 
 </div>
 
@@ -416,20 +416,28 @@ learners to learn programming syntax, but it seems likely that
 flashcards could be a useful tool in this endeavor <span class="citation">(Hermans 2021)</span>.</p>
 <p>The goal of the <code>flashr</code> package is to provide a system to
 easily use and make flashcard decks. While digital flashcard creators
-exist, <code>flashr</code> already has <a href="https://github.com/JeffreyRStevens/flashr_decks">built-in
+exist, <code>flashr</code> already has <a href="https://jeffreyrstevens.github.io/flashr_decks/decks.html">built-in
 flashcard decks</a> in place for learners to solidify their knowledge of
 R-specific syntax and concepts. In particular, it has decks for the
 chapters of a popular book used to learn R and the <a href="https://www.tidyverse.org/">tidyverse</a>, <em>R for Data
 Science</em> by Wickham and Grolemund <span class="citation">(2017)</span>. So learners can practice remembering the
-functions as they work their way through the book.</p>
-<p>In addition to built-in decks, users can create their own decks
-easily by creating CSV files with columns of terms and descriptions,
+functions as they work their way through the book. The built-in decks
+not only have terms and descriptions but also links to the documentation
+for each term. This allows users to easily follow up to get more
+information about the terms.</p>
+<p>In addition to built-in decks, users can create their own decks.
+First, they may create CSV files with columns of terms and descriptions,
 along with optional package names and links to documentation for each
-term. This allows users to customize the decks to match their needs.
-And, of course, they do not have to restrict their own decks to R or
-even programming languages. In addition, the <a href="https://github.com/JeffreyRStevens/flashr_decks">repository</a>
-for <code>flashr</code> decks is a community resource that users can
-contribute to.</p>
+term. Users can then contribute their decks to the <a href="https://github.com/JeffreyRStevens/flashr_decks"><code>flashr_decks</code>
+repository</a> as a community resource. And, of course, they do not have
+to restrict their own decks to R or even programming languages.
+Alternatively, they may draw functions from a list of functions used by
+decks in the <code>flashr_decks</code> repository to build their own
+deck. This is easy to use because users do not have to construct their
+own descriptions. However, they are limited to using functions already
+in the list. Combining the creation of CSV files and drawing from the
+function list allows users to customize the decks to match their
+needs.</p>
 <p>The <code>flashr</code> package provides an educational resource that
 can supplement other systems and techniques to help users learn R. It is
 also highly customizable, allowing users to create flashcards to learn
