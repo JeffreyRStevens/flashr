@@ -1,3 +1,9 @@
+# flashr 0.0.4
+
+* Users can create their own decks by drawing functions from the [`flashr_decks` repo function list](https://jeffreyrstevens.github.io/flashr_decks/functions.html)
+* Update links to the [`flashr_decks` website](https://jeffreyrstevens.github.io/flashr_decks/)
+* Fix bug that caused fatal error when `flashcard()` was applied to decks with no package for items
+
 # flashr 0.0.3
 
 * When listing decks, read in a CSV of available decks rather than reading in all of the actual decks
