@@ -42,7 +42,7 @@
 #'
 #' # Display custom CSV file of terms and descriptions.
 #' # If package information is not included, set `package = FALSE`.
-#' flashcard(file = "data/operators.csv", package = FALSE)
+#' flashcard(file = "operators.csv", package = FALSE)
 #' }
 flashcard <- function(x,
                       termsfirst = TRUE,
@@ -53,7 +53,6 @@ flashcard <- function(x,
                       fontcolor = NULL,
                       linkcolor = NULL,
                       use_browser = FALSE) {
-
   # Validate deck
   deck <- validate_deck(x, package = package)
 
@@ -288,7 +287,6 @@ build_deck <- function(deck,
 
   # Create slides for each item
   for (i in seq_len(nrow(items))) {
-
     # Create slide components
     term <- paste0("`", items$term[i], "`")
     # Add URL if included in deck

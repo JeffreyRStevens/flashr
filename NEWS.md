@@ -1,3 +1,7 @@
+# flashr 0.1.0
+
+* Create utility function to check if internet resources are available; otherwise, fail gracefully
+
 # flashr 0.0.4
 
 * Users can create their own decks by drawing functions from the [`flashr_decks` repo function list](https://jeffreyrstevens.github.io/flashr_decks/functions.html)

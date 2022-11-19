@@ -42,9 +42,9 @@ list_decks <- function(pattern = NULL,
                        repo = "JeffreyRStevens/flashr_decks",
                        quiet = FALSE) {
   if (repo == "JeffreyRStevens/flashr_decks") {
-    all_decks <- utils::read.csv(
-      "https://raw.githubusercontent.com/JeffreyRStevens/flashr_decks/main/decks/00_all_decks.csv"
-    )
+    decks_repo <- "https://raw.githubusercontent.com/JeffreyRStevens/flashr_decks/main/decks/00_all_decks.csv"
+    fail_gracefully(decks_repo)
+    all_decks <- utils::read.csv(decks_repo)
     decks <- all_decks$deck
     titles <- all_decks$title
     decklabels <- all_decks$decklabel
@@ -130,7 +130,6 @@ list_decks <- function(pattern = NULL,
 choose_deck <- function(pattern = NULL,
                         choice = NULL,
                         repo = "JeffreyRStevens/flashr_decks") {
-
   # If no choice is passed to function
   if (is.null(choice)) {
     # List decks

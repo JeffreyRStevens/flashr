@@ -2,19 +2,19 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "flashr",
-  "description": "This package creates sets of flashcards that can be viewed in the RStudio viewer or a web browser.",
-  "name": "flashr: Creates Flashcards of Terms and Definitions",
+  "description": "Creates sets of flashcards of terms and definitionsthat can be viewed in the RStudio viewer or a web browser.",
+  "name": "flashr: Create Flashcards of Terms and Definitions",
   "relatedLink": "https://jeffreyrstevens.github.io/flashr/",
   "codeRepository": "https://github.com/JeffreyRStevens/flashr",
   "issueTracker": "https://github.com/JeffreyRStevens/flashr/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
+  "runtimePlatform": "R version 4.2.2 Patched (2022-11-10 r83330)",
   "author": [
     {
       "@type": "Person",
@@ -101,6 +101,18 @@
     },
     "3": {
       "@type": "SoftwareApplication",
+      "identifier": "curl",
+      "name": "curl",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=curl"
+    },
+    "4": {
+      "@type": "SoftwareApplication",
       "identifier": "gh",
       "name": "gh",
       "provider": {
@@ -111,7 +123,19 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=gh"
     },
-    "4": {
+    "5": {
+      "@type": "SoftwareApplication",
+      "identifier": "httr",
+      "name": "httr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=httr"
+    },
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "memoise",
       "name": "memoise",
@@ -123,7 +147,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=memoise"
     },
-    "5": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "revealjs",
       "name": "revealjs",
@@ -135,7 +159,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=revealjs"
     },
-    "6": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "rmarkdown",
       "name": "rmarkdown",
@@ -147,7 +171,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
     },
-    "7": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
@@ -161,9 +185,5 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "3545.41KB",
-  "releaseNotes": "https://github.com/JeffreyRStevens/flashr/blob/master/NEWS.md",
-  "readme": "https://github.com/JeffreyRStevens/flashr/blob/main/README.md",
-  "contIntegration": "https://codecov.io/gh/JeffreyRStevens/flashr",
-  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#experimental"
+  "fileSize": "3538.379KB"
 }
