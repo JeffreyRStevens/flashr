@@ -63,6 +63,6 @@ flashcard(data_types, termsfirst = FALSE)
 
 # Display custom CSV file of terms and descriptions.
 # If package information is not included, set `package = FALSE`.
-flashcard(file = "data/operators.csv", package = FALSE)
+flashcard(file = "operators.csv", package = FALSE)
 }
 }
