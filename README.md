@@ -6,8 +6,9 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+stable](https://img.shields.io/badge/lifecycle-stable-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![codecov](https://codecov.io/gh/JeffreyRStevens/flashr/branch/main/graph/badge.svg?token=XGH2OV874R)](https://codecov.io/gh/JeffreyRStevens/flashr)
+[![R-CMD-check](https://github.com/JeffreyRStevens/flashr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JeffreyRStevens/flashr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Learning all of the functions needed to become proficient in R is a
@@ -63,7 +64,7 @@ want the package name included with the term and a `title` column if you
 want to specify the title of the deck.
 
 ``` r
-my_deck <- read.csv("data/operators.csv")
+my_deck <- read.csv("inst/extdata/operators.csv")
 head(my_deck)
 #>   term            description package     title
 #> 1    =    assignment operator    base Operators
@@ -77,7 +78,7 @@ head(my_deck)
 Then run the `flashcard()` function on your file.
 
 ``` r
-flashcard("data/operators.csv")
+flashcard("inst/extdata/operators.csv")
 ```
 
 Check out the [Get Started

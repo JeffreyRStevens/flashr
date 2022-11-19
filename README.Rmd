@@ -16,8 +16,9 @@ knitr::opts_chunk$set(
 # flashr
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![codecov](https://codecov.io/gh/JeffreyRStevens/flashr/branch/main/graph/badge.svg?token=XGH2OV874R)](https://codecov.io/gh/JeffreyRStevens/flashr)
+[![R-CMD-check](https://github.com/JeffreyRStevens/flashr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JeffreyRStevens/flashr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Learning all of the functions needed to become proficient in R is a substantial undertaking. Flashcards are a great way to learn the syntax of computer languages (Hermans 2021). The goal of flashr (pronounced "flash-r") is to provide a quick way to view decks of flashcards. 
@@ -57,14 +58,14 @@ flashcard("data_types", termsfirst = FALSE)
 To build your own deck, save a CSV file with a `term` column and a `description` column. You can also include a `package` column if you want the package name included with the term and a `title` column if you want to specify the title of the deck.
 
 ```{r}
-my_deck <- read.csv("data/operators.csv")
+my_deck <- read.csv("inst/extdata/operators.csv")
 head(my_deck)
 ```
 
 Then run the `flashcard()` function on your file.
 
 ```{r eval = FALSE}
-flashcard("data/operators.csv")
+flashcard("inst/extdata/operators.csv")
 ```
 
 Check out the [Get Started vignette](https://jeffreyrstevens.github.io/flashr/articles/flashr.html#creating-your-own-decks) for more details on creating your own flashcard deck.

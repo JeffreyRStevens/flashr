@@ -1,13 +1,14 @@
 Type: Package
 Package: flashr
-Title: Creates Flashcards of Terms and Definitions
+Title: Create Flashcards of Terms and Definitions
 Version: 0.0.3
 Authors@R: 
-    person("Jeffrey R.", "Stevens", , "jeffrey.r.stevens@protonmail.com", role = c("aut", "cre", "cph"),
-           comment = c(ORCID = "0000-0003-2375-1360"))
+    person("Jeffrey R.", "Stevens", , "jeffrey.r.stevens@protonmail.com", 
+    role = c("aut", "cre", "cph"),
+    comment = c(ORCID = "0000-0003-2375-1360"))
 Maintainer: Jeffrey R. Stevens <jeffrey.r.stevens@protonmail.com>
-Description: This package creates sets of flashcards that can be viewed in
-    the RStudio viewer or a web browser.
+Description: Creates sets of flashcards of terms and definitionsthat can be 
+    viewed in the RStudio viewer or a web browser.
 License: MIT + file LICENSE
 URL: https://github.com/JeffreyRStevens/flashr,
     https://jeffreyrstevens.github.io/flashr/
@@ -16,7 +17,9 @@ Depends:
     R (>= 2.10)
 Imports: 
     cli,
+    curl,
     gh,
+    httr,
     memoise,
     revealjs,
     rmarkdown,
@@ -31,4 +34,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.2

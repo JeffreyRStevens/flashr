@@ -10,3 +10,5 @@
 ^data-raw$
 ^docs$
 ^pkgdown$
+^cran-comments\.md$
+^paper\.md$
