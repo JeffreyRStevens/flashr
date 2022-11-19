@@ -3,14 +3,14 @@
 #'
 #' @description This function searches for flashcard decks stored in GitHub
 #' repositories. By default, the function searches the
-#' [flashr_decks repo]("https://github.com/JeffreyRStevens/flashr_decks"). But
+#' [flashr_decks repo](https://github.com/JeffreyRStevens/flashr_decks). But
 #' other GitHub repos can be used.
 #'
 #' To narrow the results, include text in the `pattern` argument (for example,
 #' `list_decks(pattern = "r4ds")`).
 #'
 #' @details You are welcome to fork the
-#' [flashr_decks repo]("https://github.com/JeffreyRStevens/flashr_decks") and
+#' [flashr_decks repo](https://github.com/JeffreyRStevens/flashr_decks) and
 #' modify or add your own decks. Or you can create your own repo from scratch.
 #' Just make sure to place your decks in a directory called `decks/` in your
 #' root directory. Then set the `repo` argument to your username and repo (see
@@ -97,7 +97,7 @@ list_decks <- function(pattern = NULL,
 #'
 #' @description This function prints a list of flashcard decks to the console
 #' and let's the user choose one of the decks. By default, the function searches
-#' the [flashr_decks repo]("https://github.com/JeffreyRStevens/flashr_decks").
+#' the [flashr_decks repo](https://github.com/JeffreyRStevens/flashr_decks).
 #' But other GitHub repos can be used.
 #'
 #' To narrow the results, include text in the `pattern` argument (for example,
