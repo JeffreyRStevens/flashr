@@ -24,7 +24,7 @@ Outputs a list of available built-in flashcard decks to the console.
 \description{
 This function searches for flashcard decks stored in GitHub
 repositories. By default, the function searches the
-\href{https://github.com/JeffreyRStevens/flashr_decks}{flashr_decks repo}. But
+\href{https://github.com/JeffreyRStevens/flashr_decks/}{flashr_decks repo}. But
 other GitHub repos can be used.
 
 To narrow the results, include text in the \code{pattern} argument (for example,
@@ -32,7 +32,7 @@ To narrow the results, include text in the \code{pattern} argument (for example,
 }
 \details{
 You are welcome to fork the
-\href{https://github.com/JeffreyRStevens/flashr_decks}{flashr_decks repo} and
+\href{https://github.com/JeffreyRStevens/flashr_decks/}{flashr_decks repo} and
 modify or add your own decks. Or you can create your own repo from scratch.
 Just make sure to place your decks in a directory called \verb{decks/} in your
 root directory. Then set the \code{repo} argument to your username and repo (see

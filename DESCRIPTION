@@ -7,7 +7,7 @@ Authors@R:
     role = c("aut", "cre", "cph"),
     comment = c(ORCID = "0000-0003-2375-1360"))
 Maintainer: Jeffrey R. Stevens <jeffrey.r.stevens@protonmail.com>
-Description: Creates sets of flashcards of terms and definitionsthat can be 
+Description: Creates sets of flashcards of terms and definitions that can be 
     viewed in the RStudio viewer or a web browser.
 License: MIT + file LICENSE
 URL: https://github.com/JeffreyRStevens/flashr,
