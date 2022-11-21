@@ -55,16 +55,12 @@ If running in RStudio, the flashcards are output to the viewer.
 Otherwise, they are output to a web browser.
 }
 \examples{
-\dontrun{
+\donttest{
 # Display terms then descriptions
-flashcard(data_types)
+flashcard("data_types")
 
 # Display descriptions then terms
-flashcard(data_types, termsfirst = FALSE)
-
-# Display custom CSV file of terms and descriptions.
-# If package information is not included, set `package = FALSE`.
-flashcard(file = "operators.csv", package = FALSE)
+flashcard("data_types", termsfirst = FALSE)
 }
 }
 \seealso{
