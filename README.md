@@ -7,6 +7,10 @@
 
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/flashr)](https://cran.r-project.org/package=flashr)
+[![Total
+Downloads](https://cranlogs.r-pkg.org/badges/grand-total/flashr)](https://CRAN.R-project.org/package=flashr)
+
 [![R-CMD-check](https://github.com/JeffreyRStevens/flashr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JeffreyRStevens/flashr/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/JeffreyRStevens/flashr/branch/main/graph/badge.svg?token=XGH2OV874R)](https://app.codecov.io/gh/JeffreyRStevens/flashr)
 <!-- badges: end -->
@@ -30,6 +34,13 @@ completely new decks. Also, while geared toward learning R, this package
 can be used to build decks for anything—not just computer syntax!
 
 ## Installation
+
+You can install the stable released version of flashr from
+[CRAN](https://cran.r-project.org/package=flashr) with:
+
+``` r
+install.packages("flashr")
+```
 
 You can install the development version of flashr like so:
 
@@ -91,7 +102,7 @@ To cite flashr, use:
 
 > Stevens, Jeffrey R. (2022). flashr: Creates flashcards of terms and
 > definitions. (version 0.1.0)
-> <https://github.com/JeffreyRStevens/flashr>
+> <https://cran.r-project.org/package=flashr>
 
 ## Contributing to this package
 

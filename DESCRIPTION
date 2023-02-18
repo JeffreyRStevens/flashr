@@ -7,8 +7,11 @@ Authors@R:
     role = c("aut", "cre", "cph"),
     comment = c(ORCID = "0000-0003-2375-1360"))
 Maintainer: Jeffrey R. Stevens <jeffrey.r.stevens@protonmail.com>
-Description: Creates sets of flashcards of terms and definitions that can be 
-    viewed in the RStudio viewer or a web browser.
+Description: Provides functions for creating flashcard decks of terms and 
+    definitions. This package creates HTML slides using 'revealjs' that can be 
+    viewed in the 'RStudio' viewer or a web browser.  Users can create 
+    flashcards from either existing built-in decks or create their own from CSV
+    files or vectors of function names.
 License: MIT + file LICENSE
 URL: https://github.com/JeffreyRStevens/flashr,
     https://jeffreyrstevens.github.io/flashr/

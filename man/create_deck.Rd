@@ -59,7 +59,7 @@ If running in RStudio, the flashcards are output to the viewer.
 Otherwise, they are output to a web browser.
 }
 \examples{
-\dontrun{
+\donttest{
 # Display terms then descriptions
 my_functions <- c("as_tibble()", "bind_rows()", "c()")
 create_deck(x = my_functions)

@@ -33,16 +33,15 @@
 #' @family functions for creating decks
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Display terms then descriptions
-#' flashcard(data_types)
+#' flashcard("data_types")
 #'
 #' # Display descriptions then terms
-#' flashcard(data_types, termsfirst = FALSE)
+#' flashcard("data_types", termsfirst = FALSE)
 #'
-#' # Display custom CSV file of terms and descriptions.
-#' # If package information is not included, set `package = FALSE`.
-#' flashcard(file = "operators.csv", package = FALSE)
+#' # Display terms without package information
+#' flashcard("data_types", package = FALSE)
 #' }
 flashcard <- function(x,
                       termsfirst = TRUE,
@@ -111,7 +110,7 @@ flashcard <- function(x,
 #' @family functions for creating decks
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Display terms then descriptions
 #' my_functions <- c("as_tibble()", "bind_rows()", "c()")
 #' create_deck(x = my_functions)
