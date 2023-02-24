@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# flashr <a href="https://jeffreyrstevens.github.io/flashr/"><img src="man/figures/flashr.png" align="right" width="100" class="logo"/></a>
+# flashr <a href="https://jeffreyrstevens.github.io/flashr/"><img src="man/figures/logo.png" align="right" width="100" class="logo"/></a>
 
 <!-- badges: start -->
 
