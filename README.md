@@ -45,8 +45,8 @@ install.packages("flashr")
 You can install the development version of flashr like so:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("JeffreyRStevens/flashr")
+# install.packages("remotes")
+remotes::install_github("JeffreyRStevens/flashr")
 ```
 
 ## Example
