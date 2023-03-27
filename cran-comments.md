@@ -1,12 +1,6 @@
 ## R CMD check results
 
-0 errors | 0 warnings | 2 notes
+0 errors | 0 warnings | 0 notes
 
-* This is a new release.
+* This is an update to address an OpenBLAS error detected by CRAN
 
-## Resubmission
-This is a resubmission. In this version I have:
-
-* Wrapped software 'RStudio' in single quotes.
-* Expanded Description field to provide more details about package functionality.
-* Replaced \dontrun{} with \donttest{} in examples.

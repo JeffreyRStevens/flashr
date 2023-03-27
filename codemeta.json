@@ -2,19 +2,25 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "flashr",
-  "description": "Creates sets of flashcards of terms and definitionsthat can be viewed in the RStudio viewer or a web browser.",
+  "description": "Provides functions for creating flashcard decks of terms and definitions. This package creates HTML slides using 'revealjs' that can be viewed in the 'RStudio' viewer or a web browser. Users can create flashcards from either existing built-in decks or create their own from CSV files or vectors of function names.",
   "name": "flashr: Create Flashcards of Terms and Definitions",
-  "relatedLink": "https://jeffreyrstevens.github.io/flashr/",
+  "relatedLink": ["https://jeffreyrstevens.github.io/flashr/", "https://CRAN.R-project.org/package=flashr"],
   "codeRepository": "https://github.com/JeffreyRStevens/flashr",
   "issueTracker": "https://github.com/JeffreyRStevens/flashr/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.2.2 Patched (2022-11-10 r83330)",
+  "runtimePlatform": "R version 4.2.3 (2023-03-15)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -185,5 +191,9 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "3538.379KB"
+  "fileSize": "3620.33KB",
+  "releaseNotes": "https://github.com/JeffreyRStevens/flashr/blob/master/NEWS.md",
+  "readme": "https://github.com/JeffreyRStevens/flashr/blob/main/README.md",
+  "contIntegration": ["https://github.com/JeffreyRStevens/flashr/actions/workflows/R-CMD-check.yaml", "https://app.codecov.io/gh/JeffreyRStevens/flashr"],
+  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#stable"
 }

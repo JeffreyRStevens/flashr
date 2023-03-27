@@ -1,3 +1,10 @@
+# flashr 0.1.1
+
+* Include new hex logo
+* Switch recommended GitHub install from {devtools} to {remotes} package
+* Make examples run only in interactive mode
+* Skip testing on CRAN
+
 # flashr 0.1.0
 
 * Create utility function to check if internet resources are available; otherwise, fail gracefully
