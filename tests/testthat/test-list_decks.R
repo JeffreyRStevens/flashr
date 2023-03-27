@@ -1,4 +1,3 @@
-
 test_that("list_decks works", {
   skip_on_cran()
   suppressMessages(expect_message(list_decks(), "Available flashcard decks"))

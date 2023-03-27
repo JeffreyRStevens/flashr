@@ -57,7 +57,6 @@ flashcard <- function(x,
 
   # Assign deck title and deckname
   title <- attr(deck, "title")
-  deckname <- attr(deck, "deckname")
   package <- attr(deck, "package")
 
   build_deck(deck,

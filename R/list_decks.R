@@ -1,4 +1,3 @@
-
 #' List available available flashcard decks
 #'
 #' @description This function searches for flashcard decks stored in GitHub
