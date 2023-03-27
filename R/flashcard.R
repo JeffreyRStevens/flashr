@@ -32,7 +32,7 @@
 #'
 #' @family functions for creating decks
 #'
-#' @examples
+#' @examplesIf interactive()
 #' \donttest{
 #' # Display terms then descriptions
 #' flashcard("data_types")
@@ -109,7 +109,7 @@ flashcard <- function(x,
 #'
 #' @family functions for creating decks
 #'
-#' @examples
+#' @examplesIf interactive()
 #' \donttest{
 #' # Display terms then descriptions
 #' my_functions <- c("as_tibble()", "bind_rows()", "c()")
