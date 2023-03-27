@@ -33,6 +33,7 @@ To narrow the results, include text in the \code{pattern} argument (for example,
 \code{choose_deck(pattern = "r4ds")}).
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \dontrun{
 # Choose from all available decks in default repository
 choose_deck()
@@ -43,6 +44,7 @@ choose_deck(pattern = "r4ds")
 # Choose from decks from specific repository
 choose_deck(repo = "JeffreyRStevens/flashr_decks")
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other functions for finding decks: 

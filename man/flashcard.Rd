@@ -55,13 +55,18 @@ If running in RStudio, the flashcards are output to the viewer.
 Otherwise, they are output to a web browser.
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 # Display terms then descriptions
 flashcard("data_types")
 
 # Display descriptions then terms
 flashcard("data_types", termsfirst = FALSE)
+
+# Display terms without package information
+flashcard("data_types", package = FALSE)
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other functions for creating decks: 

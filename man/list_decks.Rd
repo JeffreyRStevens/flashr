@@ -39,6 +39,7 @@ root directory. Then set the \code{repo} argument to your username and repo (see
 Examples).
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # View all available decks
 list_decks()
 
@@ -47,6 +48,7 @@ list_decks(pattern = "r4ds")
 
 # View decks from specific repository
 list_decks(repo = "JeffreyRStevens/flashr_decks")
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other functions for finding decks: 

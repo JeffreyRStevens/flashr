@@ -59,6 +59,7 @@ If running in RStudio, the flashcards are output to the viewer.
 Otherwise, they are output to a web browser.
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 # Display terms then descriptions
 my_functions <- c("as_tibble()", "bind_rows()", "c()")
@@ -70,6 +71,7 @@ create_deck(x = my_functions, title = "My deck")
 # Save the HTML version of the flashcard deck locally
 create_deck(x = my_functions, title = "My deck", file = "my_deck.html")
 }
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other functions for creating decks: 
