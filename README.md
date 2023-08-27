@@ -113,6 +113,11 @@ encouraged, but you may want to [raise an
 issue](https://github.com/JeffreyRStevens/flashr/issues) or [contact the
 maintainer](mailto:jeffrey.r.stevens@protonmail.com) first.
 
+## Acknowledgments
+
+This work was funded by US National Science Foundation grant
+NSF-1658837.
+
 ## References
 
 Hermans, F. (2021). The Programmer’s Brain. Manning.
