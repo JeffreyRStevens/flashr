@@ -1,3 +1,8 @@
+# flashr 0.1.2
+
+* Allow the export of Rmd files (#19)
+* Fix bug to allow `::` operator in decks (#18)
+
 # flashr 0.1.1
 
 * Include new hex logo
