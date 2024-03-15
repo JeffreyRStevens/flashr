@@ -52,7 +52,11 @@ test_that("fonts are specified properly", {
 
 test_that("output files are HTML", {
   skip_on_cran()
+  suppressMessages(expect_error(flashcard("data_types", file = "mytest.Rmd"), NA))
   suppressMessages(expect_error(flashcard("data_types", file = "mytest.HTML"), NA))
+  suppressMessages(expect_error(flashcard("data_types", file = "mytest.html"), NA))
   suppressMessages(expect_error(flashcard("data_types", file = "mytest.HTM")))
+  file.remove("mytest.Rmd")
+  file.remove("mytest.html")
   file.remove("mytest.HTML")
 })
