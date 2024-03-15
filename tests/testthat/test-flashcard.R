@@ -38,21 +38,25 @@ test_that("validations pass", {
 
 test_that("fonts are specified properly", {
   skip_on_cran()
-  suppressMessages(expect_error(flashcard("data_types", fontsize = "large"), NA))
-  suppressMessages(expect_error(flashcard("data_types", fontsize = "100%"), NA))
+  suppressMessages(expect_no_error(flashcard("data_types", fontsize = "large")))
+  suppressMessages(expect_no_error(flashcard("data_types", fontsize = "100%")))
   suppressMessages(expect_error(flashcard("data_types", fontsize = "100"), "The `fontsize` value is invalid"))
 
-  suppressMessages(expect_error(flashcard("data_types", fontcolor = "Aqua"), NA))
-  suppressMessages(expect_error(flashcard("data_types", fontcolor = "#000000"), NA))
+  suppressMessages(expect_no_error(flashcard("data_types", fontcolor = "Aqua")))
+  suppressMessages(expect_no_error(flashcard("data_types", fontcolor = "#000000")))
   suppressMessages(expect_error(flashcard("data_types", fontcolor = "tann"), "The `fontcolor` tann is not a valid color"))
-  suppressMessages(expect_error(flashcard("data_types", linkcolor = "Aqua"), NA))
-  suppressMessages(expect_error(flashcard("data_types", linkcolor = "#000000"), NA))
+  suppressMessages(expect_no_error(flashcard("data_types", linkcolor = "Aqua")))
+  suppressMessages(expect_no_error(flashcard("data_types", linkcolor = "#000000")))
   suppressMessages(expect_error(flashcard("data_types", linkcolor = "tann"), "The `linkcolor` tann is not a valid color"))
 })
 
 test_that("output files are HTML", {
   skip_on_cran()
-  suppressMessages(expect_error(flashcard("data_types", file = "mytest.HTML"), NA))
+  suppressMessages(expect_no_error(flashcard("data_types", file = "mytest.Rmd")))
+  suppressMessages(expect_no_error(flashcard("data_types", file = "mytest.HTML")))
+  suppressMessages(expect_no_error(flashcard("data_types", file = "mytest.html")))
   suppressMessages(expect_error(flashcard("data_types", file = "mytest.HTM")))
+  file.remove("mytest.Rmd")
+  file.remove("mytest.html")
   file.remove("mytest.HTML")
 })

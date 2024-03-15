@@ -327,12 +327,14 @@ build_deck <- function(deck,
   revealjs::revealjs_presentation()
   rmarkdown::render(input = rmdfile, quiet = TRUE)
 
-  # Save HTML file when requested
+  # Save HTML or Rmd file when requested
   if (!is.null(file)) {
     if (identical(tolower(tools::file_ext(file)), "html")) {
       file.copy(from = htmlfile, to = file, overwrite = TRUE)
+    } else if (identical(tolower(tools::file_ext(file)), "rmd")) {
+      file.copy(from = rmdfile, to = file, overwrite = TRUE)
     } else {
-      cli::cli_abort("Output files must be HTML or html.")
+      cli::cli_abort("Output files must be HTML or Rmd.")
     }
   }
 
@@ -350,7 +352,7 @@ build_deck <- function(deck,
 select_terms <- function(x) {
   all_functions <- utils::read.csv("https://raw.githubusercontent.com/JeffreyRStevens/flashr_decks/main/data/functions.csv")
   functions <- all_functions$term
-  operators <- subset(all_functions, !grepl("::", all_functions$function_name))
+  operators <- subset(all_functions, !grepl("\\w::\\w", all_functions$function_name))
   operators <- operators$term
 
   # Check if all functions are operators or include ()
