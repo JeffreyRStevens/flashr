@@ -100,8 +100,8 @@ for more details on creating your own flashcard deck.
 
 To cite flashr, use:
 
-> Stevens, Jeffrey R. (2022). flashr: Creates flashcards of terms and
-> definitions. (version 0.1.0)
+> Stevens, Jeffrey R. (2024). flashr: Creates flashcards of terms and
+> definitions. (version 0.1.2)
 > <https://cran.r-project.org/package=flashr>
 
 ## Contributing to this package
