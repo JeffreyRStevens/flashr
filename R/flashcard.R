@@ -350,7 +350,7 @@ build_deck <- function(deck,
 select_terms <- function(x) {
   all_functions <- utils::read.csv("https://raw.githubusercontent.com/JeffreyRStevens/flashr_decks/main/data/functions.csv")
   functions <- all_functions$term
-  operators <- subset(all_functions, !grepl("::", all_functions$function_name))
+  operators <- subset(all_functions, !grepl("\\w::\\w", all_functions$function_name))
   operators <- operators$term
 
   # Check if all functions are operators or include ()
