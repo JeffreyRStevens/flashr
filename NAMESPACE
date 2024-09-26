@@ -2,6 +2,9 @@
 
 export(choose_deck)
 export(create_deck)
+export(extract_code)
+export(extract_functions)
 export(flashcard)
 export(list_decks)
 importFrom(memoise,memoise)
+importFrom(utils,getParseData)
