@@ -87,8 +87,8 @@ build_functions_df <- function(file = NULL, fs = NULL, title, desc = TRUE) {
   operators <- utils::read.csv(operators_csv)$term
 
   # Create vector unique functions with appropriate ()
-  unique_functions <- unique(fs)
-  functions <- ifelse(unique_functions %in% operators, fs, paste0(fs, "()"))
+  unique_functions <- sort(unique(fs))
+  functions <- ifelse(unique_functions %in% operators, unique_functions, paste0(unique_functions, "()"))
 
   # Initiate descrips and pkgs
   descrips <- pkgs <- NA_character_
