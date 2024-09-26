@@ -2,7 +2,8 @@
 
 #' Extract code chunks from R Markdown or Quarto file
 #'
-#' @param file Character string of file name. Can be local file or URL.
+#' @param file Character string of file name for text that includes code chunks.
+#' Can be local file or URL.
 #'
 #' @return
 #' Returns character vector of individual lines of code.
@@ -12,6 +13,8 @@
 #' @examples
 #' extract_code("https://raw.githubusercontent.com/JeffreyRStevens/flashr/refs/heads/main/README.Rmd")
 extract_code <- function(file) {
+  stopifnot("'file' should be a character string with one element" =
+              typeof(file) == "character" & length(file) == 1)
   x <- xfun::read_utf8(file)
   res <- litedown::crack(x)
   unlist(lapply(res, function(el) {
@@ -34,6 +37,7 @@ extract_code <- function(file) {
 #' extract_functions(extract_code(
 #'   "https://raw.githubusercontent.com/JeffreyRStevens/flashr/refs/heads/main/README.Rmd"))
 extract_functions <- function(code) {
+  stopifnot("'code' should be a character vector" = typeof(code) == "character")
   d <- getParseData(x = parse(text = code, keep.source = TRUE))
   f <- d[d$token == 'SYMBOL_FUNCTION_CALL', 'text']
   for (s in d[d$token == 'SYMBOL', 'text']) {
@@ -47,11 +51,35 @@ extract_functions <- function(code) {
 
 
 
-build_functions_file <- function(fs, title, desc = TRUE) {
+#' Build dataframe of functions for input to flashcard()
+#'
+#' @param file Character string of file name for text that includes code chunks.
+#' Can be local file or URL.
+#' @param fs If not using a file, character vector of functions
+#' \[do not include ()\].
+#' @param title Character string of title for flashcard deck (required)
+#' @param desc Logical for whether to search for descriptions from
+#' flashr_decks
+#'
+#' @return
+#' Dataframe suitable to include in `flashcard()`.
+#'
+#' @export
+#'
+#' @examples
+#' build_functions_df(fs = c("apple", "apply", "+"), title = "Test")
+build_functions_df <- function(file = NULL, fs = NULL, title, desc = TRUE) {
   # Validate arguments
-  stopifnot("fs should be a character vector" = typeof(fs) == "character")
-  stopifnot("title should be a character vector" = typeof(title) == "character")
-  stopifnot("desc should be a logical" = typeof(desc) == "logical")
+  stopifnot("Needs argument for either file or fs but not both" =
+              (is.null(file) & !is.null(fs)) | (!is.null(file) & is.null(fs)))
+  if(!is.null(file))   stopifnot("'file' should be a character string with one element" =
+                                   typeof(file) == "character" & length(file) == 1)
+  if(!is.null(fs))   stopifnot("'fs' should be a character vector" = typeof(fs) == "character")
+  stopifnot("'title' should be a character vector" = typeof(title) == "character")
+  stopifnot("'desc' should be a logical" = typeof(desc) == "logical")
+
+  # Extract functions from files
+  if(!is.null(file)) fs <- extract_functions(extract_code(file))
 
   # Create vector of operators
   operators_csv <- "https://raw.githubusercontent.com/JeffreyRStevens/flashr/refs/heads/main/inst/extdata/operators.csv"
@@ -81,4 +109,5 @@ build_functions_file <- function(fs, title, desc = TRUE) {
   }
   data.frame(term = functions, description = descrips, package = pkgs, title = title)
 }
+
 

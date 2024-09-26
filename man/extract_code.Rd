@@ -7,7 +7,8 @@
 extract_code(file)
 }
 \arguments{
-\item{file}{Character string of file name. Can be local file or URL.}
+\item{file}{Character string of file name for text that includes code chunks.
+Can be local file or URL.}
 }
 \value{
 Returns character vector of individual lines of code.
