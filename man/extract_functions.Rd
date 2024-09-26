@@ -17,5 +17,6 @@ it returns "library" rather than "library()") included in R code.
 Extract function calls from character vector of R code
 }
 \examples{
-extract_functions(extract_code("https://raw.githubusercontent.com/JeffreyRStevens/flashr/refs/heads/main/README.Rmd"))
+extract_functions(extract_code(
+  "https://raw.githubusercontent.com/JeffreyRStevens/flashr/refs/heads/main/README.Rmd"))
 }

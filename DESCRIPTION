@@ -23,7 +23,7 @@ Imports:
     curl,
     gh,
     httr,
-    knitr,
+    litedown,
     memoise,
     revealjs,
     rmarkdown,
@@ -32,6 +32,7 @@ Imports:
     xfun
 Suggests: 
     covr,
+    knitr,
     withr
 VignetteBuilder: 
     knitr
