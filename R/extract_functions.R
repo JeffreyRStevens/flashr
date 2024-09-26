@@ -8,6 +8,10 @@
 #' @return
 #' Returns character vector of individual lines of code.
 #'
+#' @note
+#' This function is adapted from one Yihui Xie posted at
+#' https://yihui.org/en/2023/01/func-call/.
+#'
 #' @export
 #'
 #' @examples
@@ -30,6 +34,10 @@ extract_code <- function(file) {
 #' @return
 #' Returns character vector of function names without parentheses (e.g.,
 #' it returns "library" rather than "library()") included in R code.
+#'
+#' @note
+#' This function is adapted from one Yihui Xie posted at
+#' https://yihui.org/en/2023/01/func-call/.
 #'
 #' @export
 #'

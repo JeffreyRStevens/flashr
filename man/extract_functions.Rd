@@ -16,6 +16,10 @@ it returns "library" rather than "library()") included in R code.
 \description{
 Extract function calls from character vector of R code
 }
+\note{
+This function is adapted from one Yihui Xie posted at
+https://yihui.org/en/2023/01/func-call/.
+}
 \examples{
 extract_functions(extract_code(
   "https://raw.githubusercontent.com/JeffreyRStevens/flashr/refs/heads/main/README.Rmd"))
