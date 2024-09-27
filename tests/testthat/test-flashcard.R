@@ -3,10 +3,10 @@ test_that("validations pass", {
   testdeck <- read.csv(test_path("testdata", "operators.csv"))
   testdeck2 <- testdeck
   names(testdeck2) <- NULL
-  expect_error(validate_deck(letters))
-  expect_error(validate_deck("test"))
-  expect_error(validate_deck(1:5))
-  expect_error(validate_deck(testdeck2))
+  expect_error(validate_deck(letters), "This deck is not recognized as a available deck or a valid data frame or CSV file.")
+  expect_error(validate_deck("test"), "This deck is not recognized as a available deck or a valid data frame or CSV file.")
+  expect_error(validate_deck(1:5), "This deck is not recognized as a available deck or a valid data frame or CSV file.")
+  expect_error(validate_deck(testdeck2), "This data frame does not have term column.")
   testdeck3 <- testdeck[, 1:3]
   write.csv(testdeck3, test_path("testdata", "testdeck3.csv"))
   expect_message(validate_deck(test_path("testdata", "testdeck3.csv"),

@@ -60,15 +60,15 @@ flashcard <- function(x,
   package <- attr(deck, "package")
 
   build_deck(deck,
-    title = title,
-    termsfirst = termsfirst,
-    package = package,
-    theme = theme,
-    file = file,
-    fontsize = fontsize,
-    fontcolor = fontcolor,
-    linkcolor = linkcolor,
-    use_browser = use_browser
+             title = title,
+             termsfirst = termsfirst,
+             package = package,
+             theme = theme,
+             file = file,
+             fontsize = fontsize,
+             fontcolor = fontcolor,
+             linkcolor = linkcolor,
+             use_browser = use_browser
   )
 }
 
@@ -133,15 +133,15 @@ create_deck <- function(x,
   deck <- select_terms(x)
 
   build_deck(deck,
-    title = title,
-    termsfirst = termsfirst,
-    package = package,
-    theme = theme,
-    file = file,
-    fontsize = fontsize,
-    fontcolor = fontcolor,
-    linkcolor = linkcolor,
-    use_browser = use_browser
+             title = title,
+             termsfirst = termsfirst,
+             package = package,
+             theme = theme,
+             file = file,
+             fontsize = fontsize,
+             fontcolor = fontcolor,
+             linkcolor = linkcolor,
+             use_browser = use_browser
   )
 }
 
@@ -154,35 +154,62 @@ validate_deck <- function(x, package = package) {
     input <- deparse(substitute(x))
   }
 
-  # Validate input
-  if (length(input) > 1) {
-    cli::cli_abort("Input is a vector rather than available deck or CSV file.")
-  }
+  if (length(x) == 1) {
+    if (grepl(".csv", input)) { # if input is CSV file
+      if (length(input) > 1) { # check that it is not a vector
+        cli::cli_abort("Input should be single CSV file.")
+      } else {
+        # Get deck and deckname
+        deck <- utils::read.csv(input)
+        deckname <- gsub(".csv", "", basename(x))
+      }
 
-  if (grepl(".csv", input)) { # if input is CSV file
-    # Get deck and deckname
-    deck <- utils::read.csv(input)
-    deckname <- gsub(".csv", "", basename(x))
-
-    # Get title from file or use file name
-    if ("title" %in% names(deck)) {
+      # Get title from file or use file name
+      if ("title" %in% names(deck)) {
+        title <- deck$title[1]
+      } else {
+        title <- deckname
+        cli::cli_alert_info(
+          "No {.field title} column, so using filename for title."
+        )
+      }
+    } else if (input %in% valid_decks$decklabels) { # if input is in valid decks
+      # Get deck and deckname
+      deck <- utils::read.csv(paste0("https://raw.githubusercontent.com/JeffreyRStevens/flashr_decks/main/decks/", input, ".csv"),
+                              na.strings = ""
+      )
+      deckname <- input
       title <- deck$title[1]
-    } else {
-      title <- deckname
-      cli::cli_alert_info(
-        "No {.field title} column, so using filename for title."
+    } else { # if input is not CSV or valid deck
+      cli::cli_abort(
+        "This deck is not recognized as a available deck or a valid data frame or CSV file."
       )
     }
-  } else if (input %in% valid_decks$decklabels) { # if input is in valid decks
-    # Get deck and deckname
-    deck <- utils::read.csv(paste0("https://raw.githubusercontent.com/JeffreyRStevens/flashr_decks/main/decks/", input, ".csv"),
-      na.strings = ""
-    )
-    deckname <- input
-    title <- deck$title[1]
+  } else if (inherits(x, "data.frame")) { # if input is a data frame
+    deck <- x
+    deckname <- quote(deck)
+    if (!"term" %in% names(deck)) {
+      cli::cli_abort(
+        "This data frame does not have term column."
+      )
+    } else if (!"description" %in% names(deck)) {
+      cli::cli_abort(
+        "This data frame does not have description column."
+      )
+    }
+    else {
+      if ("title" %in% names(deck)) {
+        title <- deck$title[1]
+      } else {
+        title <- deckname
+        cli::cli_alert_info(
+          "No {.field title} column, so using filename for title."
+        )
+      }
+    }
   } else { # if input is not CSV or valid deck
     cli::cli_abort(
-      "This deck is not recognized as a available deck or a valid CSV file."
+      "This deck is not recognized as a available deck or a valid data frame or CSV file."
     )
   }
 
@@ -382,7 +409,7 @@ is_color <- function(x) {
   web_colors <- c("Pink", "LightPink", "HotPink", "DeepPink", "PaleVioletRed", "MediumVioletRed", "LightSalmon", "Salmon", "DarkSalmon", "LightCoral", "IndianRed", "Crimson", "FireBrick", "DarkRed", "Red", "OrangeRed", "Tomato", "Coral", "DarkOrange", "Orange", "Yellow", "Yellow", "LightYellow", "LemonChiffon", "LightGoldenrodYellow", "PapayaWhip", "Moccasin", "PeachPuff", "PaleGoldenrod", "Khaki", "DarkKhaki", "Gold", "Cornsilk", "BlanchedAlmond", "Bisque", "NavajoWhite", "Wheat", "BurlyWood", "Tan", "RosyBrown", "SandyBrown", "Goldenrod", "DarkGoldenrod", "Peru", "Chocolate", "SaddleBrown", "Sienna", "Brown", "Maroon", "DarkOliveGreen", "Olive", "OliveDrab", "YellowGreen", "LimeGreen", "Lime", "LawnGreen", "Chartreuse", "GreenYellow", "SpringGreen", "MediumSpringGreen", "LightGreen", "PaleGreen", "DarkSeaGreen", "MediumSeaGreen", "SeaGreen", "ForestGreen", "Green", "DarkGreen", "MediumAquamarine", "Aqua", "Cyan", "LightCyan", "PaleTurquoise", "Aquamarine", "Turquoise", "MediumTurquoise", "DarkTurquoise", "LightSeaGreen", "CadetBlue", "DarkCyan", "Teal", "LightSteelBlue", "PowderBlue", "LightBlue", "SkyBlue", "LightSkyBlue", "DeepSkyBlue", "DodgerBlue", "CornflowerBlue", "SteelBlue", "RoyalBlue", "Blue", "MediumBlue", "DarkBlue", "Navy", "MidnightBlue", "Lavender", "Thistle", "Plum", "Violet", "Orchid", "Fuchsia", "Magenta", "MediumOrchid", "MediumPurple", "BlueViolet", "DarkViolet", "DarkOrchid", "DarkMagenta", "Purple", "Indigo", "DarkSlateBlue", "RebeccaPurple", "SlateBlue", "MediumSlateBlue", "White", "Snow", "Honeydew", "MintCream", "Azure", "AliceBlue", "GhostWhite", "WhiteSmoke", "Seashell", "Beige", "OldLace", "FloralWhite", "Ivory", "AntiqueWhite", "Linen", "LavenderBlush", "MistyRose", "Gainsboro", "LightGrey", "Silver", "DarkGray", "Gray", "DimGray", "LightSlateGray", "SlateGray", "DarkSlateGray", "Black")
   all_colors <- c(web_colors, tolower(web_colors), grDevices::colors())
   return(x %in% all_colors | grepl("^#(\\d|[a-f]){6,8}$",
-    x,
-    ignore.case = TRUE
+                                   x,
+                                   ignore.case = TRUE
   ))
 }
