@@ -19,10 +19,9 @@
 extract_code <- function(file) {
   stopifnot("'file' should be a character string with one element" =
               typeof(file) == "character" & length(file) == 1)
-  x <- xfun::read_utf8(file)
-  res <- litedown::crack(x)
+  res <- litedown::crack(file)
   unlist(lapply(res, function(el) {
-    if (el$type == "code_chunk") el$source
+    if (el$options$engine == 'r' && el$type == "code_chunk") el$source
   }))
 }
 
@@ -76,7 +75,9 @@ extract_functions <- function(code) {
 #'
 #' @examples
 #' build_functions_df(fs = c("apple", "apply", "+"), title = "Test")
-build_functions_df <- function(file = NULL, fs = NULL, title, desc = TRUE) {
+build_functions_df <- function(file = NULL,
+                               fs = NULL, title,
+                               desc = TRUE) {
   # Validate arguments
   stopifnot("Needs argument for either file or fs but not both" =
               (is.null(file) & !is.null(fs)) | (!is.null(file) & is.null(fs)))

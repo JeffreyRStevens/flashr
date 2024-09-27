@@ -28,8 +28,7 @@ Imports:
     revealjs,
     rmarkdown,
     testthat,
-    utils,
-    xfun
+    utils
 Suggests: 
     covr,
     knitr,
