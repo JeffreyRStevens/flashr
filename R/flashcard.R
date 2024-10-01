@@ -53,7 +53,7 @@ flashcard <- function(x,
                       linkcolor = NULL,
                       use_browser = FALSE) {
   # Validate deck
-  deck <- validate_deck(x, package = package)
+  deck <- validate_deck(x, pkg = package)
 
   # Assign deck title and deckname
   title <- attr(deck, "title")
@@ -145,7 +145,7 @@ create_deck <- function(x,
   )
 }
 
-validate_deck <- function(x, package = package) {
+validate_deck <- function(x, pkg = package) {
   # Convert all deck objects to strings
   valid_decks <- list_decks(quiet = TRUE)
   if (is.character(x)) {
@@ -156,13 +156,9 @@ validate_deck <- function(x, package = package) {
 
   if (length(x) == 1) {
     if (grepl(".csv", input)) { # if input is CSV file
-      if (length(input) > 1) { # check that it is not a vector
-        cli::cli_abort("Input should be single CSV file.")
-      } else {
-        # Get deck and deckname
-        deck <- utils::read.csv(input)
-        deckname <- gsub(".csv", "", basename(x))
-      }
+      # Get deck and deckname
+      deck <- utils::read.csv(input)
+      deckname <- gsub(".csv", "", basename(x))
 
       # Get title from file or use file name
       if ("title" %in% names(deck)) {
@@ -187,7 +183,7 @@ validate_deck <- function(x, package = package) {
     }
   } else if (inherits(x, "data.frame")) { # if input is a data frame
     deck <- x
-    deckname <- quote(deck)
+    deckname <- deparse(substitute(x))
     if (!"term" %in% names(deck)) {
       cli::cli_abort(
         "This data frame does not have term column."
@@ -203,7 +199,7 @@ validate_deck <- function(x, package = package) {
       } else {
         title <- deckname
         cli::cli_alert_info(
-          "No {.field title} column, so using filename for title."
+          "No title column, so using {deckname} for title."
         )
       }
     }
@@ -212,14 +208,17 @@ validate_deck <- function(x, package = package) {
       "This deck is not recognized as a available deck or a valid data frame or CSV file."
     )
   }
-
   # Check if package column is present if package = TRUE
-  if (package && !"package" %in% names(deck)) {
+  if (pkg && !"package" %in% names(deck)) {
     cli::cli_alert_info("This deck does not include a {.field package} column. Setting {.code package = FALSE}.")
+    package <- FALSE
+  } else if (pkg) {
+    package <- TRUE
+  } else {
     package <- FALSE
   }
 
-  # Assign title and deckname and invisbily return output
+    # Assign title and deckname and invisbily return output
   attr(deck, "title") <- title
   attr(deck, "deckname") <- deckname
   attr(deck, "package") <- package
