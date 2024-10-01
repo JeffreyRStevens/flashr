@@ -88,11 +88,11 @@ You can also view [examples of all of the decks in HTML](https://jeffreyrstevens
 
 ## Creating your own decks
 
-In addition to built-in decks, you can create your own decks by either making a CSV file with the terms and descriptions or passing a vector of functions from the [flashr_decks list of functions](https://jeffreyrstevens.github.io/flashr_decks/functions.html). 
+In addition to built-in decks, you can create your own decks by making a data frame or CSV file with the terms and descriptions or passing a vector of functions from the [flashr_decks list of functions](https://jeffreyrstevens.github.io/flashr_decks/functions.html). 
 
-### CSV file
+### Data frame or CSV file
 
-Simply create a CSV file that includes a column labeled `term` and a column labeled `description`. You can also include a `package` column listing package names and a `title` column to give your presentation a title, but these are optional arguments^[Note `title` is required when submitting to [flashr_decks](https://github.com/JeffreyRStevens/flashr_decks)]. Here is an example of a CSV file with all of the columns.
+Simply create a data frame or CSV file that includes a column labeled `term` and a column labeled `description`. You can also include a `package` column listing package names and a `title` column to give your presentation a title, but these are optional arguments^[Note `title` is required when submitting to [flashr_decks](https://github.com/JeffreyRStevens/flashr_decks)]. Here is an example of a CSV file with all of the columns.
 
 ```{r}
 my_deck <- read.csv("../inst/extdata/operators.csv")
@@ -118,6 +118,10 @@ create_deck(my_functions,
 ```
 
 All of the arguments from [`flashcard()`](https://jeffreyrstevens.github.io/flashr/reference/flashcard.html) apply to [`create_deck()`](https://jeffreyrstevens.github.io/flashr/reference/create_deck.html), so you can customize the theme, fonts, etc. and save the output locally.
+
+### Extracting functions from R Markdown and Quarto files
+
+If you want to extract functions from existing R Markdown or Quarto files, you can use `build_functions_df()`. Just pass it either a file path or a URL for an R Markdown or Quarto file, and it will extract those functions and create a data frame that can be passed to `flashcard()` to create a deck. However, to include descriptions, you will either need to pull them from the [table at the flashr_decks repo](https://jeffreyrstevens.github.io/flashr_decks/functions.html) by setting `desc = TRUE` (the default option) or edit the data frame by hand either directly in R or by writing to a CSV, editing the CSV, and importing it again. If there are functions you'd like to see added to the flashr_decks table, [let me know](mailto:jeffrey.r.stevens@protonmail.com).
 
 ### Expanding your flashcards
 

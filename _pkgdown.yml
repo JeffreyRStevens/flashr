@@ -15,3 +15,8 @@ reference:
   contents:
   - data_types
   - vectors
+- title: Extracting functions
+  contents:
+  - extract_functions
+  - extract_code
+  - build_functions_df
