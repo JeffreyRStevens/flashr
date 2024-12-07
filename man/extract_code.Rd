@@ -2,19 +2,30 @@
 % Please edit documentation in R/extract_functions.R
 \name{extract_code}
 \alias{extract_code}
-\title{Extract code chunks from R Markdown or Quarto file}
+\title{Extract code blocks from R Markdown or Quarto file}
 \usage{
-extract_code(file)
+extract_code(file, empty = TRUE, comments = TRUE)
 }
 \arguments{
-\item{file}{Character string of file name for text that includes code chunks.
+\item{file}{Character string of file name for text that includes code blocks.
 Can be local file or URL.}
+
+\item{empty}{Logical indicating whether to include empty lines (\code{""}) or
+whether to remove empty lines (default is TRUE, which includes empty lines).}
+
+\item{comments}{Logical indicating whether to include comment lines starting
+with \verb{#} or whether to remove comment lines (default is TRUE, which includes
+comment lines).}
 }
 \value{
 Returns character vector of individual lines of code.
 }
 \description{
-Extract code chunks from R Markdown or Quarto file
+To extract code blocks, apply \code{extract_code()} to R Markdown or Quarto files
+either locally or via a URL. This function returns a character vector where
+each line of content from an R code block is an element of the vector. Code
+block options are not returned---only the content of the block. Code blocks
+from other languages/engines (e.g., Python) are not returned.
 }
 \note{
 This function is adapted from one Yihui Xie posted at
@@ -23,3 +34,9 @@ https://yihui.org/en/2023/01/func-call/.
 \examples{
 extract_code("https://raw.githubusercontent.com/JeffreyRStevens/flashr/refs/heads/main/README.Rmd")
 }
+\seealso{
+Other functions for extracting code and functions: 
+\code{\link{build_functions_df}()},
+\code{\link{extract_functions}()}
+}
+\concept{functions for extracting code and functions}

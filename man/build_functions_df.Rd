@@ -2,28 +2,47 @@
 % Please edit documentation in R/extract_functions.R
 \name{build_functions_df}
 \alias{build_functions_df}
-\title{Build dataframe of functions for input to flashcard()}
+\title{Build data frame of functions for input to flashcard()}
 \usage{
-build_functions_df(file = NULL, fs = NULL, title, desc = TRUE)
+build_functions_df(file = NULL, fs = NULL, title, desc = TRUE, omit = TRUE)
 }
 \arguments{
-\item{file}{Character string of file name for text that includes code chunks.
+\item{file}{Character string of file name for text that includes code blocks.
 Can be local file or URL.}
 
 \item{fs}{If not using a file, character vector of functions
-[do not include ()].}
+[do not include \verb{()}].}
 
 \item{title}{Character string of title for flashcard deck (required)}
 
 \item{desc}{Logical for whether to search for descriptions from
-flashr_decks}
+flashr_decks  (default is TRUE, which includes descriptions from
+flashr_decks).}
+
+\item{omit}{Logical for whether to omit terms that have no descriptions from
+flashr_decks (default is TRUE, which omits terms with no descriptions).}
 }
 \value{
-Dataframe suitable to include in \code{flashcard()}.
+Data frame suitable to include in \code{flashcard()}.
 }
 \description{
-Build dataframe of functions for input to flashcard()
+To create a data frame of functions that can be used to create a flashcard
+deck, use \code{build_functions_df()}. This function calls \code{\link[=extract_functions]{extract_functions()}}
+to find the functions if the \code{file} argument is specified. Otherwise, users
+can pass a character vector of function names to the \code{fs} argument. Either
+way, a title must be passed to \code{title} to create the data frame.
+
+Users can then either complete the \emph{description} column of the data frame
+with their own descriptions or set the \code{desc} argument to TRUE to use
+descriptions from
+\href{https://jeffreyrstevens.github.io/flashr_decks/functions.html}{flashr_decks}.
 }
 \examples{
 build_functions_df(fs = c("apple", "apply", "+"), title = "Test")
 }
+\seealso{
+Other functions for extracting code and functions: 
+\code{\link{extract_code}()},
+\code{\link{extract_functions}()}
+}
+\concept{functions for extracting code and functions}
