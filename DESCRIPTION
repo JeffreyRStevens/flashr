@@ -23,7 +23,6 @@ Imports:
     curl,
     gh,
     httr,
-    litedown,
     memoise,
     revealjs,
     rmarkdown,
@@ -32,6 +31,7 @@ Imports:
 Suggests: 
     covr,
     knitr,
+    litedown,
     withr
 VignetteBuilder: 
     knitr
