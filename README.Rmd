@@ -75,6 +75,7 @@ Then run the `flashcard()` function on your file.
 
 ```{r eval = FALSE}
 flashcard("inst/extdata/operators.csv")
+
 ```
 
 Check out the [Get Started vignette](https://jeffreyrstevens.github.io/flashr/articles/flashr.html#creating-your-own-decks) for more details on creating your own flashcard deck.
