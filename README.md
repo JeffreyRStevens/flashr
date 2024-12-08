@@ -65,11 +65,6 @@ If you would like to present descriptions before terms:
 flashcard("data_types", termsfirst = FALSE)
 ```
 
-<!-- ![GIF of RStudio IDE console showing -->
-<!-- the loading of flashr \[library(flashr)\] and the creation of a data -->
-<!-- types deck with flashcard(”data_types”). The deck opens in the viewer -->
-<!-- where terms and descriptions are clicked through.](man/figures/flashr.gif) -->
-
 <img src="man/figures/flashr.gif" alt="GIF of RStudio IDE console showing
 the loading of flashr \[library(flashr)\] and the creation of a data
 types deck with flashcard('data_types'). The deck opens in the viewer
@@ -84,6 +79,7 @@ want to specify the title of the deck.
 
 ``` r
 my_deck <- read.csv("inst/extdata/operators.csv")
+
 head(my_deck)
 #>   term            description package     title
 #> 1    =    assignment operator    base Operators
@@ -109,7 +105,7 @@ for more details on creating your own flashcard deck.
 To cite flashr, use:
 
 > Stevens, Jeffrey R. (2024). flashr: Creates flashcards of terms and
-> definitions. (version 0.1.2)
+> definitions. (version 0.2.0)
 > <https://cran.r-project.org/package=flashr>
 
 ## Contributing to this package
