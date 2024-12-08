@@ -71,6 +71,7 @@ To build your own deck, save a CSV file with a `term` column and a `description`
 
 ```{r}
 my_deck <- read.csv("inst/extdata/operators.csv")
+
 head(my_deck)
 ```
 

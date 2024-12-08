@@ -33,7 +33,7 @@ ex_function_df2 <- data.frame(
 
 test_that("code is extracted", {
   expect_equal(extract_code(file = rmd)[1], "knitr::opts_chunk$set(")
-  expect_equal(extract_code(file = rmd)[15], "flashcard(\"inst/extdata/operators.csv\")")
+  expect_equal(extract_code(file = rmd)[16], "flashcard(\"inst/extdata/operators.csv\")")
   expect_error(
     extract_code(file = 1),
     "'file' should be a character string with one element"
