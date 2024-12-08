@@ -4,6 +4,8 @@
   "identifier": "flashr",
   "description": "Provides functions for creating flashcard decks of terms and definitions. This package creates HTML slides using 'revealjs' that can be viewed in the 'RStudio' viewer or a web browser. Users can create flashcards from either existing built-in decks or create their own from CSV files or vectors of function names.",
   "name": "flashr: Create Flashcards of Terms and Definitions",
+  "relatedLink": "https://jeffreyrstevens.github.io/flashr/",
+  "codeRepository": "https://github.com/JeffreyRStevens/flashr",
   "issueTracker": "https://github.com/JeffreyRStevens/flashr/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.2.0",
@@ -206,5 +208,5 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "3685.496KB"
+  "fileSize": "3641.988KB"
 }
