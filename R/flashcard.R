@@ -60,15 +60,15 @@ flashcard <- function(x,
   package <- attr(deck, "package")
 
   build_deck(deck,
-             title = title,
-             termsfirst = termsfirst,
-             package = package,
-             theme = theme,
-             file = file,
-             fontsize = fontsize,
-             fontcolor = fontcolor,
-             linkcolor = linkcolor,
-             use_browser = use_browser
+    title = title,
+    termsfirst = termsfirst,
+    package = package,
+    theme = theme,
+    file = file,
+    fontsize = fontsize,
+    fontcolor = fontcolor,
+    linkcolor = linkcolor,
+    use_browser = use_browser
   )
 }
 
@@ -133,15 +133,15 @@ create_deck <- function(x,
   deck <- select_terms(x)
 
   build_deck(deck,
-             title = title,
-             termsfirst = termsfirst,
-             package = package,
-             theme = theme,
-             file = file,
-             fontsize = fontsize,
-             fontcolor = fontcolor,
-             linkcolor = linkcolor,
-             use_browser = use_browser
+    title = title,
+    termsfirst = termsfirst,
+    package = package,
+    theme = theme,
+    file = file,
+    fontsize = fontsize,
+    fontcolor = fontcolor,
+    linkcolor = linkcolor,
+    use_browser = use_browser
   )
 }
 
@@ -172,7 +172,7 @@ validate_deck <- function(x, pkg = package) {
     } else if (input %in% valid_decks$decklabels) { # if input is in valid decks
       # Get deck and deckname
       deck <- utils::read.csv(paste0("https://raw.githubusercontent.com/JeffreyRStevens/flashr_decks/main/decks/", input, ".csv"),
-                              na.strings = ""
+        na.strings = ""
       )
       deckname <- input
       title <- deck$title[1]
@@ -192,8 +192,7 @@ validate_deck <- function(x, pkg = package) {
       cli::cli_abort(
         "This data frame does not have description column."
       )
-    }
-    else {
+    } else {
       if ("title" %in% names(deck)) {
         title <- deck$title[1]
       } else {
@@ -218,7 +217,7 @@ validate_deck <- function(x, pkg = package) {
     package <- FALSE
   }
 
-    # Assign title and deckname and invisbily return output
+  # Assign title and deckname and invisbily return output
   attr(deck, "title") <- title
   attr(deck, "deckname") <- deckname
   attr(deck, "package") <- package
@@ -408,7 +407,7 @@ is_color <- function(x) {
   web_colors <- c("Pink", "LightPink", "HotPink", "DeepPink", "PaleVioletRed", "MediumVioletRed", "LightSalmon", "Salmon", "DarkSalmon", "LightCoral", "IndianRed", "Crimson", "FireBrick", "DarkRed", "Red", "OrangeRed", "Tomato", "Coral", "DarkOrange", "Orange", "Yellow", "Yellow", "LightYellow", "LemonChiffon", "LightGoldenrodYellow", "PapayaWhip", "Moccasin", "PeachPuff", "PaleGoldenrod", "Khaki", "DarkKhaki", "Gold", "Cornsilk", "BlanchedAlmond", "Bisque", "NavajoWhite", "Wheat", "BurlyWood", "Tan", "RosyBrown", "SandyBrown", "Goldenrod", "DarkGoldenrod", "Peru", "Chocolate", "SaddleBrown", "Sienna", "Brown", "Maroon", "DarkOliveGreen", "Olive", "OliveDrab", "YellowGreen", "LimeGreen", "Lime", "LawnGreen", "Chartreuse", "GreenYellow", "SpringGreen", "MediumSpringGreen", "LightGreen", "PaleGreen", "DarkSeaGreen", "MediumSeaGreen", "SeaGreen", "ForestGreen", "Green", "DarkGreen", "MediumAquamarine", "Aqua", "Cyan", "LightCyan", "PaleTurquoise", "Aquamarine", "Turquoise", "MediumTurquoise", "DarkTurquoise", "LightSeaGreen", "CadetBlue", "DarkCyan", "Teal", "LightSteelBlue", "PowderBlue", "LightBlue", "SkyBlue", "LightSkyBlue", "DeepSkyBlue", "DodgerBlue", "CornflowerBlue", "SteelBlue", "RoyalBlue", "Blue", "MediumBlue", "DarkBlue", "Navy", "MidnightBlue", "Lavender", "Thistle", "Plum", "Violet", "Orchid", "Fuchsia", "Magenta", "MediumOrchid", "MediumPurple", "BlueViolet", "DarkViolet", "DarkOrchid", "DarkMagenta", "Purple", "Indigo", "DarkSlateBlue", "RebeccaPurple", "SlateBlue", "MediumSlateBlue", "White", "Snow", "Honeydew", "MintCream", "Azure", "AliceBlue", "GhostWhite", "WhiteSmoke", "Seashell", "Beige", "OldLace", "FloralWhite", "Ivory", "AntiqueWhite", "Linen", "LavenderBlush", "MistyRose", "Gainsboro", "LightGrey", "Silver", "DarkGray", "Gray", "DimGray", "LightSlateGray", "SlateGray", "DarkSlateGray", "Black")
   all_colors <- c(web_colors, tolower(web_colors), grDevices::colors())
   return(x %in% all_colors | grepl("^#(\\d|[a-f]){6,8}$",
-                                   x,
-                                   ignore.case = TRUE
+    x,
+    ignore.case = TRUE
   ))
 }

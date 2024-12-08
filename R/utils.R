@@ -4,7 +4,7 @@
 #' gracefully with an informative message if the resource is not available or
 #' has changed (and not give a check warning nor error)." This solution is
 #' adapted from kvasilopoulos' response at
-#' <https://community.rstudio.com/t/internet-resources-should-fail-gracefully/49199/11>.
+#' <https://forum.posit.co/t/internet-resources-should-fail-gracefully/49199/11>.
 #' \emph{This function is not exported.}
 #'
 #' @param remote_file Remote file to be downloaded.

@@ -1,5 +1,3 @@
-
-
 #' Extract code blocks from R Markdown or Quarto file
 #'
 #' @description
@@ -22,7 +20,7 @@
 #'
 #' @note
 #' This function is adapted from one Yihui Xie posted at
-#' https://yihui.org/en/2023/01/func-call/.
+#' <https://yihui.org/en/2023/01/func-call/>.
 #'
 #' @export
 #'
@@ -33,11 +31,13 @@
 extract_code <- function(file,
                          empty = TRUE,
                          comments = TRUE) {
-  stopifnot("'file' should be a character string with one element" =
-              typeof(file) == "character" & length(file) == 1)
+  stopifnot(
+    "'file' should be a character string with one element" =
+      typeof(file) == "character" & length(file) == 1
+  )
   res <- litedown::crack(file)
   code <- unlist(lapply(res, function(el) {
-    if (el$options$engine == 'r' && el$type == "code_chunk") el$source
+    if (el$options$engine == "r" && el$type == "code_chunk") el$source
   }))
   if (!empty) {
     code <- code[code != ""]
@@ -73,7 +73,7 @@ extract_code <- function(file,
 #'
 #' @note
 #' This function is adapted from one Yihui Xie posted at
-#' https://yihui.org/en/2023/01/func-call/.
+#' <https://yihui.org/en/2023/01/func-call/>.
 #'
 #' @export
 #'
@@ -81,17 +81,21 @@ extract_code <- function(file,
 #'
 #' @examples
 #' extract_functions(extract_code(
-#'   "https://raw.githubusercontent.com/JeffreyRStevens/flashr/refs/heads/main/README.Rmd"))
+#'   "https://raw.githubusercontent.com/JeffreyRStevens/flashr/refs/heads/main/README.Rmd"
+#' ))
 extract_functions <- function(code,
                               duplicates = TRUE) {
   stopifnot("'code' should be a character vector" = typeof(code) == "character")
   d <- getParseData(x = parse(text = code, keep.source = TRUE))
-  f <- d[d$token == 'SYMBOL_FUNCTION_CALL', 'text']
-  for (s in d[d$token == 'SYMBOL', 'text']) {
-    tryCatch({
-      ev <- eval(as.symbol(s), parent.frame())
-      if (is.function(ev)) f = c(f, s)
-    }, error = function(e) NULL)
+  f <- d[d$token == "SYMBOL_FUNCTION_CALL", "text"]
+  for (s in d[d$token == "SYMBOL", "text"]) {
+    tryCatch(
+      {
+        ev <- eval(as.symbol(s), parent.frame())
+        if (is.function(ev)) f <- c(f, s)
+      },
+      error = function(e) NULL
+    )
   }
   if (duplicates) {
     f
@@ -142,16 +146,22 @@ build_functions_df <- function(file = NULL,
                                desc = TRUE,
                                omit = TRUE) {
   # Validate arguments
-  stopifnot("Needs argument for either file or fs but not both" =
-              (is.null(file) & !is.null(fs)) | (!is.null(file) & is.null(fs)))
-  if(!is.null(file))   stopifnot("'file' should be a character string with one element" =
-                                   typeof(file) == "character" & length(file) == 1)
-  if(!is.null(fs))   stopifnot("'fs' should be a character vector" = typeof(fs) == "character")
+  stopifnot(
+    "Needs argument for either file or fs but not both" =
+      (is.null(file) & !is.null(fs)) | (!is.null(file) & is.null(fs))
+  )
+  if (!is.null(file)) {
+    stopifnot(
+      "'file' should be a character string with one element" =
+        typeof(file) == "character" & length(file) == 1
+    )
+  }
+  if (!is.null(fs)) stopifnot("'fs' should be a character vector" = typeof(fs) == "character")
   stopifnot("'title' should be a character vector" = typeof(title) == "character")
   stopifnot("'desc' should be a logical" = typeof(desc) == "logical")
 
   # Extract functions from files
-  if(!is.null(file)) fs <- extract_functions(extract_code(file))
+  if (!is.null(file)) fs <- extract_functions(extract_code(file))
 
   # Create vector of operators
   operators_csv <- "https://raw.githubusercontent.com/JeffreyRStevens/flashr/refs/heads/main/inst/extdata/operators.csv"
@@ -172,18 +182,18 @@ build_functions_df <- function(file = NULL,
     all_functions <- utils::read.csv(functions_csv)
     for (i in seq_along(functions)) {
       descrips[i] <- ifelse(functions[i] %in% all_functions$term,
-                            all_functions[all_functions$term == functions[i], ]$description,
-                            NA_character_)
+        all_functions[all_functions$term == functions[i], ]$description,
+        NA_character_
+      )
       pkgs[i] <- ifelse(functions[i] %in% all_functions$term,
-                        all_functions[all_functions$term == functions[i], ]$package,
-                        NA_character_)
+        all_functions[all_functions$term == functions[i], ]$package,
+        NA_character_
+      )
     }
   }
   df <- data.frame(term = functions, description = descrips, package = pkgs, title = title)
-  if(omit) {
+  if (omit) {
     df <- df[!is.na(df$desc), ]
   }
   df
 }
-
-

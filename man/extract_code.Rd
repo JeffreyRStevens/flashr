@@ -29,7 +29,7 @@ from other languages/engines (e.g., Python) are not returned.
 }
 \note{
 This function is adapted from one Yihui Xie posted at
-https://yihui.org/en/2023/01/func-call/.
+\url{https://yihui.org/en/2023/01/func-call/}.
 }
 \examples{
 extract_code("https://raw.githubusercontent.com/JeffreyRStevens/flashr/refs/heads/main/README.Rmd")
