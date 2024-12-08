@@ -65,7 +65,15 @@ If you would like to present descriptions before terms:
 flashcard("data_types", termsfirst = FALSE)
 ```
 
-![](man/figures/flashr.gif)
+<!-- ![GIF of RStudio IDE console showing -->
+<!-- the loading of flashr \[library(flashr)\] and the creation of a data -->
+<!-- types deck with flashcard(”data_types”). The deck opens in the viewer -->
+<!-- where terms and descriptions are clicked through.](man/figures/flashr.gif) -->
+
+<img src="man/figures/flashr.gif" alt="GIF of RStudio IDE console showing
+the loading of flashr \[library(flashr)\] and the creation of a data
+types deck with flashcard('data_types'). The deck opens in the viewer
+where terms and descriptions are clicked through.">
 
 ## Building decks
 

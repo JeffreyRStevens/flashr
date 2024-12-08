@@ -60,7 +60,14 @@ This randomizes the order of terms and give terms before descriptions. If you wo
 flashcard("data_types", termsfirst = FALSE)
 ```
 
-![](man/figures/flashr.gif)
+<!-- ![GIF of RStudio IDE console showing -->
+<!-- the loading of flashr \[library(flashr)\] and the creation of a data -->
+<!-- types deck with flashcard(”data_types”). The deck opens in the viewer -->
+<!-- where terms and descriptions are clicked through.](man/figures/flashr.gif) -->
+<img src="man/figures/flashr.gif" alt="GIF of RStudio IDE console showing
+the loading of flashr \[library(flashr)\] and the creation of a data
+types deck with flashcard('data_types'). The deck opens in the viewer
+where terms and descriptions are clicked through.">
 
 ## Building decks
 
@@ -75,7 +82,6 @@ Then run the `flashcard()` function on your file.
 
 ```{r eval = FALSE}
 flashcard("inst/extdata/operators.csv")
-
 ```
 
 Check out the [Get Started vignette](https://jeffreyrstevens.github.io/flashr/articles/flashr.html#creating-your-own-decks) for more details on creating your own flashcard deck.
