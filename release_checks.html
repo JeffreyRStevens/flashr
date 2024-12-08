@@ -32,7 +32,7 @@
       <small class="dont-index">Source: <a href="https://github.com/JeffreyRStevens/flashr/blob/main/release_checks.md" class="external-link"><code>release_checks.md</code></a></small>
     </div>
 
-<p>devtools::document() devtools::build_readme() devtools::test_coverage() covr::package_coverage(type = c(“examples”, “vignettes”), commentDonttest = FALSE, commentDontrun = FALSE) urlchecker::url_check() spelling::spell_check_package() styler::style_pkg() lintr::lint_package() usethis::use_version(“major/minor/patch”) pkgdown::build_site() rcmdcheck::rcmdcheck() usethis::use_release_issue() devtools::check(remote = TRUE, manual = TRUE) devtools::check_win_devel()</p>
+<p>devtools::document() devtools::build_readme() devtools::test_coverage() covr::package_coverage(type = c(“examples”, “vignettes”), commentDonttest = FALSE, commentDontrun = FALSE) urlchecker::url_check() spelling::spell_check_package() styler::style_pkg() lintr::lint_package() usethis::use_version(“major/minor/patch”) pkgdown::build_site() rcmdcheck::rcmdcheck() covr::covr::codecov(token = “????”) codemeta::write_codemeta() devtools::check(remote = TRUE, manual = TRUE) devtools::check_win_devel() usethis::use_release_issue()</p>
 
   </main></div>
 
