@@ -4,17 +4,15 @@
   "identifier": "flashr",
   "description": "Provides functions for creating flashcard decks of terms and definitions. This package creates HTML slides using 'revealjs' that can be viewed in the 'RStudio' viewer or a web browser. Users can create flashcards from either existing built-in decks or create their own from CSV files or vectors of function names.",
   "name": "flashr: Create Flashcards of Terms and Definitions",
-  "relatedLink": ["https://jeffreyrstevens.github.io/flashr/", "https://CRAN.R-project.org/package=flashr"],
-  "codeRepository": "https://github.com/JeffreyRStevens/flashr",
   "issueTracker": "https://github.com/JeffreyRStevens/flashr/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.3 (2024-02-29)",
+  "runtimePlatform": "R version 4.4.2 (2024-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -72,6 +70,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "litedown",
+      "name": "litedown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=litedown"
     },
     {
       "@type": "SoftwareApplication",
@@ -189,11 +199,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=testthat"
     },
+    "10": {
+      "@type": "SoftwareApplication",
+      "identifier": "utils",
+      "name": "utils"
+    },
     "SystemRequirements": null
   },
-  "fileSize": "3621.302KB",
-  "releaseNotes": "https://github.com/JeffreyRStevens/flashr/blob/master/NEWS.md",
-  "readme": "https://github.com/JeffreyRStevens/flashr/blob/main/README.md",
-  "contIntegration": ["https://github.com/JeffreyRStevens/flashr/actions/workflows/R-CMD-check.yaml", "https://app.codecov.io/gh/JeffreyRStevens/flashr"],
-  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#stable"
+  "fileSize": "3685.496KB"
 }

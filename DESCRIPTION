@@ -1,7 +1,7 @@
 Type: Package
 Package: flashr
 Title: Create Flashcards of Terms and Definitions
-Version: 0.1.2
+Version: 0.2.0
 Authors@R: 
     person("Jeffrey R.", "Stevens", , "jeffrey.r.stevens@protonmail.com", 
     role = c("aut", "cre", "cph"),
@@ -13,8 +13,7 @@ Description: Provides functions for creating flashcard decks of terms and
     flashcards from either existing built-in decks or create their own from CSV
     files or vectors of function names.
 License: MIT + file LICENSE
-URL: https://github.com/JeffreyRStevens/flashr,
-    https://jeffreyrstevens.github.io/flashr/
+URL: https://github.com/JeffreyRStevens/flashr, https://jeffreyrstevens.github.io/flashr/
 BugReports: https://github.com/JeffreyRStevens/flashr/issues
 Depends: 
     R (>= 2.10)
