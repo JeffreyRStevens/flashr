@@ -14,7 +14,8 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![Total
 Downloads](https://cranlogs.r-pkg.org/badges/grand-total/flashr)](https://CRAN.R-project.org/package=flashr)
 [![R-CMD-check](https://github.com/JeffreyRStevens/flashr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JeffreyRStevens/flashr/actions/workflows/R-CMD-check.yaml)
-[![codecov](https://codecov.io/gh/JeffreyRStevens/flashr/branch/main/graph/badge.svg?token=XGH2OV874R)](https://app.codecov.io/gh/JeffreyRStevens/flashr)
+[![Codecov test
+coverage](https://codecov.io/gh/JeffreyRStevens/flashr/graph/badge.svg)](https://app.codecov.io/gh/JeffreyRStevens/flashr)
 <!-- badges: end -->
 
 Learning all of the functions needed to become proficient in R is a
