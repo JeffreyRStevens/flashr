@@ -60,7 +60,8 @@ Otherwise, they are output to a web browser.</p>
 <span>  fontsize <span class="op">=</span> <span class="st">"default"</span>,</span>
 <span>  fontcolor <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  linkcolor <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  use_browser <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  use_browser <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  omit_na <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -110,6 +111,12 @@ color name, or hex code.</p></dd>
 <dt id="arg-use-browser">use_browser<a class="anchor" aria-label="anchor" href="#arg-use-browser"></a></dt>
 <dd><p>Logical indicating whether to show the presentation in the
 RStudio viewer when available (FALSE) or the system's default browser (TRUE)</p></dd>
+
+
+<dt id="arg-omit-na">omit_na<a class="anchor" aria-label="anchor" href="#arg-omit-na"></a></dt>
+<dd><p>Logical indicating whether to omit terms that have no
+descriptions from the deck (default is TRUE, which omits terms with no
+descriptions)</p></dd>
 
 </dl></div>
     <div class="section level2">
