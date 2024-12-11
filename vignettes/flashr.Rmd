@@ -49,14 +49,14 @@ flashcard("data_types", theme = "sky")
 ```
 
 ## Available decks
-Currently, `{flashr}` includes a few example decks (`data_types`, `vectors`) and decks of functions and arguments derived from [R for Data Science (first edition)](https://r4ds.had.co.nz/). These decks are housed at the [flashr_decks GitHub repo](https://github.com/JeffreyRStevens/flashr_decks), and more are on the way.
+Currently, `{flashr}` includes a few example decks (`data_types`, `vectors`) and decks of functions and arguments derived from [R for Data Science (first edition)](https://r4ds.had.co.nz/) and  [R for Data Science, second edition](https://r4ds.hadley.nz/). These decks are housed at the [flashr_decks GitHub repo](https://github.com/JeffreyRStevens/flashr_decks).
 
 To see what decks are available, use [`list_decks()`](https://jeffreyrstevens.github.io/flashr/reference/list_decks.html):
 ```{r}
 list_decks()
 ```
 
-Note that the list of decks includes the deck names in parenthesis next to the descriptions. For instance, for _R4DS Chapter 3_, the name is `r4ds3`.
+Note that the list of decks includes the deck names in parenthesis next to the descriptions. For instance, for _R4DS Chapter 3_, the name is `r4ds03`.
 
 This function includes pattern matching. So if you want to narrow you list down, add a search string.
 ```{r}
@@ -81,7 +81,7 @@ choose_deck("r4ds", choice = 2)
 
 Of course, a faster way to do this is to enter the deck name directly into [`flashcard()`](https://jeffreyrstevens.github.io/flashr/reference/flashcard.html). 
 ```{r eval = FALSE}
-flashcard("r4ds3")
+flashcard("r4ds03")
 ```
 
 You can also view [examples of all of the decks in HTML](https://jeffreyrstevens.github.io/flashr_decks/decks.html).
