@@ -225,6 +225,7 @@ validate_deck <- function(x, pkg = package, omit_na = omit_na) {
   # Remove missing descriptions
   if (omit_na) {
     deck <- deck[!is.na(deck$description), ]
+    deck <- deck[deck$description != "NA", ]
   }
 
     # Assign title and deckname and invisbily return output
