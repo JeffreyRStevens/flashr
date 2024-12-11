@@ -24,6 +24,9 @@
 #' color name, or hex code.
 #' @param use_browser Logical indicating whether to show the presentation in the
 #' RStudio viewer when available (FALSE) or the system's default browser (TRUE)
+#' @param omit_na Logical indicating whether to omit terms that have no
+#' descriptions from the deck (default is TRUE, which omits terms with no
+#' descriptions)
 #'
 #' @return
 #' An HTML file of terms and descriptions rendered in the RStudio viewer or
@@ -51,9 +54,10 @@ flashcard <- function(x,
                       fontsize = "default",
                       fontcolor = NULL,
                       linkcolor = NULL,
-                      use_browser = FALSE) {
+                      use_browser = FALSE,
+                      omit_na = TRUE) {
   # Validate deck
-  deck <- validate_deck(x, pkg = package)
+  deck <- validate_deck(x, pkg = package, omit_na = omit_na)
 
   # Assign deck title and deckname
   title <- attr(deck, "title")
@@ -129,7 +133,8 @@ create_deck <- function(x,
                         fontsize = "default",
                         fontcolor = NULL,
                         linkcolor = NULL,
-                        use_browser = FALSE) {
+                        use_browser = FALSE
+                        ) {
   deck <- select_terms(x)
 
   build_deck(deck,
@@ -145,7 +150,7 @@ create_deck <- function(x,
   )
 }
 
-validate_deck <- function(x, pkg = package) {
+validate_deck <- function(x, pkg = package, omit_na = omit_na) {
   # Convert all deck objects to strings
   valid_decks <- list_decks(quiet = TRUE)
   if (is.character(x)) {
@@ -217,7 +222,12 @@ validate_deck <- function(x, pkg = package) {
     package <- FALSE
   }
 
-  # Assign title and deckname and invisbily return output
+  # Remove missing descriptions
+  if (omit_na) {
+    deck <- deck[!is.na(deck$description), ]
+  }
+
+    # Assign title and deckname and invisbily return output
   attr(deck, "title") <- title
   attr(deck, "deckname") <- deckname
   attr(deck, "package") <- package

@@ -13,7 +13,8 @@ flashcard(
   fontsize = "default",
   fontcolor = NULL,
   linkcolor = NULL,
-  use_browser = FALSE
+  use_browser = FALSE,
+  omit_na = TRUE
 )
 }
 \arguments{
@@ -42,6 +43,10 @@ color name, or hex code.}
 
 \item{use_browser}{Logical indicating whether to show the presentation in the
 RStudio viewer when available (FALSE) or the system's default browser (TRUE)}
+
+\item{omit_na}{Logical indicating whether to omit terms that have no
+descriptions from the deck (default is TRUE, which omits terms with no
+descriptions)}
 }
 \value{
 An HTML file of terms and descriptions rendered in the RStudio viewer or

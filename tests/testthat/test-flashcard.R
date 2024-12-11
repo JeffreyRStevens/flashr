@@ -25,36 +25,43 @@ test_that("validations pass", {
     "This data frame does not have description column."
   )
   names(testdeck2) <- c("term", "description", "package", "b")
-  expect_message(validate_deck(testdeck2, pkg = TRUE), "No title column, so using testdeck2 for title.")
+  expect_message(validate_deck(testdeck2, pkg = TRUE, omit = TRUE), "No title column, so using testdeck2 for title.")
   names(testdeck2) <- c("term", "description", "package", "title")
-  expect_no_message(validate_deck(testdeck2, pkg = TRUE))
+  expect_no_message(validate_deck(testdeck2, pkg = TRUE, omit = TRUE))
   testdeck3 <- testdeck[, 1:3]
   write.csv(testdeck3, test_path("testdata", "testdeck3.csv"))
   expect_message(validate_deck(test_path("testdata", "testdeck3.csv"),
-    pkg = FALSE
+    pkg = FALSE, omit = TRUE
   ), "so using filename for title")
   suppressMessages(expect_message(validate_deck(
     test_path("testdata", "testdeck3.csv"),
-    pkg = FALSE
+    pkg = FALSE, omit = TRUE
   )))
-  testdeck4 <- testdeck[, 1:2]
+  testdeck4 <- testdeck[, -3]
   write.csv(testdeck4, test_path("testdata", "testdeck4.csv"))
-  expect_message(validate_deck(test_path("testdata", "testdeck4.csv"),
-    pkg = FALSE
-  ), "so using filename for title")
+  expect_no_message(validate_deck(test_path("testdata", "testdeck4.csv"),
+                               pkg = FALSE, omit = TRUE
+  ))
   suppressMessages(expect_message(validate_deck(
     test_path("testdata", "testdeck4.csv"),
-    pkg = TRUE
-  ), "This deck does not include a package column"))
-  testdeck5 <- testdeck[, 1]
+    pkg = TRUE, omit = TRUE
+  ), "This deck does not include a"))
+  testdeck5 <- testdeck[, -4]
   write.csv(testdeck5, test_path("testdata", "testdeck5.csv"))
+  expect_message(validate_deck(test_path("testdata", "testdeck5.csv"),
+                               pkg = TRUE, omit = TRUE
+  ), "so using filename for title")
+  # testdeck6 <- testdeck[, 1]
+  # write.csv(testdeck6, test_path("testdata", "testdeck6.csv"))
   file.remove(test_path("testdata", "testdeck3.csv"))
   file.remove(test_path("testdata", "testdeck4.csv"))
   file.remove(test_path("testdata", "testdeck5.csv"))
   testflash <- validate_deck(test_path("testdata", "operators.csv"),
-    pkg = TRUE
+    pkg = TRUE, omit = TRUE
   )
   expect_true("title" %in% names(testflash))
+  expect_equal(nrow(validate_deck(ex_function_df1, pkg = TRUE, omit = TRUE)), 4)
+  expect_equal(nrow(validate_deck(ex_function_df1, pkg = TRUE, omit = FALSE)), 7)
 })
 
 test_that("decks are created correctly", {
