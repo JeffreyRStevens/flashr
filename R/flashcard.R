@@ -15,6 +15,8 @@
 #' @param theme Name of reveal.js theme to use for flashcards
 #' @param file Path and file name used to save flashcard deck locally (must
 #' save as HTML)
+#' @param random Logical indicating whether to randomize order of terms (TRUE)
+#' or use order from data frame
 #' @param fontsize Base font size for presentation. Acceptable values include
 #' "default" (500%), "large" (700%), and "small" (300%). Custom values can be
 #' set as percentages (e.g., "250%").
@@ -51,6 +53,7 @@ flashcard <- function(x,
                       package = TRUE,
                       theme = "moon",
                       file = NULL,
+                      random = TRUE,
                       fontsize = "default",
                       fontcolor = NULL,
                       linkcolor = NULL,
@@ -69,6 +72,7 @@ flashcard <- function(x,
     package = package,
     theme = theme,
     file = file,
+    random = random,
     fontsize = fontsize,
     fontcolor = fontcolor,
     linkcolor = linkcolor,
@@ -95,6 +99,8 @@ flashcard <- function(x,
 #' @param theme Name of reveal.js theme to use for flashcards
 #' @param file Path and file name used to save flashcard deck locally (must
 #' save as HTML)
+#' @param random Logical indicating whether to randomize order of terms (TRUE)
+#' or use order from data frame
 #' @param fontsize Base font size for presentation. Acceptable values include
 #' "default" (500%), "large" (700%), and "small" (300%). Custom values can be
 #' set as percentages (e.g., "250%").
@@ -130,6 +136,7 @@ create_deck <- function(x,
                         package = TRUE,
                         theme = "moon",
                         file = NULL,
+                        random = TRUE,
                         fontsize = "default",
                         fontcolor = NULL,
                         linkcolor = NULL,
@@ -143,6 +150,7 @@ create_deck <- function(x,
     package = package,
     theme = theme,
     file = file,
+    random = random,
     fontsize = fontsize,
     fontcolor = fontcolor,
     linkcolor = linkcolor,
@@ -241,12 +249,17 @@ build_deck <- function(deck,
                        package = package,
                        theme = theme,
                        file = file,
+                       random = random,
                        fontsize = fontsize,
                        fontcolor = fontcolor,
                        linkcolor = linkcolor,
                        use_browser = use_browser) {
   # Shuffle order of items
-  items <- deck[sample(nrow(deck)), ]
+  if (random) {
+    items <- deck[sample(nrow(deck)), ]
+  } else {
+    items <- deck
+  }
 
   # Create title and deckname
   if (is.null(title)) {

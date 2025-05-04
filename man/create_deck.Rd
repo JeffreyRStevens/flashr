@@ -11,6 +11,7 @@ create_deck(
   package = TRUE,
   theme = "moon",
   file = NULL,
+  random = TRUE,
   fontsize = "default",
   fontcolor = NULL,
   linkcolor = NULL,
@@ -33,6 +34,9 @@ descriptions first (FALSE)}
 
 \item{file}{Path and file name used to save flashcard deck locally (must
 save as HTML)}
+
+\item{random}{Logical indicating whether to randomize order of terms (TRUE)
+or use order from data frame}
 
 \item{fontsize}{Base font size for presentation. Acceptable values include
 "default" (500\%), "large" (700\%), and "small" (300\%). Custom values can be
