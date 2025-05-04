@@ -120,6 +120,10 @@ list_decks <- function(pattern = NULL,
 #' the user can choose one of the decks to generate flashcards.
 #' @export
 #'
+#' @note
+#' This function **requires internet connectivity** as it checks GitHub repos
+#' for decks.
+#'
 #' @family functions for finding decks
 #'
 #' @examplesIf interactive()

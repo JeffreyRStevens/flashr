@@ -14,7 +14,7 @@ test_that("checks work correctly", {
   )
   expect_error(
     flashcard("data_types", theme = "t"),
-    "`theme` must be one of the allowed values: black, white, league"
+    "`theme` must be one of the allowed values: default, black, white, league"
   )
   expect_error(
     flashcard("data_types", file = 1),

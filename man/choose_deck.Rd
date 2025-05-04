@@ -32,6 +32,10 @@ But other GitHub repos can be used.
 To narrow the results, include text in the \code{pattern} argument (for example,
 \code{choose_deck(pattern = "r4ds")}).
 }
+\note{
+This function \strong{requires internet connectivity} as it checks GitHub repos
+for decks.
+}
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \dontrun{

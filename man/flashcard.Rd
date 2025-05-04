@@ -63,6 +63,12 @@ The function outputs reveal.js presentation as an HTML file.
 If running in RStudio, the flashcards are output to the viewer.
 Otherwise, they are output to a web browser.
 }
+\note{
+This function \strong{requires internet connectivity} to use existing decks.
+An internet connection is not required if you supply a CSV file. However,
+without an internect connection, themes other than \emph{black}, \emph{white}, and
+\emph{serif}, may not render properly, as they require access to Google Fonts.
+}
 \examples{
 \dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
