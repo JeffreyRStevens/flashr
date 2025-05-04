@@ -1,3 +1,26 @@
+test_that("checks work correctly", {
+  skip_on_cran()
+  expect_error(
+    list_decks(pattern = 1),
+    "`pattern` must be a character"
+  )
+  expect_error(
+    list_decks(repo = 1),
+    "`repo` must be a character"
+  )
+  expect_error(
+    list_decks(quiet = 1),
+    "`quiet` must be a logical \\(TRUE or FALSE\\)"
+  )
+  expect_error(
+    choose_deck(pattern = 1),
+    "`pattern` must be a character"
+  )
+  expect_error(
+    choose_deck(repo = 1),
+    "`repo` must be a character"
+  )
+})
 test_that("list_decks works", {
   skip_on_cran()
   suppressMessages(expect_message(list_decks(), "Available flashcard decks"))
@@ -8,7 +31,7 @@ test_that("list_decks works", {
   expect_equal(test_decks$decktitles[1], "Data types")
   expect_equal(test_decks$decks[1], "Data types (data_types)")
   suppressMessages(expect_error(
-    list_decks(123),
+    list_decks("123"),
     "No decks match the pattern entered"
   ))
 })

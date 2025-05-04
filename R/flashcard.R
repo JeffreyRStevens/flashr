@@ -58,7 +58,12 @@ flashcard <- function(x,
                       fontcolor = NULL,
                       linkcolor = NULL,
                       use_browser = FALSE,
-                      omit_na = TRUE) {
+                      omit_na = TRUE
+                      ) {
+  # Check arguments
+  check_logical("package", package)
+  check_logical("omit_na", omit_na)
+
   # Validate deck
   deck <- validate_deck(x, pkg = package, omit_na = omit_na)
 
@@ -142,6 +147,7 @@ create_deck <- function(x,
                         linkcolor = NULL,
                         use_browser = FALSE
                         ) {
+  # Assign deck title and deckname
   deck <- select_terms(x)
 
   build_deck(deck,
@@ -158,7 +164,10 @@ create_deck <- function(x,
   )
 }
 
-validate_deck <- function(x, pkg = package, omit_na = omit_na) {
+validate_deck <- function(x,
+                          pkg = package,
+                          omit_na = omit_na
+                          ) {
   # Convert all deck objects to strings
   valid_decks <- list_decks(quiet = TRUE)
   if (is.character(x)) {
@@ -253,7 +262,23 @@ build_deck <- function(deck,
                        fontsize = fontsize,
                        fontcolor = fontcolor,
                        linkcolor = linkcolor,
-                       use_browser = use_browser) {
+                       use_browser = use_browser
+                       ) {
+  # Check arguments
+  check_character("title", title, nullok = TRUE)
+  check_logical("termsfirst", termsfirst)
+  check_character("theme", theme, c("black", "white", "league", "beige",
+                                    "night", "serif", "simple", "solarized",
+                                    "moon", "dracula", "sky", "blood"))
+  check_character("file", file, nullok = TRUE)
+  check_logical("random", random)
+  check_character("fontsize", fontsize)
+  check_character("fontcolor", fontcolor, nullok = TRUE)
+  check_character("linkcolor", linkcolor, nullok = TRUE)
+  check_logical("use_browser", use_browser)
+
+
+
   # Shuffle order of items
   if (random) {
     items <- deck[sample(nrow(deck)), ]

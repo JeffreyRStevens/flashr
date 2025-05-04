@@ -1,3 +1,55 @@
+test_that("checks work correctly", {
+  skip_on_cran()
+  expect_error(
+    flashcard("data_types", termsfirst = 1),
+    "`termsfirst` must be a logical \\(TRUE or FALSE\\)"
+  )
+  expect_error(
+    flashcard("data_types", package = 1),
+    "`package` must be a logical \\(TRUE or FALSE\\)"
+  )
+  expect_error(
+    flashcard("data_types", theme = 1),
+    "`theme` must be a character"
+  )
+  expect_error(
+    flashcard("data_types", theme = "t"),
+    "`theme` must be one of the allowed values: black, white, league"
+  )
+  expect_error(
+    flashcard("data_types", file = 1),
+    "`file` must be a character"
+  )
+  expect_error(
+    flashcard("data_types", random = 1),
+    "`random` must be a logical \\(TRUE or FALSE\\)"
+  )
+  expect_error(
+    flashcard("data_types", fontsize = 1),
+    "`fontsize` must be a character"
+  )
+  expect_error(
+    flashcard("data_types", fontcolor = 1),
+    "`fontcolor` must be a character"
+  )
+  expect_error(
+    flashcard("data_types", linkcolor = 1),
+    "`linkcolor` must be a character"
+  )
+  expect_error(
+    flashcard("data_types", use_browser = 1),
+    "`use_browser` must be a logical \\(TRUE or FALSE\\)"
+  )
+  expect_error(
+    flashcard("data_types", omit_na = 1),
+    "`omit_na` must be a logical \\(TRUE or FALSE\\)"
+  )
+  expect_error(
+    create_deck(x = c("as_tibble()", "bind_rows()", "c()"), title = 1),
+    "`title` must be a character"
+  )
+})
+
 test_that("validations pass", {
   skip_on_cran()
   testdeck <- read.csv(test_path("testdata", "operators.csv"))
@@ -31,7 +83,7 @@ test_that("validations pass", {
   testdeck3 <- testdeck[, 1:3]
   write.csv(testdeck3, test_path("testdata", "testdeck3.csv"))
   expect_message(validate_deck(test_path("testdata", "testdeck3.csv"),
-    pkg = FALSE, omit = TRUE
+                               pkg = FALSE, omit = TRUE
   ), "so using filename for title")
   suppressMessages(expect_message(validate_deck(
     test_path("testdata", "testdeck3.csv"),
@@ -40,7 +92,7 @@ test_that("validations pass", {
   testdeck4 <- testdeck[, -3]
   write.csv(testdeck4, test_path("testdata", "testdeck4.csv"))
   expect_no_message(validate_deck(test_path("testdata", "testdeck4.csv"),
-                               pkg = FALSE, omit = TRUE
+                                  pkg = FALSE, omit = TRUE
   ))
   suppressMessages(expect_message(validate_deck(
     test_path("testdata", "testdeck4.csv"),
@@ -57,7 +109,7 @@ test_that("validations pass", {
   file.remove(test_path("testdata", "testdeck4.csv"))
   file.remove(test_path("testdata", "testdeck5.csv"))
   testflash <- validate_deck(test_path("testdata", "operators.csv"),
-    pkg = TRUE, omit = TRUE
+                             pkg = TRUE, omit = TRUE
   )
   expect_true("title" %in% names(testflash))
   expect_equal(nrow(validate_deck(ex_function_df1, pkg = TRUE, omit = TRUE)), 4)

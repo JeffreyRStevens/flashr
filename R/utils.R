@@ -1,3 +1,45 @@
+#' Checks if a character input is valid
+#'
+#' @param name Argument name.
+#' @param value Argument value.
+#' @param allowed Allowed argument values.
+#' @param nullok Logical for whether NULL values are OK (TRUE) or not (FALSE).
+#'
+#' @keywords internal
+#'
+check_character <- function(name = NULL,
+                            value = NULL,
+                            allowed = NULL,
+                            nullok = FALSE
+) {
+  if (is.null(name)) cli::cli_abort(paste0("Enter valid `name`."))
+  if (!nullok) {
+    if (is.null(value)) cli::cli_abort(paste0("Enter valid `value`."))
+    if (!is.character(value)) cli::cli_abort(
+      "`{name}` must be a character string.")
+  } else {
+    if (!is.character(value) & !is.null(value)) cli::cli_abort("`{name}` must be a character string or NULL.")
+  }
+  if (!is.null(allowed)) {
+    if (!value %in% allowed) cli::cli_abort("`{name}` must be one of the allowed values: {allowed}.")
+  }
+}
+
+
+#' Checks if a logical input is valid
+#'
+#' @param name Argument name.
+#' @param value Argument value.
+#'
+#' @keywords internal
+#'
+check_logical <- function(name = NULL, value = NULL) {
+  if (is.null(name)) cli::cli_abort(paste0("Enter valid `name`."))
+  if (is.null(value)) cli::cli_abort(paste0("Enter valid `value`."))
+  if (!is.logical(value)) cli::cli_abort("`{name}` must be a logical (TRUE or FALSE).")
+}
+
+
 #' Gracefully fail if internet connection is not available
 #'
 #' CRAN policies require that "Packages which use Internet resources should fail
@@ -41,3 +83,4 @@ fail_gracefully <- function(remote_file, maxtime = 10) {
     return(invisible(NULL))
   }
 }
+
