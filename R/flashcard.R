@@ -368,7 +368,11 @@ build_deck <- function(deck,
   # Create slides for each item
   for (i in seq_len(nrow(items))) {
     # Create slide components
-    term <- paste0("`", items$term[i], "`")
+    if (grepl("\\$(.*?)\\$", items$term[i])) {
+      term <- items$term[i]
+    } else {
+      term <- paste0("`", items$term[i], "`")
+    }
     # Add URL if included in deck
     if ("url" %in% names(deck)) {
       if (!is.na(items$url[i])) {
