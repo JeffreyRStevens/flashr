@@ -1,0 +1,8 @@
+bibentry(
+  bibtype  = "Manual",
+  title    = "flashr: Create Flashcards of Terms and Definitions",
+  author   = c(as.person("Jeffrey R. Stevens")),
+  note     = "R package version 0.3.0",
+  year     = "2025",
+  url      = "https://github.com/JeffreyRStevens/flashr"
+)
