@@ -299,8 +299,7 @@ build_deck <- function(deck,
   if (is.null(title)) {
     title <- "Custom deck"
   }
-  deckname <- gsub(" ", "_", title) |>
-    tolower()
+  deckname <- tolower(gsub(" ", "_", title))
 
   # Determine fontsize
   if (!grepl("%", fontsize)) {
