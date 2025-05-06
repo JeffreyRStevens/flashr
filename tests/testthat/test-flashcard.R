@@ -83,7 +83,7 @@ test_that("validations pass", {
   testdeck3 <- testdeck[, 1:3]
   write.csv(testdeck3, test_path("testdata", "testdeck3.csv"))
   expect_message(validate_deck(test_path("testdata", "testdeck3.csv"),
-                               pkg = FALSE, omit = TRUE
+    pkg = FALSE, omit = TRUE
   ), "so using filename for title")
   suppressMessages(expect_message(validate_deck(
     test_path("testdata", "testdeck3.csv"),
@@ -92,7 +92,7 @@ test_that("validations pass", {
   testdeck4 <- testdeck[, -3]
   write.csv(testdeck4, test_path("testdata", "testdeck4.csv"))
   expect_no_message(validate_deck(test_path("testdata", "testdeck4.csv"),
-                                  pkg = FALSE, omit = TRUE
+    pkg = FALSE, omit = TRUE
   ))
   suppressMessages(expect_message(validate_deck(
     test_path("testdata", "testdeck4.csv"),
@@ -101,7 +101,7 @@ test_that("validations pass", {
   testdeck5 <- testdeck[, -4]
   write.csv(testdeck5, test_path("testdata", "testdeck5.csv"))
   expect_message(validate_deck(test_path("testdata", "testdeck5.csv"),
-                               pkg = TRUE, omit = TRUE
+    pkg = TRUE, omit = TRUE
   ), "so using filename for title")
   # testdeck6 <- testdeck[, 1]
   # write.csv(testdeck6, test_path("testdata", "testdeck6.csv"))
@@ -109,7 +109,7 @@ test_that("validations pass", {
   file.remove(test_path("testdata", "testdeck4.csv"))
   file.remove(test_path("testdata", "testdeck5.csv"))
   testflash <- validate_deck(test_path("testdata", "operators.csv"),
-                             pkg = TRUE, omit = TRUE
+    pkg = TRUE, omit = TRUE
   )
   expect_true("title" %in% names(testflash))
   expect_equal(nrow(validate_deck(ex_function_df1, pkg = TRUE, omit = TRUE)), 4)

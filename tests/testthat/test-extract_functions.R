@@ -1,4 +1,3 @@
-
 test_that("code is extracted", {
   expect_equal(extract_code(file = rmd)[1], "knitr::opts_chunk$set(")
   expect_equal(extract_code(file = rmd)[16], "flashcard(\"inst/extdata/operators.csv\")")

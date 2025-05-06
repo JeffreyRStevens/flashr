@@ -10,15 +10,17 @@
 check_character <- function(name = NULL,
                             value = NULL,
                             allowed = NULL,
-                            nullok = FALSE
-) {
+                            nullok = FALSE) {
   if (is.null(name)) cli::cli_abort(paste0("Enter valid `name`."))
   if (!nullok) {
     if (is.null(value)) cli::cli_abort(paste0("Enter valid `value`."))
-    if (!is.character(value)) cli::cli_abort(
-      "`{name}` must be a character string.")
+    if (!is.character(value)) {
+      cli::cli_abort(
+        "`{name}` must be a character string."
+      )
+    }
   } else {
-    if (!is.character(value) & !is.null(value)) cli::cli_abort("`{name}` must be a character string or NULL.")
+    if (!is.character(value) && !is.null(value)) cli::cli_abort("`{name}` must be a character string or NULL.")
   }
   if (!is.null(allowed)) {
     if (!value %in% allowed) cli::cli_abort("`{name}` must be one of the allowed values: {allowed}.")
@@ -83,4 +85,3 @@ fail_gracefully <- function(remote_file, maxtime = 10) {
     return(invisible(NULL))
   }
 }
-

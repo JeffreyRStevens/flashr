@@ -64,8 +64,7 @@ flashcard <- function(x,
                       fontcolor = NULL,
                       linkcolor = NULL,
                       use_browser = FALSE,
-                      omit_na = TRUE
-) {
+                      omit_na = TRUE) {
   # Check arguments
   check_logical("package", package)
   check_logical("omit_na", omit_na)
@@ -78,16 +77,16 @@ flashcard <- function(x,
   package <- attr(deck, "package")
 
   build_deck(deck,
-             title = title,
-             termsfirst = termsfirst,
-             package = package,
-             theme = theme,
-             file = file,
-             random = random,
-             fontsize = fontsize,
-             fontcolor = fontcolor,
-             linkcolor = linkcolor,
-             use_browser = use_browser
+    title = title,
+    termsfirst = termsfirst,
+    package = package,
+    theme = theme,
+    file = file,
+    random = random,
+    fontsize = fontsize,
+    fontcolor = fontcolor,
+    linkcolor = linkcolor,
+    use_browser = use_browser
   )
 }
 
@@ -152,29 +151,27 @@ create_deck <- function(x,
                         fontsize = "default",
                         fontcolor = NULL,
                         linkcolor = NULL,
-                        use_browser = FALSE
-) {
+                        use_browser = FALSE) {
   # Assign deck title and deckname
   deck <- select_terms(x)
 
   build_deck(deck,
-             title = title,
-             termsfirst = termsfirst,
-             package = package,
-             theme = theme,
-             file = file,
-             random = random,
-             fontsize = fontsize,
-             fontcolor = fontcolor,
-             linkcolor = linkcolor,
-             use_browser = use_browser
+    title = title,
+    termsfirst = termsfirst,
+    package = package,
+    theme = theme,
+    file = file,
+    random = random,
+    fontsize = fontsize,
+    fontcolor = fontcolor,
+    linkcolor = linkcolor,
+    use_browser = use_browser
   )
 }
 
 validate_deck <- function(x,
                           pkg = package,
-                          omit_na = omit_na
-) {
+                          omit_na = omit_na) {
   # Convert all deck objects to strings
   if (length(x) == 1) {
     if (!grepl(".csv", x, ignore.case = TRUE)) {
@@ -205,7 +202,7 @@ validate_deck <- function(x,
     } else if (input %in% valid_decks$decklabels) { # if input is in valid decks
       # Get deck and deckname
       deck <- utils::read.csv(paste0("https://raw.githubusercontent.com/JeffreyRStevens/flashr_decks/main/decks/", input, ".csv"),
-                              na.strings = ""
+        na.strings = ""
       )
       deckname <- input
       title <- deck$title[1]
@@ -273,14 +270,15 @@ build_deck <- function(deck,
                        fontsize = fontsize,
                        fontcolor = fontcolor,
                        linkcolor = linkcolor,
-                       use_browser = use_browser
-) {
+                       use_browser = use_browser) {
   # Check arguments
   check_character("title", title, nullok = TRUE)
   check_logical("termsfirst", termsfirst)
-  check_character("theme", theme, c("default", "black", "white", "league", "beige",
-                                    "night", "serif", "simple", "solarized",
-                                    "moon", "sky", "blood"))
+  check_character("theme", theme, c(
+    "default", "black", "white", "league", "beige",
+    "night", "serif", "simple", "solarized",
+    "moon", "sky", "blood"
+  ))
   check_character("file", file, nullok = TRUE)
   check_logical("random", random)
   check_character("fontsize", fontsize)
@@ -469,7 +467,7 @@ is_color <- function(x) {
   web_colors <- c("Pink", "LightPink", "HotPink", "DeepPink", "PaleVioletRed", "MediumVioletRed", "LightSalmon", "Salmon", "DarkSalmon", "LightCoral", "IndianRed", "Crimson", "FireBrick", "DarkRed", "Red", "OrangeRed", "Tomato", "Coral", "DarkOrange", "Orange", "Yellow", "Yellow", "LightYellow", "LemonChiffon", "LightGoldenrodYellow", "PapayaWhip", "Moccasin", "PeachPuff", "PaleGoldenrod", "Khaki", "DarkKhaki", "Gold", "Cornsilk", "BlanchedAlmond", "Bisque", "NavajoWhite", "Wheat", "BurlyWood", "Tan", "RosyBrown", "SandyBrown", "Goldenrod", "DarkGoldenrod", "Peru", "Chocolate", "SaddleBrown", "Sienna", "Brown", "Maroon", "DarkOliveGreen", "Olive", "OliveDrab", "YellowGreen", "LimeGreen", "Lime", "LawnGreen", "Chartreuse", "GreenYellow", "SpringGreen", "MediumSpringGreen", "LightGreen", "PaleGreen", "DarkSeaGreen", "MediumSeaGreen", "SeaGreen", "ForestGreen", "Green", "DarkGreen", "MediumAquamarine", "Aqua", "Cyan", "LightCyan", "PaleTurquoise", "Aquamarine", "Turquoise", "MediumTurquoise", "DarkTurquoise", "LightSeaGreen", "CadetBlue", "DarkCyan", "Teal", "LightSteelBlue", "PowderBlue", "LightBlue", "SkyBlue", "LightSkyBlue", "DeepSkyBlue", "DodgerBlue", "CornflowerBlue", "SteelBlue", "RoyalBlue", "Blue", "MediumBlue", "DarkBlue", "Navy", "MidnightBlue", "Lavender", "Thistle", "Plum", "Violet", "Orchid", "Fuchsia", "Magenta", "MediumOrchid", "MediumPurple", "BlueViolet", "DarkViolet", "DarkOrchid", "DarkMagenta", "Purple", "Indigo", "DarkSlateBlue", "RebeccaPurple", "SlateBlue", "MediumSlateBlue", "White", "Snow", "Honeydew", "MintCream", "Azure", "AliceBlue", "GhostWhite", "WhiteSmoke", "Seashell", "Beige", "OldLace", "FloralWhite", "Ivory", "AntiqueWhite", "Linen", "LavenderBlush", "MistyRose", "Gainsboro", "LightGrey", "Silver", "DarkGray", "Gray", "DimGray", "LightSlateGray", "SlateGray", "DarkSlateGray", "Black")
   all_colors <- c(web_colors, tolower(web_colors), grDevices::colors())
   return(x %in% all_colors | grepl("^#(\\d|[a-f]){6,8}$",
-                                   x,
-                                   ignore.case = TRUE
+    x,
+    ignore.case = TRUE
   ))
 }

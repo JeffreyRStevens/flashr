@@ -39,8 +39,7 @@
 #' list_decks(repo = "JeffreyRStevens/flashr_decks")
 list_decks <- function(pattern = NULL,
                        repo = "JeffreyRStevens/flashr_decks",
-                       quiet = FALSE
-                       ) {
+                       quiet = FALSE) {
   # Check arguments
   check_character("pattern", pattern, nullok = TRUE)
   check_character("repo", repo)
@@ -139,8 +138,7 @@ list_decks <- function(pattern = NULL,
 #' }
 choose_deck <- function(pattern = NULL,
                         choice = NULL,
-                        repo = "JeffreyRStevens/flashr_decks"
-                        ) {
+                        repo = "JeffreyRStevens/flashr_decks") {
   # Check arguments
   check_character("pattern", pattern, nullok = TRUE)
   check_character("repo", repo)
