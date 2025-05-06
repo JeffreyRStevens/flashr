@@ -20,10 +20,10 @@ coverage](https://codecov.io/gh/JeffreyRStevens/flashr/graph/badge.svg)](https:/
 
 Learning all of the functions needed to become proficient in R is a
 substantial undertaking. Flashcards are a great way to learn the syntax
-of computer languages (Hermans 2021). The goal of flashr (pronounced
+of computer languages (Hermans 2021). The goal of `{flashr}` (pronounced
 “flash-r”) is to provide a quick way to view decks of flashcards.
 
-flashr can use existing built-in flashcard decks hosted at the
+`{flashr}` can use existing built-in flashcard decks hosted at the
 [flashr_decks GitHub
 repo](https://github.com/JeffreyRStevens/flashr_decks), including
 functions and arguments from [R for Data Science, first
@@ -39,14 +39,14 @@ can be used to build decks for anything—not just computer syntax!
 
 ## Installation
 
-You can install the stable released version of flashr from
+You can install the stable released version of `{flashr}` from
 [CRAN](https://cran.r-project.org/package=flashr) with:
 
 ``` r
 install.packages("flashr")
 ```
 
-You can install the development version of flashr like so:
+You can install the development version of `{flashr}` like so:
 
 ``` r
 # install.packages("remotes")
@@ -106,17 +106,17 @@ for more details on creating your own flashcard deck.
 
 ## Citation
 
-To cite flashr, use:
+To cite [`{flashr}`](https://jeffreyrstevens.github.io/flashr/), use:
 
-> Stevens, Jeffrey R. (2024). flashr: Creates flashcards of terms and
-> definitions. (version 0.2.0)
-> <https://cran.r-project.org/package=flashr>
+Stevens JR (2025). *flashr: Create Flashcards of Terms and Definitions*.
+R package version 0.3.0, <https://github.com/JeffreyRStevens/flashr>.
 
 ## Contributing to this package
 
-Contributions to flashr are most welcome! Feel free to check out [open
-issues](https://github.com/JeffreyRStevens/flashr/issues) for ideas. And
-[pull requests](https://github.com/JeffreyRStevens/flashr/pulls) are
+Contributions to `{flashr}` are most welcome! Feel free to check out
+[open issues](https://github.com/JeffreyRStevens/flashr/issues) for
+ideas. And [pull
+requests](https://github.com/JeffreyRStevens/flashr/pulls) are
 encouraged, but you may want to [raise an
 issue](https://github.com/JeffreyRStevens/flashr/issues) or [contact the
 maintainer](mailto:jeffrey.r.stevens@protonmail.com) first.
