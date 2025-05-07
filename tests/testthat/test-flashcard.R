@@ -112,8 +112,8 @@ test_that("validations pass", {
     pkg = TRUE, omit = TRUE
   )
   expect_true("title" %in% names(testflash))
-  expect_equal(nrow(validate_deck(ex_function_df1, pkg = TRUE, omit = TRUE)), 4)
-  expect_equal(nrow(validate_deck(ex_function_df1, pkg = TRUE, omit = FALSE)), 7)
+  expect_equal(nrow(validate_deck(ex_function_df1, pkg = TRUE, omit = TRUE)), 5)
+  expect_equal(nrow(validate_deck(ex_function_df1, pkg = TRUE, omit = FALSE)), 9)
 })
 
 test_that("decks are created correctly", {

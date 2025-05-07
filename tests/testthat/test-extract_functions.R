@@ -7,8 +7,8 @@ test_that("code is extracted", {
   )
   expect_equal(extract_code(file = rmd)[8], "# install.packages(\"remotes\")")
   expect_equal(extract_code(file = rmd, comments = FALSE)[8], "remotes::install_github(\"JeffreyRStevens/flashr\")")
-  expect_equal(length(extract_code(file = rmd)), 16)
-  expect_equal(length(extract_code(file = rmd, empty = FALSE)), 15)
+  expect_equal(length(extract_code(file = rmd)), 17)
+  expect_equal(length(extract_code(file = rmd, empty = FALSE)), 16)
 })
 
 test_that("functions are extracted", {
@@ -16,14 +16,14 @@ test_that("functions are extracted", {
     extract_functions(extract_code(rmd)),
     c(
       "set", "install.packages", "install_github", "library",
-      "flashcard", "flashcard", "read.csv", "head", "flashcard"
+      "flashcard", "flashcard", "read.csv", "head", "flashcard", "print", "readCitationFile"
     )
   )
   expect_equal(
     extract_functions(extract_code(rmd), duplicates = FALSE),
     c(
       "set", "install.packages", "install_github", "library",
-      "flashcard", "read.csv", "head"
+      "flashcard", "read.csv", "head", "print", "readCitationFile"
     )
   )
   expect_error(
