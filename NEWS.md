@@ -1,4 +1,9 @@
-# flashr (development version)
+# flashr 0.3.0
+
+* Allow for not randomizing slide order by setting `random = FALSE` (#25)
+* Allow for building decks from CSV files without internet connection (#26)
+* Properly display LaTeX code in terms (#27)
+* Remove pipe from code
 
 # flashr 0.2.0
 

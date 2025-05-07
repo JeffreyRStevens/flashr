@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/JeffreyRStevens/flashr",
   "issueTracker": "https://github.com/JeffreyRStevens/flashr/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.4.2 (2024-10-31)",
+  "runtimePlatform": "R version 4.5.0 (2025-04-11)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -208,5 +208,21 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "3641.988KB"
+  "fileSize": "3650.939KB",
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2025",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": ["Jeffrey", "R."],
+          "familyName": "Stevens"
+        }
+      ],
+      "name": "flashr: Create Flashcards of Terms and Definitions",
+      "url": "https://github.com/JeffreyRStevens/flashr",
+      "description": "R package version 0.3.0"
+    }
+  ]
 }
