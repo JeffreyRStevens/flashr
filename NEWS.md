@@ -1,3 +1,5 @@
+# flashr (development version)
+
 # flashr 0.3.0
 
 * Allow for not randomizing slide order by setting `random = FALSE` (#25)
